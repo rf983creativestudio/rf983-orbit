@@ -22,7 +22,7 @@ https://rf983creativestudio.github.io/rf983-orbit/
 - Play — quizzes and interactive challenges
 - Tools — browser-based utilities
 
-## Interactive features
+## Knowledge destinations\n- Knowledge Universe — structured learning guides across twelve subjects\n- World Atlas — country profiles and comparisons\n- Earth Explorer — geographical field notes\n- World Encyclopedia — curated reference explainers\n- World Database — 100 connected starter records across ten domains\n\n## Interactive features
 - Search across destination and editorial cards
 - Random discovery prompts
 - Three-question knowledge quiz
