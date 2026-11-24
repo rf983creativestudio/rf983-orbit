@@ -140,3 +140,22 @@ const setGalaxyZoom=()=>{if(galaxyUniverse)galaxyUniverse.style.setProperty("--g
 document.querySelector("#galaxy-zoom-in")?.addEventListener("click",()=>{galaxyZoom=Math.min(1.35,+(galaxyZoom+.1).toFixed(2));setGalaxyZoom();});
 document.querySelector("#galaxy-zoom-out")?.addEventListener("click",()=>{galaxyZoom=Math.max(.8,+(galaxyZoom-.1).toFixed(2));setGalaxyZoom();});
 document.querySelector("#galaxy-reset")?.addEventListener("click",()=>{galaxyZoom=1;setGalaxyZoom();});
+
+
+/* RF983 ORBIT — interactive Learn mini-lessons */
+const lessonContent={
+ focus:{label:"MINI LESSON 01 / LEARNING",title:"Make learning easier to return to.",intro:"A useful learning routine is small enough to repeat and flexible enough to survive a busy day.",steps:[["01","Choose one clear goal","Decide exactly what you want to understand today."],["02","Work in a short session","Try 20 focused minutes, then take a short break."],["03","Recall, don't just reread","Close your notes and explain the idea in your own words."]],task:"Pick one topic and write down one question you want answered."},
+ verify:{label:"MINI LESSON 02 / MEDIA LITERACY",title:"Pause before you pass information on.",intro:"Online posts can be useful, misleading or incomplete. A quick check helps you judge what deserves your trust.",steps:[["01","Find the original source","Look for the person, organisation or document behind the claim."],["02","Check the date and context","An old story, cropped image or short clip can leave out important details."],["03","Compare independent sources","See whether other reliable outlets or primary sources support the same claim."]],task:"Choose one claim you recently saw online and trace it back to its original source."},
+ create:{label:"MINI LESSON 03 / CREATIVITY",title:"Turn a small idea into something real.",intro:"Creative projects become easier when you make a tiny first version instead of waiting for a perfect plan.",steps:[["01","Write the idea in one sentence","Describe who it helps or what experience it should create."],["02","Build the smallest version","Sketch it, write a sample or make a simple prototype."],["03","Test and improve","Show it to someone, notice what works and make one useful change."]],task:"Give yourself 15 minutes to create a rough first draft of one idea."}
+};
+const lessonButtons=[...document.querySelectorAll(".lesson-open")];
+function showLesson(key){
+ const lesson=lessonContent[key];if(!lesson)return;
+ lessonButtons.forEach(button=>{const active=button.dataset.lesson===key;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active));});
+ const label=document.querySelector("#lesson-label"),title=document.querySelector("#lesson-title"),intro=document.querySelector("#lesson-intro"),steps=document.querySelector("#lesson-steps"),task=document.querySelector("#lesson-task");
+ if(!label||!title||!intro||!steps||!task)return;
+ label.textContent=lesson.label;title.textContent=lesson.title;intro.textContent=lesson.intro;task.textContent=lesson.task;
+ steps.replaceChildren();
+ lesson.steps.forEach(([number,heading,description])=>{const item=document.createElement("div"),numberNode=document.createElement("b"),headingNode=document.createElement("strong"),descriptionNode=document.createElement("p");numberNode.textContent=number;headingNode.textContent=heading;descriptionNode.textContent=description;item.append(numberNode,headingNode,descriptionNode);steps.append(item)});
+}
+lessonButtons.forEach(button=>button.addEventListener("click",()=>showLesson(button.dataset.lesson)));
