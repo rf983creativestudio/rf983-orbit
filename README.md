@@ -79,3 +79,13 @@ Editorial facts and external references should be checked before publication. Se
 - Sound Visualiser: live waveform display with adjustable oscillator type, frequency and volume
 - Ten rotating sound missions and short explanations of frequency, amplitude, waveform and rhythm
 - Uses Web Audio API only after user interaction; no streaming catalogue, microphone recording, account or server-side audio upload
+
+
+## ORBIT Motion Studio — Edition 01
+- Browser-based visual scene editor at `/motion/`
+- Add circle, square, star and text layers; select, rename, recolour, resize, rotate, reposition and adjust opacity
+- Drag scene objects on the canvas and edit their properties in the inspector
+- Starter presets: blank canvas, orbiting planet, animated title and sunset shapes
+- Keyframe timeline with smooth interpolation for position, size, rotation and opacity
+- Preview, stop, scrub the timeline, export a PNG snapshot and record up to 8 seconds of WebM animation where supported
+- Scene projects are stored locally in browser storage; no account, server-side project storage, microphone or audio capture
