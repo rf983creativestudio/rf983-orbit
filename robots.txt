@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rf983creativestudio.github.io/rf983-radio/sitemap.xml
+Sitemap: https://rf983creativestudio.github.io/rf983-orbit/sitemap.xml
