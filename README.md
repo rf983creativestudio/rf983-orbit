@@ -59,3 +59,13 @@ Editorial facts and external references should be checked before publication. Se
 - Ten-question science challenge with instant explanations and a restartable score
 - Simulations run locally in the browser; controls and quiz answers are not submitted or saved
 - Simplified educational models, not professional engineering tools
+
+
+## ORBIT Creative Studio — Edition 01
+- Browser-based creative workshop at `/creative/`
+- Pattern Lab: generative geometric designs with adjustable styles, colour palettes, density and rotation
+- Pixel Art Studio: touch/mouse drawing, palette swatches, grid sizing, undo and PNG export
+- Poster Maker: editable title/subtitle, palette and composition presets with PNG export
+- Colour Studio: HEX/RGB readout, generated five-step palettes, harmony swatches and PNG export
+- Twelve rotating creative prompts and short visual-design principles
+- No accounts, paid services or server-side artwork storage; tools run locally in the browser
