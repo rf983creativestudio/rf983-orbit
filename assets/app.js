@@ -170,8 +170,10 @@ arcadeTabs.forEach(tab=>tab.addEventListener("click",()=>{
  Object.entries(arcadeGames).forEach(([name,panel])=>{if(panel)panel.hidden=name!==key;});
 }));
 let arcadeCleared=0;
+try{const savedArcade=JSON.parse(localStorage.getItem("rf983OrbitArcade")||"{}");arcadeCleared=Number.isFinite(savedArcade.clears)?Math.max(0,savedArcade.clears):0;}catch(error){}
 const arcadeScore=document.querySelector("#arcade-score");
-function markArcadeClear(){arcadeCleared++;if(arcadeScore)arcadeScore.textContent="CHALLENGES CLEARED: "+arcadeCleared;}
+if(arcadeScore)arcadeScore.textContent="CHALLENGES CLEARED: "+arcadeCleared;
+function markArcadeClear(){arcadeCleared++;if(arcadeScore)arcadeScore.textContent="CHALLENGES CLEARED: "+arcadeCleared;try{localStorage.setItem("rf983OrbitArcade",JSON.stringify({clears:arcadeCleared}));}catch(error){}if(typeof renderOrbitAchievements==="function")renderOrbitAchievements();}
 let hiddenNumber=1+Math.floor(Math.random()*20),numberTries=0,numberFinished=false;
 const numberForm=document.querySelector("#number-form"),numberGuess=document.querySelector("#number-guess"),numberFeedback=document.querySelector("#number-feedback"),numberAttempts=document.querySelector("#number-attempts");
 function resetNumber(){hiddenNumber=1+Math.floor(Math.random()*20);numberTries=0;numberFinished=false;if(numberGuess){numberGuess.value="";numberGuess.disabled=false;}if(numberFeedback)numberFeedback.textContent="Enter a number to begin. You have 5 attempts.";if(numberAttempts)numberAttempts.textContent="ATTEMPTS: 0 / 5";}
@@ -256,5 +258,42 @@ dailyComplete?.addEventListener("click",()=>{
  dailyState.lastCompleted=todayKey;dailyState.xp+=50;
  try{localStorage.setItem("rf983OrbitDaily",JSON.stringify(dailyState));}catch(error){if(dailyNote)dailyNote.textContent="Mission completed for this visit. Your browser may not allow progress to be saved.";}
  renderDailyMission();
+ if(typeof renderOrbitAchievements==="function")renderOrbitAchievements();
 });
 renderDailyMission();
+
+
+/* ORBIT PROFILE — local XP levels, personal records and collectible badges */
+const orbitBadgeDefinitions=[
+ {id:"first-mission",icon:"✦",name:"First Signal",detail:"Complete your first daily mission",unlock:()=>dailyState.xp>=50},
+ {id:"arcade-ace",icon:"⚡",name:"Arcade Ace",detail:"Clear your first arcade challenge",unlock:()=>arcadeCleared>=1},
+ {id:"curious-mind",icon:"🔭",name:"Curious Mind",detail:"Earn 150 mission XP",unlock:()=>dailyState.xp>=150},
+ {id:"streak-three",icon:"🔥",name:"On a Roll",detail:"Reach a 3-day mission streak",unlock:()=>dailyState.streak>=3},
+ {id:"game-explorer",icon:"🎮",name:"Game Explorer",detail:"Clear 5 arcade challenges",unlock:()=>arcadeCleared>=5},
+ {id:"orbit-regular",icon:"🌟",name:"Orbit Regular",detail:"Reach a 7-day mission streak",unlock:()=>dailyState.streak>=7}
+];
+const orbitLevelNames=["ROOKIE EXPLORER","CURIOUS TRAVELLER","STAR SEEKER","GALAXY GUIDE","ORBIT LEGEND"];
+function renderOrbitAchievements(){
+ const totalXp=dailyState.xp+arcadeCleared*10;
+ const level=Math.min(orbitLevelNames.length-1,Math.floor(totalXp/100));
+ const within=totalXp>=500?100:totalXp%100;
+ const totalXpNode=document.querySelector("#orbit-total-xp"),missionsNode=document.querySelector("#orbit-missions"),arcadeWinsNode=document.querySelector("#orbit-arcade-wins"),streakNode=document.querySelector("#orbit-best-streak"),levelName=document.querySelector("#orbit-level-name"),levelXp=document.querySelector("#orbit-level-xp"),rank=document.querySelector("#orbit-rank"),progress=document.querySelector("#orbit-progress-fill"),next=document.querySelector("#orbit-next-level"),shelf=document.querySelector("#orbit-badge-shelf"),badgeCount=document.querySelector("#orbit-badge-count");
+ if(!shelf)return;
+ if(totalXpNode)totalXpNode.textContent=String(totalXp);
+ if(missionsNode)missionsNode.textContent=String(Math.floor(dailyState.xp/50));
+ if(arcadeWinsNode)arcadeWinsNode.textContent=String(arcadeCleared);
+ if(streakNode)streakNode.textContent=String(dailyState.streak);
+ if(levelName)levelName.textContent="LEVEL "+String(level+1).padStart(2,"0")+" / "+orbitLevelNames[level];
+ if(levelXp)levelXp.textContent=totalXp+" XP";
+ if(rank)rank.textContent=["ROOKIE","TRAVELLER","SEEKER","GUIDE","LEGEND"][level];
+ if(progress)progress.style.width=within+"%";
+ if(next)next.textContent=totalXp>=500?"MAXIMUM PROFILE LEVEL REACHED":(100-within)+" XP TO NEXT LEVEL";
+ const unlocked=orbitBadgeDefinitions.filter(item=>item.unlock());
+ if(badgeCount)badgeCount.textContent=unlocked.length+" / "+orbitBadgeDefinitions.length+" UNLOCKED";
+ shelf.replaceChildren();
+ orbitBadgeDefinitions.forEach(item=>{
+  const earned=item.unlock(),card=document.createElement("div"),icon=document.createElement("span"),name=document.createElement("b"),detail=document.createElement("small");
+  card.className="orbit-badge"+(earned?" unlocked":" locked");icon.textContent=earned?item.icon:"◇";name.textContent=item.name;detail.textContent=earned?"BADGE UNLOCKED":item.detail;card.append(icon,name,detail);shelf.append(card);
+ });
+}
+renderOrbitAchievements();
