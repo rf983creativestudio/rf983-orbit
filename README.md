@@ -69,3 +69,13 @@ Editorial facts and external references should be checked before publication. Se
 - Colour Studio: HEX/RGB readout, generated five-step palettes, harmony swatches and PNG export
 - Twelve rotating creative prompts and short visual-design principles
 - No accounts, paid services or server-side artwork storage; tools run locally in the browser
+
+
+## ORBIT Sound Lab — Edition 01
+- Four browser-generated audio workspaces at `/sound/`
+- Melody Keys: playable eight-note keyboard, waveform selection, octave control and sample scale
+- Beat Builder: 16-step, four-lane sequencer with tempo, swing, starter rhythm and generated percussion
+- Atmosphere Mixer: layered oscillator drone, modulated bell tone and filtered noise layer
+- Sound Visualiser: live waveform display with adjustable oscillator type, frequency and volume
+- Ten rotating sound missions and short explanations of frequency, amplitude, waveform and rhythm
+- Uses Web Audio API only after user interaction; no streaming catalogue, microphone recording, account or server-side audio upload
