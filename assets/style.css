@@ -18,3 +18,35 @@ footer{padding:36px clamp(24px,8vw,125px) 20px;background:#0e1528;color:#fff}foo
 @media(max-width:650px){html{scroll-padding-top:72px}.header{height:68px;padding:0 18px}.brand{font-size:17px}.menu-toggle{display:block}.nav{position:absolute;top:68px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px 20px 20px;background:#10172b}.nav.open{display:flex}.nav a{padding:13px 5px;border-bottom:1px solid #ffffff16}.nav .nav-cta{margin-top:9px;text-align:center}.hero{grid-template-columns:1fr;padding:65px 22px 58px;gap:0}.hero h1{font-size:clamp(43px,12vw,63px)}.intro{font-size:12px;margin:19px 0 22px}.hero-foot{font-size:6px;margin-top:28px}.hero-art{min-height:300px;margin-top:5px}.planet{width:min(255px,68vw)}.float{font-size:7px;padding:8px 10px}.f1{left:0}.f2{right:0}.hero-bottom{left:22px;right:22px;bottom:17px;font-size:6px}.searchbar{padding:22px 19px 12px}.searchbar form{min-height:46px}.section{padding:68px 20px}.heading{align-items:flex-start;flex-direction:column;gap:12px;margin-bottom:24px}.heading h2,.about-section h2{font-size:39px}.heading>p{font-size:11px}.world-grid{gap:10px}.world-card{padding:12px;border-radius:16px}.card-no{font-size:6px}.art{height:105px;margin:10px 0}.art b{font-size:24px}.world-card h3{font-size:17px}.world-card p{font-size:8px;line-height:1.5}.feature-art{height:205px}.feature-art:before{width:135px;height:135px;top:35px}.feature-art:after{width:185px;height:57px;top:75px}.feature-art b{font-size:16px}.feature-copy{padding:19px}.feature-copy h3{font-size:22px}.feature-copy p{font-size:10px}.fact-stack{grid-template-columns:1fr}.fact{padding:14px}.fact-icon{width:58px;height:58px}.topic{grid-template-columns:22px 44px 1fr 15px;gap:10px;padding:16px 0}.topic>span{width:42px;height:42px;font-size:15px}.topic h3{font-size:13px}.topic p{font-size:9px}.topic small{font-size:6px}.explore-band{grid-template-columns:1fr;gap:28px}.globe-art{min-height:260px}.globe{width:180px;height:180px;font-size:21px}.explore-band h2,.play-section h2{font-size:43px}.learn-grid,.tools-grid{grid-template-columns:1fr}.learn-card{padding:15px}.learn-art{height:112px}.play-section{grid-template-columns:1fr;gap:22px}.play-symbol{font-size:35px}.quiz{padding:19px}.quiz h3{font-size:18px}.answers{grid-template-columns:1fr}.answers button{min-height:41px}.about-section{grid-template-columns:1fr;gap:40px}.about-globe{width:205px}.about-section h2{font-size:36px}.final-cta{padding:75px 22px;min-height:380px}.final-cta h2{font-size:47px}.final-cta:after{width:250px;height:250px;right:-25%;top:45%}footer{padding:30px 20px 18px}footer>div{gap:14px}footer>small{font-size:6px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 .policy-page{max-width:980px;margin:auto}.policy-page h1{margin:0 0 15px;font:700 clamp(42px,7vw,72px)/1 var(--display);letter-spacing:-.07em}.policy-page h1 em{font-style:normal;color:#6178d1}.policy-lead{max-width:720px;margin:0 0 38px;color:#6d788d;font-size:15px;line-height:1.8}.policy-page section{padding:22px 0;border-top:1px solid #e1e5ed}.policy-page section h2{margin:0 0 9px;font:600 18px var(--display)}.policy-page section p{max-width:780px;margin:0;color:#6d788d;font-size:12px;line-height:1.85}.policy-note{margin:25px 0;padding:17px 20px;border-left:3px solid #e18b72;background:#f1f2f7;color:#68748b;font-size:10px;line-height:1.8}
+
+
+/* RF983 ORBIT identity refinement */
+.header{height:84px;padding-left:clamp(20px,6vw,90px);padding-right:clamp(20px,6vw,90px)}
+.brand{gap:10px;letter-spacing:0}
+.brand-mark{width:38px;height:38px;border-radius:13px;font-size:23px;box-shadow:0 0 24px #55d4df30}
+.brand-lockup{display:flex;flex-direction:column;gap:2px}
+.brand-name{font:700 20px/.95 var(--display);letter-spacing:-.065em;color:#fff}
+.brand-lockup>small{font:600 8px/1.2 var(--body);letter-spacing:.11em;color:#9eacc7}
+.brand .aqua{font-size:inherit;letter-spacing:.035em;margin-left:5px}
+.hero{min-height:680px;background:radial-gradient(ellipse at 76% 43%,#354b7b 0%,#202d50 35%,#121b32 67%,#0b1020 100%)}
+.hero:after{content:"";position:absolute;width:560px;height:560px;right:8%;top:7%;border:1px solid #8db6e52b;border-radius:50%;box-shadow:0 0 0 28px #8db6e50b,0 0 0 70px #8db6e508,0 0 0 125px #8db6e505;pointer-events:none}
+.hero h1{max-width:680px;text-wrap:balance}
+.hero h1 em{background:linear-gradient(95deg,#67e2e3,#9c9bff 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-art{isolation:isolate}
+.planet{background:radial-gradient(circle at 28% 22%,#e2fff4 0%,#74dce0 19%,#547ee0 53%,#704fbd 82%);box-shadow:inset -38px -38px 75px #080d20a8,0 0 65px #55d4df4d,0 0 145px #7869df35}
+.orbit{border-color:#a9dcff78;box-shadow:0 0 16px #7acde522}
+.o2{border-color:#8a8bfa70}.o3{border-color:#ffffff32}
+.float{backdrop-filter:blur(10px);box-shadow:0 8px 28px #080d2040}
+.searchbar{box-shadow:0 12px 35px #17244008}
+.final-cta{background:radial-gradient(ellipse at 82% 20%,#45549a 0%,#273b6b 35%,#121d38 100%)}
+footer .brand-lockup>small{display:none}
+@media(max-width:650px){
+ .header{height:72px;padding:0 18px}
+ .brand-mark{width:35px;height:35px}
+ .brand-name{font-size:18px}
+ .brand-lockup>small{font-size:7px}
+ .nav{top:72px}
+ .hero{min-height:0;padding-top:58px;background:radial-gradient(ellipse at 65% 55%,#2b416e 0%,#17233e 48%,#0d1428 100%)}
+ .hero:after{width:300px;height:300px;right:-35%;top:33%}
+ .hero-art{min-height:285px}
+}
