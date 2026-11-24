@@ -45,3 +45,10 @@ Static HTML, CSS and JavaScript hosted on GitHub Pages. The initial experience i
 
 ## Content note
 Editorial facts and external references should be checked before publication. Sections marked coming soon are concept placeholders, not claims that a complete content library is available.
+
+
+## Knowledge Constellation
+- Interactive graph visualising relationships between the 100 World Database records
+- Ten domain filters, searchable nodes and connected-record detail panels
+- Ten curated five-stop learning trails with browser-local progress
+- Trail progress is stored locally and is not synced across devices
