@@ -906,3 +906,8 @@ body:after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;o
 .achievement-footnote{margin:14px 0 0;color:#899bbd;font-size:9px;line-height:1.6}
 @media(max-width:650px){.orbit-stats{grid-template-columns:repeat(2,1fr)}.badge-shelf{grid-template-columns:repeat(2,1fr)}.achievement-heading{align-items:flex-start}.rank-emblem{width:62px;height:62px}}
 @media(max-width:390px){.badge-shelf{grid-template-columns:1fr}.orbit-stats>div{padding:12px}}
+
+/* Offline / connection status */
+.orbit-connection-status{position:fixed;z-index:220;left:50%;bottom:18px;transform:translateX(-50%);width:min(92vw,620px);padding:13px 17px;border:1px solid #83dce9aa;border-radius:13px;background:rgba(16,27,49,.96);box-shadow:0 12px 40px #02061188;color:#eaf7ff;text-align:center;font:800 10px var(--display);letter-spacing:.045em;line-height:1.6;backdrop-filter:blur(14px)}
+.orbit-connection-status[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.orbit-connection-status{scroll-behavior:auto}}
