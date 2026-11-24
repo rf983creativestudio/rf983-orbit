@@ -79,3 +79,35 @@ footer .brand-lockup>small{display:none}
 .lab-reveal p{max-width:620px;margin:0;color:#c3d0e5;font-size:10px;line-height:1.8}
 .lab-reveal>small{align-self:end;color:#94a8c8;font-size:7px;font-weight:700;letter-spacing:.12em;white-space:nowrap}
 @media(max-width:650px){.discovery-lab{padding:18px;margin-top:25px;border-radius:18px}.lab-heading{align-items:flex-start;flex-direction:column;gap:16px}.lab-button{width:100%}.lab-reveal{grid-template-columns:58px 1fr;gap:13px;padding:25px 16px 18px}.lab-orb{width:54px;height:54px;font-size:21px}.lab-reveal h4{font-size:16px}.lab-reveal>small{grid-column:2}.lab-reveal>span{left:16px;top:12px}}
+
+/* Interactive Tech Radar */
+.tech-section{background:linear-gradient(145deg,#edf1f8,#f5f1fb)}
+.tech-radar{max-width:1160px;margin:auto;padding:25px;border:1px solid #dfe5f0;border-radius:25px;background:#fff;box-shadow:0 18px 50px #1c2d4c0b}
+.radar-intro{display:flex;align-items:center;gap:12px;padding:2px 2px 20px;border-bottom:1px solid #edf0f5}
+.radar-pulse{width:11px;height:11px;border-radius:50%;background:#55c7bd;box-shadow:0 0 0 6px #55c7bd20,0 0 18px #55c7bd88}
+.radar-intro>div{display:flex;flex-direction:column;gap:4px}
+.radar-intro small,.radar-detail-top,.radar-takeaway small{color:#7c89a1;font-size:8px;font-weight:700;letter-spacing:.14em}
+.radar-intro b{color:#1c2945;font:600 16px var(--display)}
+.radar-live{margin-left:auto;padding:7px 11px;border-radius:99px;background:#e9f7f4;color:#318d7d;font-size:8px;font-weight:700;letter-spacing:.12em}
+.radar-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;padding-top:20px}
+.radar-tabs{display:flex;flex-direction:column;gap:9px}
+.radar-tab{display:grid;grid-template-columns:25px 1fr 24px;align-items:center;gap:10px;min-height:67px;padding:12px 14px;border:1px solid #e7eaf1;border-radius:14px;background:#fafbfe;color:#5e6c84;text-align:left;cursor:pointer;transition:background .2s,border .2s,transform .2s}
+.radar-tab:hover{transform:translateX(3px);border-color:#c8d3ee}
+.radar-tab>span{color:#9aa5b8;font-size:8px;font-weight:700}
+.radar-tab>b{font:600 13px var(--display)}
+.radar-tab>i{font-style:normal;text-align:center;color:#7e7acb;font-size:18px}
+.radar-tab.active{border-color:#7186d0;background:linear-gradient(110deg,#eef1ff,#f4f0ff);color:#26385e;box-shadow:inset 3px 0 #7186d0}
+.radar-tab.active>span{color:#6479c5}
+.radar-detail{position:relative;min-height:300px;padding:25px;border-radius:19px;background:radial-gradient(circle at 90% 5%,#344c78,#1a2948 58%,#111b31);color:#fff;overflow:hidden}
+.radar-detail:after{content:"";position:absolute;width:220px;height:220px;right:-115px;top:50px;border:1px solid #91bce633;border-radius:50%;box-shadow:0 0 0 20px #91bce30a,0 0 0 48px #91bce308;pointer-events:none}
+.radar-detail-top{display:flex;justify-content:space-between;align-items:center;color:#b0c4e1}
+.radar-orbit{width:38px;height:38px;display:grid;place-items:center;border:1px solid #a7d6e855;border-radius:50%;background:#ffffff0c;color:#78d8df;font-size:18px}
+.radar-detail h3{position:relative;z-index:1;max-width:470px;margin:18px 0 10px;font:700 clamp(23px,3vw,31px)/1.1 var(--display);letter-spacing:-.05em}
+.radar-detail>p{position:relative;z-index:1;max-width:560px;color:#c4d0e2;font-size:11px;line-height:1.85}
+.radar-takeaway{position:relative;z-index:1;margin-top:20px;padding:14px 16px;border:1px solid #ffffff20;border-radius:13px;background:#ffffff0b}
+.radar-takeaway small{color:#81d6d9}
+.radar-takeaway p{margin:7px 0 0;color:#e2eaf5;font-size:10px;line-height:1.7}
+.radar-foot{display:block;margin-top:18px;color:#91a7c8;font-size:7px;font-weight:700;letter-spacing:.14em}
+.radar-note{margin:14px 3px 0;color:#8792a7;font-size:9px;line-height:1.6}
+@media(max-width:750px){.radar-layout{grid-template-columns:1fr}.radar-tabs{display:grid;grid-template-columns:1fr 1fr}.radar-tab{min-height:62px;grid-template-columns:20px 1fr}.radar-tab>i{display:none}.radar-detail{min-height:0}}
+@media(max-width:480px){.tech-radar{padding:16px;border-radius:19px}.radar-tabs{grid-template-columns:1fr}.radar-tab{min-height:54px}.radar-detail{padding:19px}.radar-detail h3{font-size:23px}}
