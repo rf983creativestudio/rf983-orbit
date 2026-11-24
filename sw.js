@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "rf983-orbit-shell-v15";
+const CACHE_NAME = "rf983-orbit-shell-v16";
 const CORE_FILES = [
   "./",
   "./index.html",
@@ -86,6 +86,8 @@ self.addEventListener("fetch", event => {
   if (url.origin !== self.location.origin) return;
 
   event.respondWith((async () => {
+    const cached = await caches.match(request, { ignoreSearch: true });
+    if (request.mode !== "navigate" && cached) return cached;
     try {
       const fresh = await fetch(request);
       if (fresh.ok) {
@@ -94,7 +96,6 @@ self.addEventListener("fetch", event => {
       }
       return fresh;
     } catch (error) {
-      const cached = await caches.match(request, { ignoreSearch: true });
       if (cached) return cached;
       if (request.mode === "navigate") {
         const home = await caches.match(new URL("./index.html", self.registration.scope).href);
