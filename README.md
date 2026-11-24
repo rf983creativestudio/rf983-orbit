@@ -99,3 +99,13 @@ Editorial facts and external references should be checked before publication. Se
 - Generate a short animated sample scene in supported browsers
 - Export a still PNG or up to 60 seconds of WebM video where MediaRecorder and canvas capture are supported
 - First edition exports picture only, without audio; footage is not uploaded and is processed locally in the browser
+
+
+## ORBIT Commerce — Freemium Monetisation Foundation
+- Public business hub at `/commerce/` describing the planned revenue model and rollout.
+- Six planned streams: contextual advertising, affiliate recommendations, original digital products, optional ORBIT Plus membership, sponsorships and premium tools.
+- Advertising readiness checklist and placement principles; ad inventory is only a planning preview until an approved publisher account and ad code are configured.
+- The core discovery and learning experience remains free.
+- No live advertisements, affiliate links, checkout, subscriptions or payment collection are active in this edition.
+- Privacy and terms pages explain planned monetisation and disclosure practices.
+- The site remains static on GitHub Pages; secure checkout, recurring billing and customer accounts require an external provider and/or backend before launch.
