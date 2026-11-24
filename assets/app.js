@@ -98,25 +98,42 @@ planetButtons.forEach(button=>button.addEventListener("click",()=>{
 }));
 
 
-/* Interactive RF983 galaxy: select a world and navigate the atlas */
+/* Interactive RF983 galaxy: world selection, surface environments and zoom */
 const galaxyWorlds = {
- terra:{label:"DESTINATION 01 / TERRA",name:"Terra — the living world",description:"A vivid world of forests, oceans, wildlife and extraordinary ecosystems. Begin your journey by discovering the wonders of the planet we call home.",href:"#discover",link:"ENTER WORLD"},
- chronos:{label:"DESTINATION 02 / CHRONOS",name:"Chronos — the world of time",description:"Travel through ancient civilisations, lost cities, remarkable people, inventions and turning points that shaped human history.",href:"#learn",link:"ENTER WORLD"},
- nova:{label:"DESTINATION 03 / NOVA",name:"Nova — the science frontier",description:"Explore the universe of science: curious experiments, physics, space discoveries, engineering and ideas that change how we understand reality.",href:"#technology",link:"ENTER WORLD"},
- odyssey:{label:"DESTINATION 04 / ODYSSEY",name:"Odyssey — worlds and cultures",description:"Set out across continents. Discover extraordinary places, languages, architecture, traditions, food and the stories of people around the world.",href:"#explore",link:"ENTER WORLD"},
- lumina:{label:"DESTINATION 05 / LUMINA",name:"Lumina — the creative dimension",description:"A world for imagination: art, design, photography, storytelling, music, digital making and unexpected creative experiments.",href:"#play",link:"ENTER WORLD"},
- nexus:{label:"DESTINATION 06 / NEXUS",name:"Nexus — the future systems",description:"Look ahead at artificial intelligence, robotics, cybersecurity, digital culture, emerging technology and the choices shaping tomorrow.",href:"#technology",link:"ENTER WORLD"},
- arcade:{label:"DESTINATION 07 / ARCADE",name:"Arcade — the play dimension",description:"Take a break from exploring and challenge yourself with quick games, puzzles, quizzes, brain teasers and playful missions.",href:"#play",link:"ENTER WORLD"}
+ terra:{label:"DESTINATION 01 / TERRA",name:"Terra — the living world",description:"A vivid world of forests, oceans, wildlife and extraordinary ecosystems. Begin your journey by discovering the wonders of the planet we call home.",emoji:"🌍",code:"TERRA · SURFACE 01",title:"Welcome to Terra.",summary:"A living world of blue oceans, green continents and extraordinary ecosystems. Your first expedition begins here.",climate:"DIVERSE",sites:[["The wild frontier","Discover forests, wildlife and living ecosystems","#discover"],["Ocean worlds","Journey across seas, reefs and the deep blue","#explore"],["Planet lab","Understand climate, habitats and our home","#learn"]]},
+ chronos:{label:"DESTINATION 02 / CHRONOS",name:"Chronos — the world of time",description:"Travel through ancient civilisations, lost cities, remarkable people, inventions and turning points that shaped human history.",emoji:"⌛",code:"CHRONOS · TIME SECTOR",title:"Welcome to Chronos.",summary:"A world of forgotten empires, ancient knowledge and human stories. Follow the traces left behind by time.",climate:"ANCIENT",sites:[["Lost civilisations","Visit the stories of ancient societies","#learn"],["Monuments & mysteries","Explore remarkable heritage and landmarks","#explore"],["Invention archive","Meet ideas that changed history","#technology"]]},
+ nova:{label:"DESTINATION 03 / NOVA",name:"Nova — the science frontier",description:"Explore the universe of science: curious experiments, physics, space discoveries, engineering and ideas that change how we understand reality.",emoji:"⚛️",code:"NOVA · RESEARCH SECTOR",title:"Welcome to Nova.",summary:"A bright frontier of experiments, cosmic questions and scientific breakthroughs. Curiosity is your research equipment.",climate:"ENERGETIC",sites:[["Cosmic observatory","Explore planets, stars and space science","#solar-system"],["The experiment deck","Unpack fascinating scientific ideas","#discover"],["Future laboratory","Meet inventions and emerging technology","#technology"]]},
+ odyssey:{label:"DESTINATION 04 / ODYSSEY",name:"Odyssey — worlds and cultures",description:"Set out across continents. Discover extraordinary places, languages, architecture, traditions, food and the stories of people around the world.",emoji:"🧭",code:"ODYSSEY · EXPLORATION SECTOR",title:"Welcome to Odyssey.",summary:"A world without borders, filled with landscapes, languages, architecture and the many ways people experience life.",climate:"EVER-CHANGING",sites:[["Continental routes","Explore the world's continents","#explore"],["Culture compass","Discover traditions, food and languages","#earthside"],["Wonder destinations","Find remarkable places and landmarks","#discover"]]},
+ lumina:{label:"DESTINATION 05 / LUMINA",name:"Lumina — the creative dimension",description:"A world for imagination: art, design, photography, storytelling, music, digital making and unexpected creative experiments.",emoji:"✦",code:"LUMINA · CREATIVE SECTOR",title:"Welcome to Lumina.",summary:"A luminous dimension where imagination becomes expression. Bring an idea and see where it can take you.",climate:"INSPIRATIONAL",sites:[["The art gallery","Explore colour, design and visual ideas","#earthside"],["Story constellation","Discover storytelling and imagination","#learn"],["Creator studio","Try playful creative challenges","#play"]]},
+ nexus:{label:"DESTINATION 06 / NEXUS",name:"Nexus — the future systems",description:"Look ahead at artificial intelligence, robotics, cybersecurity, digital culture, emerging technology and the choices shaping tomorrow.",emoji:"⌘",code:"NEXUS · FUTURE SECTOR",title:"Welcome to Nexus.",summary:"A connected world of intelligent systems, digital frontiers and technologies reshaping everyday life.",climate:"EVOLVING",sites:[["AI observatory","Understand artificial intelligence","#technology"],["Digital shield","Explore privacy and cybersecurity","#technology"],["Tomorrow's systems","Discover inventions and future ideas","#discover"]]},
+ arcade:{label:"DESTINATION 07 / ARCADE",name:"Arcade — the play dimension",description:"Take a break from exploring and challenge yourself with quick games, puzzles, quizzes, brain teasers and playful missions.",emoji:"🎮",code:"ARCADE · PLAY SECTOR",title:"Welcome to Arcade.",summary:"A playful world of quick challenges and curious experiments. Sharpen your mind, test your instincts and have fun.",climate:"HIGH ENERGY",sites:[["Brain break arena","Take on the daily quiz","#play"],["Puzzle station","Put your logic to the test","#play"],["Creative playground","Experiment, make and imagine","#earthside"]]}
 };
-const galaxyButtons = [...document.querySelectorAll(".galaxy-world")];
-galaxyButtons.forEach(button=>button.addEventListener("click",()=>{
+const galaxyButtons=[...document.querySelectorAll(".galaxy-world")];
+const setExpeditionSite=(index,site)=>{
+ const link=document.querySelector("#expedition-site-"+index);
+ const title=document.querySelector("#expedition-site-title-"+index);
+ const desc=document.querySelector("#expedition-site-desc-"+index);
+ if(link&&title&&desc){link.href=site[2];title.textContent=site[0];desc.textContent=site[1];}
+};
+const selectGalaxyWorld=(button)=>{
  const item=galaxyWorlds[button.dataset.world];if(!item)return;
  galaxyButtons.forEach(node=>{const active=node===button;node.classList.toggle("active",active);node.setAttribute("aria-pressed",String(active));});
  document.querySelector("#galaxy-label").textContent=item.label;
  document.querySelector("#galaxy-name").textContent=item.name;
  document.querySelector("#galaxy-description").textContent=item.description;
- const link=document.querySelector("#galaxy-link");link.href=item.href;link.textContent=item.link+" ↗";
-}));
+ const link=document.querySelector("#galaxy-link");link.href="#galaxy-expedition";link.textContent="OPEN EXPEDITION ↗";
+ const panel=document.querySelector("#galaxy-expedition");
+ if(panel){
+  panel.dataset.environment=button.dataset.world;
+  document.querySelector("#expedition-planet").textContent=item.emoji;
+  document.querySelector("#expedition-code").textContent=item.code;
+  document.querySelector("#expedition-title").textContent=item.title;
+  document.querySelector("#expedition-summary").textContent=item.summary;
+  document.querySelector("#expedition-climate").textContent=item.climate;
+  item.sites.forEach((site,index)=>setExpeditionSite(index+1,site));
+ }
+};
+galaxyButtons.forEach(button=>button.addEventListener("click",()=>selectGalaxyWorld(button)));
 const galaxyUniverse=document.querySelector("#galaxy-universe");
 let galaxyZoom=1;
 const setGalaxyZoom=()=>{if(galaxyUniverse)galaxyUniverse.style.setProperty("--galaxy-zoom",galaxyZoom);};
