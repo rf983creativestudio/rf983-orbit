@@ -13,5 +13,8 @@ $("#compare-a").addEventListener("change",compare);$("#compare-b").addEventListe
 $("#atlas-select-a").addEventListener("click",()=>{$("#compare-a").value=selected.name;compare();$("#atlas-compare").scrollIntoView({behavior:"smooth"})});
 $("#atlas-select-b").addEventListener("click",()=>{$("#compare-b").value=selected.name;compare();$("#atlas-compare").scrollIntoView({behavior:"smooth"})});
 $("#atlas-random").addEventListener("click",()=>{const c=countries[Math.floor(Math.random()*countries.length)];activeContinent="All";query="";$("#atlas-search").value="";$("#atlas-filters").querySelectorAll("button").forEach(b=>{const on=b.dataset.continent==="All";b.classList.toggle("active",on);b.setAttribute("aria-pressed",String(on))});render();profile(c);});
+
+const territoryGrid=$("#atlas-territory-grid"),territories=window.ORBIT_ATLAS_TERRITORIES||[];
+territories.forEach(t=>{const card=document.createElement("article"),h=document.createElement("h3"),status=document.createElement("small"),p=document.createElement("p"),region=document.createElement("span");card.className="atlas-territory-card";h.textContent=t.name;status.textContent=t.status;p.textContent=t.note;region.textContent=t.region.toUpperCase();card.append(region,h,status,p);territoryGrid.append(card)});
 $("#atlas-country-count").textContent=String(countries.length);render();profile(selected);compare();
 })();
