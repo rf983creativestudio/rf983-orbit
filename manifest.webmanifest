@@ -1,0 +1,19 @@
+{
+  "name": "RF983 ORBIT — Your Gateway to a World of Possibilities",
+  "short_name": "RF983 ORBIT",
+  "description": "Discover, explore, learn, play and find useful tools in the RF983 ORBIT digital universe.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10172b",
+  "theme_color": "#10172b",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
