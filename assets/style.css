@@ -499,3 +499,12 @@ html,body{background:#eee3d5;color:#292d3b}
 .policy-page section h2{margin:0 0 9px;font:600 19px var(--display);color:#292d3b}
 .policy-page section p{max-width:760px;margin:0;color:#5d5967;font-size:13px;line-height:1.85}
 .policy-note{margin:28px 0;padding:17px 20px;border-left:3px solid #d45c49;background:rgba(255,249,239,.55);color:#625b69;font-size:11px;line-height:1.8}
+
+
+/* RF983 RADIO — listener sharing controls */
+.contact-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:25px}
+.contact-actions .button{margin:0;cursor:pointer;font:inherit}
+.contact-actions button:disabled{opacity:.65;cursor:wait}
+.share-status{min-height:18px;margin:13px 0 0!important;font-size:11px!important;line-height:1.6;color:#5d5967}
+.main-nav a[aria-current="location"]{text-decoration:underline;text-decoration-color:#d45c49;text-decoration-thickness:2px;text-underline-offset:7px}
+@media(max-width:650px){.contact-actions{align-items:stretch;flex-direction:column}.contact-actions .button{justify-content:center}}
