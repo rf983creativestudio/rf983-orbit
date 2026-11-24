@@ -1,81 +1,17 @@
-const menuButton = document.querySelector(".menu-toggle");
-const navigation = document.querySelector(".main-nav");
-
-if (menuButton && navigation) {
-  menuButton.addEventListener("click", () => {
-    const isOpen = navigation.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
-  });
-
-  navigation.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navigation.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Open navigation");
-    });
-  });
-}
-
-const year = document.querySelector("#year");
-if (year) year.textContent = new Date().getFullYear();
-
-// Improve keyboard and navigation behaviour without requiring a backend.
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && navigation && menuButton) {
-    navigation.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "Open navigation");
-  }
-});
-
-const navLinks = [...document.querySelectorAll('.main-nav a[href^="#"]')];
-const observedSections = navLinks
-  .map((link) => document.querySelector(link.getAttribute("href")))
-  .filter(Boolean);
-
-if ("IntersectionObserver" in window && observedSections.length) {
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach((link) => {
-        const active = link.getAttribute("href") === "#" + entry.target.id;
-        if (active) link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
-      });
-    });
-  }, { rootMargin: "-35% 0px -55% 0px" });
-  observedSections.forEach((section) => sectionObserver.observe(section));
-}
-
-
-// Share the station using the device's native share sheet, with a copy fallback.
-const shareButton = document.querySelector("#share-station");
-const shareStatus = document.querySelector("#share-status");
-if (shareButton && shareStatus) {
-  shareButton.addEventListener("click", async () => {
-    const shareData = {
-      title: "RF983 RADIO — Your World. Your Sound.",
-      text: "Discover RF983 RADIO: Malayalam news and multilingual music.",
-      url: window.location.origin + window.location.pathname
-    };
-    shareButton.disabled = true;
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-        shareStatus.textContent = "Thanks for sharing RF983 RADIO.";
-      } else if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(shareData.url);
-        shareStatus.textContent = "Website link copied. Share it with someone!";
-      } else {
-        shareStatus.textContent = "Copy this link to share: " + shareData.url;
-      }
-    } catch (error) {
-      if (error && error.name !== "AbortError") {
-        shareStatus.textContent = "You can share RF983 RADIO using this link: " + shareData.url;
-      }
-    } finally {
-      shareButton.disabled = false;
-    }
-  });
-}
+const menuButton=document.querySelector(".menu-toggle"),nav=document.querySelector(".nav");
+if(menuButton&&nav){menuButton.addEventListener("click",()=>{const open=nav.classList.toggle("open");menuButton.setAttribute("aria-expanded",String(open));menuButton.setAttribute("aria-label",open?"Close navigation":"Open navigation")});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menuButton.setAttribute("aria-expanded","false")}));document.addEventListener("keydown",e=>{if(e.key==="Escape"){nav.classList.remove("open");menuButton.setAttribute("aria-expanded","false")}})}
+const year=document.querySelector("#year");if(year)year.textContent=new Date().getFullYear();
+const toast=document.querySelector("#toast");let toastTimer;function notify(message){if(!toast)return;toast.textContent=message;toast.classList.add("visible");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("visible"),2400)}
+const searchable=[...document.querySelectorAll(".searchable")],searchForm=document.querySelector("#search-form"),searchInput=document.querySelector("#search"),searchStatus=document.querySelector("#search-status"),empty=document.querySelector("#empty");
+function runSearch(term){term=term.trim().toLowerCase();let count=0;searchable.forEach(item=>{const hay=((item.dataset.search||"")+" "+item.textContent).toLowerCase(),match=!term||hay.includes(term);item.classList.toggle("search-hidden",!match);if(match)count++});if(empty)empty.hidden=count>0;if(searchStatus)searchStatus.textContent=term?count+" matching items found. Clear the search to show everything.":"Search all six destinations and featured content."}
+if(searchForm&&searchInput){searchForm.addEventListener("submit",e=>{e.preventDefault();runSearch(searchInput.value);document.querySelector("#destinations")?.scrollIntoView({behavior:"smooth"})});searchInput.addEventListener("input",()=>{if(!searchInput.value.trim())runSearch("")})}
+const facts=["A day on Venus lasts longer than its year. Explore the science of our neighbouring planet.","Octopuses have three hearts, and their blood is blue. The ocean is full of surprises.","Antarctica is a desert because it receives very little precipitation.","Earth's atmosphere gradually thins into space; it has no sharp outer edge.","A group of flamingos is often called a flamboyance."];
+function surprise(){const result=document.querySelector("#random-result");if(result)result.textContent=facts[Math.floor(Math.random()*facts.length)];notify("A new discovery is waiting below.");document.querySelector("#discover")?.scrollIntoView({behavior:"smooth"})}
+document.querySelector("#surprise")?.addEventListener("click",surprise);document.querySelector("#random")?.addEventListener("click",surprise);
+const quiz=[{cat:"SCIENCE",q:"Which planet has the most prominent ring system?",a:["Jupiter","Saturn","Mars"],correct:1,why:"Saturn's bright, extensive rings are made mostly of ice particles, with rocky debris and dust."},{cat:"GEOGRAPHY",q:"Which is the largest ocean on Earth?",a:["Atlantic Ocean","Indian Ocean","Pacific Ocean"],correct:2,why:"The Pacific Ocean is the largest and deepest of Earth's ocean basins."},{cat:"NATURE",q:"What is the only mammal capable of true sustained flight?",a:["Flying squirrel","Bat","Sugar glider"],correct:1,why:"Bats are the only mammals capable of sustained powered flight. Flying squirrels glide."}];
+let qi=0,answered=false;const qNode=document.querySelector("#question"),answers=document.querySelector("#answers"),feedback=document.querySelector("#feedback"),next=document.querySelector("#next");
+function renderQuiz(){const q=quiz[qi];answered=false;document.querySelector("#quiz-category").textContent=q.cat;document.querySelector("#quiz-count").textContent="QUESTION "+String(qi+1).padStart(2,"0")+" / 03";document.querySelector("#progress").style.width=((qi+1)/3*100)+"%";qNode.textContent=q.q;feedback.textContent="Choose your answer to reveal the explanation.";next.disabled=true;next.textContent=qi===2?"Start again →":"Next question →";answers.replaceChildren();q.a.forEach((label,i)=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",()=>{if(answered)return;answered=true;[...answers.children].forEach((el,j)=>{el.disabled=true;if(j===q.correct)el.classList.add("correct");else if(j===i)el.classList.add("incorrect")});feedback.textContent=(i===q.correct?"Correct! ":"Not quite. ")+q.why;next.disabled=false});answers.append(b)})}
+if(qNode&&answers&&next){renderQuiz();next.addEventListener("click",()=>{qi=(qi+1)%quiz.length;renderQuiz()})}
+const wordInput=document.querySelector("#word-input");wordInput?.addEventListener("input",()=>{const value=wordInput.value;document.querySelector("#words").textContent=value.trim()?value.trim().split(/\s+/).length:0;document.querySelector("#chars").textContent=value.length});
+const km=document.querySelector("#km");km?.addEventListener("input",()=>{const v=Number(km.value);document.querySelector("#miles").textContent=km.value.trim()&&Number.isFinite(v)&&v>=0?(v*.621371).toFixed(2):"0.00"});
+function clock(){const now=new Date();document.querySelector("#clock").textContent=new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(now);document.querySelector("#timezone").textContent=Intl.DateTimeFormat().resolvedOptions().timeZone||"YOUR LOCAL TIME"}clock();setInterval(clock,1000);
