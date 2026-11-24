@@ -53,3 +53,5 @@
 
 /* Knowledge Constellation gateway */
 .frontier-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.frontier-constellation{background:radial-gradient(circle at 100% 0,#5ce0e833,transparent 43%),linear-gradient(145deg,#17465a,#24204a)}.frontier-constellation span,.frontier-constellation strong{color:#a4f2f0}@media(max-width:1100px){.frontier-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.frontier-grid{grid-template-columns:1fr}}
+
+.frontier-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.frontier-science{background:radial-gradient(circle at 100% 0,#63e7d933,transparent 45%),linear-gradient(145deg,#164f59,#28204f)}.frontier-science span,.frontier-science strong{color:#9cf0e5}@media(max-width:1100px){.frontier-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.frontier-grid{grid-template-columns:1fr}}
