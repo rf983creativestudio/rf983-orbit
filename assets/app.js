@@ -237,8 +237,8 @@ function previousDateKey(key){const [year,month,day]=key.split("-").map(Number);
 const todayKey=localDateKey();
 const dayOrdinal=Math.floor(Date.UTC(...todayKey.split("-").map((part,index)=>index===1?Number(part)-1:Number(part)))/86400000);
 const dailyMission=dailyMissions[((dayOrdinal%dailyMissions.length)+dailyMissions.length)%dailyMissions.length];
-let dailyState={lastCompleted:"",streak:0,xp:0};
-try{const saved=JSON.parse(localStorage.getItem("rf983OrbitDaily")||"{}");if(saved&&typeof saved==="object")dailyState={lastCompleted:typeof saved.lastCompleted==="string"?saved.lastCompleted:"",streak:Number.isFinite(saved.streak)?Math.max(0,saved.streak):0,xp:Number.isFinite(saved.xp)?Math.max(0,saved.xp):0};}catch(error){}
+let dailyState={lastCompleted:"",streak:0,bestStreak:0,xp:0};
+try{const saved=JSON.parse(localStorage.getItem("rf983OrbitDaily")||"{}");if(saved&&typeof saved==="object")dailyState={lastCompleted:typeof saved.lastCompleted==="string"?saved.lastCompleted:"",streak:Number.isFinite(saved.streak)?Math.max(0,saved.streak):0,bestStreak:Number.isFinite(saved.bestStreak)?Math.max(0,saved.bestStreak):0,xp:Number.isFinite(saved.xp)?Math.max(0,saved.xp):0};}catch(error){}
 function renderDailyMission(){
  if(!dailyTitle)return;
  if(dailyDateNode)dailyDateNode.textContent=new Date().toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"}).toUpperCase();
@@ -255,7 +255,7 @@ function renderDailyMission(){
 dailyComplete?.addEventListener("click",()=>{
  if(dailyState.lastCompleted===todayKey)return;
  dailyState.streak=dailyState.lastCompleted===previousDateKey(todayKey)?dailyState.streak+1:1;
- dailyState.lastCompleted=todayKey;dailyState.xp+=50;
+ dailyState.lastCompleted=todayKey;dailyState.bestStreak=Math.max(dailyState.bestStreak,dailyState.streak);dailyState.xp+=50;
  try{localStorage.setItem("rf983OrbitDaily",JSON.stringify(dailyState));}catch(error){if(dailyNote)dailyNote.textContent="Mission completed for this visit. Your browser may not allow progress to be saved.";}
  renderDailyMission();
  if(typeof renderOrbitAchievements==="function")renderOrbitAchievements();
@@ -268,9 +268,9 @@ const orbitBadgeDefinitions=[
  {id:"first-mission",icon:"✦",name:"First Signal",detail:"Complete your first daily mission",unlock:()=>dailyState.xp>=50},
  {id:"arcade-ace",icon:"⚡",name:"Arcade Ace",detail:"Clear your first arcade challenge",unlock:()=>arcadeCleared>=1},
  {id:"curious-mind",icon:"🔭",name:"Curious Mind",detail:"Earn 150 mission XP",unlock:()=>dailyState.xp>=150},
- {id:"streak-three",icon:"🔥",name:"On a Roll",detail:"Reach a 3-day mission streak",unlock:()=>dailyState.streak>=3},
+ {id:"streak-three",icon:"🔥",name:"On a Roll",detail:"Reach a 3-day mission streak",unlock:()=>dailyState.bestStreak>=3},
  {id:"game-explorer",icon:"🎮",name:"Game Explorer",detail:"Clear 5 arcade challenges",unlock:()=>arcadeCleared>=5},
- {id:"orbit-regular",icon:"🌟",name:"Orbit Regular",detail:"Reach a 7-day mission streak",unlock:()=>dailyState.streak>=7}
+ {id:"orbit-regular",icon:"🌟",name:"Orbit Regular",detail:"Reach a 7-day mission streak",unlock:()=>dailyState.bestStreak>=7}
 ];
 const orbitLevelNames=["ROOKIE EXPLORER","CURIOUS TRAVELLER","STAR SEEKER","GALAXY GUIDE","ORBIT LEGEND"];
 function renderOrbitAchievements(){
@@ -282,7 +282,7 @@ function renderOrbitAchievements(){
  if(totalXpNode)totalXpNode.textContent=String(totalXp);
  if(missionsNode)missionsNode.textContent=String(Math.floor(dailyState.xp/50));
  if(arcadeWinsNode)arcadeWinsNode.textContent=String(arcadeCleared);
- if(streakNode)streakNode.textContent=String(dailyState.streak);
+ if(streakNode)streakNode.textContent=String(dailyState.bestStreak);
  if(levelName)levelName.textContent="LEVEL "+String(level+1).padStart(2,"0")+" / "+orbitLevelNames[level];
  if(levelXp)levelXp.textContent=totalXp+" XP";
  if(rank)rank.textContent=["ROOKIE","TRAVELLER","SEEKER","GUIDE","LEGEND"][level];
