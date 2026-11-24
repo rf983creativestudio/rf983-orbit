@@ -4,14 +4,15 @@ const root=document.querySelector("[data-knowledge-root]");if(!root)return;
 const search=document.querySelector("#knowledge-search"),categoryWrap=document.querySelector("#knowledge-categories"),articleWrap=document.querySelector("#knowledge-articles"),count=document.querySelector("#knowledge-count"),empty=document.querySelector("#knowledge-empty");
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let active="all",term="";
+const progressKey="rf983KnowledgeProgress";let progress={};try{progress=JSON.parse(localStorage.getItem(progressKey)||"{}")||{};}catch(e){}
 function renderCategories(){
 categoryWrap.innerHTML=data.categories.map(c=>{const n=data.articles.filter(a=>a.category===c.id).length;return '<article class="k-card"><div class="k-icon">'+c.icon+'</div><h3>'+esc(c.name)+'</h3><p>'+esc(c.description)+'</p><div class="k-topic-list">'+c.topics.slice(0,4).map(t=>'<span class="k-topic">'+esc(t)+'</span>').join("")+'</div><a href="#collection-'+c.id+'">Explore collection ↓</a></article>'}).join("");
 }
 function renderArticles(){
 const q=term.toLowerCase();
 const list=data.articles.filter(a=>(active==="all"||a.category===active)&&(!q||(a.title+" "+a.summary+" "+a.category).toLowerCase().includes(q)));
-articleWrap.innerHTML=list.map(a=>{const c=data.categories.find(x=>x.id===a.category);return '<article class="k-card k-article-card"><div class="k-meta">'+esc(c.name.toUpperCase())+' · '+esc(a.level)+' · '+esc(a.read)+'</div><h3>'+esc(a.title)+'</h3><p>'+esc(a.summary)+'</p><a href="article.html?topic='+encodeURIComponent(a.slug)+'">Read learning guide ↗</a></article>'}).join("");
-count.textContent=list.length+" researched starter guides";
+articleWrap.innerHTML=list.map(a=>{const c=data.categories.find(x=>x.id===a.category);return '<article class="k-card k-article-card"><div class="k-meta">'+esc(c.name.toUpperCase())+' · '+esc(a.level)+' · '+esc(a.read)+'</div><h3>'+esc(a.title)+'</h3><p>'+esc(a.summary)+'</p><a href="article.html?topic='+encodeURIComponent(a.slug)+'">'+(progress[a.slug]?'Completed ✓ · Review guide ↗':'Read learning guide ↗')+'</a></article>'}).join("");
+count.textContent=list.length+" learning guides · "+Object.keys(progress).length+" completed on this device";
 empty.hidden=list.length!==0;
 }
 function renderRoadmap(){
