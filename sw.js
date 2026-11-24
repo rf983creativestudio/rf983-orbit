@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "rf983-orbit-shell-v6";
+const CACHE_NAME = "rf983-orbit-shell-v7";
 const CORE_FILES = [
   "./",
   "./index.html",
@@ -25,7 +25,12 @@ const CORE_FILES = [
   "./atlas/index.html",
   "./atlas/atlas.css",
   "./atlas/atlas-data.js",
-  "./atlas/atlas.js"
+  "./atlas/atlas.js",
+  "./earth/",
+  "./earth/index.html",
+  "./earth/earth.css",
+  "./earth/earth-data.js",
+  "./earth/earth.js"
 ];
 
 self.addEventListener("install", event => {
