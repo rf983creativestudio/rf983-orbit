@@ -333,3 +333,73 @@ footer p{color:#c4c9e7}
   animation:none!important;transition:none!important;
  }
 }
+
+
+/* ORBIT destination cards: richer colour, brighter type and animated accents */
+.orbit-grid{gap:18px}
+.orbit-card{
+  position:relative;isolation:isolate;overflow:hidden;
+  border:1px solid #ffffffd9;
+  box-shadow:0 14px 34px #34346b18,inset 0 1px #ffffffb8;
+}
+.orbit-card:before{
+  content:"";position:absolute;z-index:-1;inset:0;opacity:.72;
+  background:radial-gradient(circle at 88% 12%,#ffffffc9 0,transparent 34%),linear-gradient(135deg,#ffffff35,transparent 65%);
+  pointer-events:none;
+}
+.orbit-card:after{
+  content:"";position:absolute;z-index:-1;width:170px;height:170px;right:-72px;bottom:-95px;
+  border:1px solid #ffffff9c;border-radius:50%;
+  box-shadow:0 0 0 16px #ffffff30,0 0 0 34px #ffffff20;
+  transition:transform .5s ease;
+}
+.orbit-card:hover:after{transform:scale(1.22) translate(-8px,-8px)}
+.orbit-card .card-no{
+  display:inline-flex;width:max-content;max-width:100%;padding:7px 10px;
+  border-radius:99px;background:#ffffffa8;backdrop-filter:blur(8px);
+  font-size:9px;letter-spacing:.13em;
+}
+.orbit-card h3{
+  display:inline-block;margin-top:16px;font-size:clamp(23px,2.4vw,29px);
+  line-height:1.05;letter-spacing:-.045em;
+  background-size:180% auto;animation:orbitShimmer 8s linear infinite;
+}
+.orbit-card p{max-width:245px;color:#39415f;font-weight:700;font-size:12px}
+.orbit-card .art{
+  min-height:104px;display:flex;align-items:center;justify-content:center;gap:12px;
+  border-radius:17px;background:#ffffff50;border:1px solid #ffffff8c;
+  box-shadow:inset 0 1px #ffffffa8,0 10px 22px #30305c12;
+  backdrop-filter:blur(7px);
+}
+.orbit-card .art b{
+  font:800 clamp(30px,4vw,43px)/1 var(--display);
+  letter-spacing:-.07em;color:#30335e;text-shadow:0 3px 0 #ffffff75;
+}
+.orbit-card .art i{font-style:normal;font-weight:800;font-size:clamp(18px,2vw,25px);color:#fff;text-shadow:0 3px 12px #33345c55}
+.c-discover{background:linear-gradient(135deg,#ffe29b 0%,#ffb9b6 52%,#ff9fc8 100%)}
+.c-discover h3{background:linear-gradient(90deg,#a74332,#c34d78,#8a438e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-discover .art{background:linear-gradient(135deg,#ffcc7d99,#ff8cae77)}
+.c-discover .art b{color:#9d463c}.c-discover .art i{color:#fff7d9}
+.c-tech{background:linear-gradient(135deg,#9deaf0 0%,#a9d6ff 52%,#c6b6ff 100%)}
+.c-tech h3{background:linear-gradient(90deg,#146d91,#4a58b7,#7547a8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-tech .art{background:linear-gradient(135deg,#61d9e777,#8196f277)}
+.c-tech .art b{color:#3158a2}.c-tech .art i{color:#fff}
+.c-explore{background:linear-gradient(135deg,#9be8c4 0%,#a5e9dc 48%,#9ed9f8 100%)}
+.c-explore h3{background:linear-gradient(90deg,#16745e,#247e9b,#3d5cae);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-explore .art{background:linear-gradient(135deg,#6ad6ae77,#6ebce977)}
+.c-explore .art b{color:#267d78}.c-explore .art i{color:#fff}
+.c-learn{background:linear-gradient(135deg,#d9b5ff 0%,#f2b9e3 52%,#ffc4d0 100%)}
+.c-learn h3{background:linear-gradient(90deg,#7442b2,#b04e9b,#c44c76);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-learn .art{background:linear-gradient(135deg,#b98aee77,#f08bc177)}
+.c-learn .art b{color:#8652b5}.c-learn .art i{color:#fff}
+.c-play{background:linear-gradient(135deg,#ffc28f 0%,#ffd68c 48%,#ffb3aa 100%)}
+.c-play h3{background:linear-gradient(90deg,#a94f32,#bd6a2e,#a64c70);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-play .art{background:linear-gradient(135deg,#ffad7277,#ffcf7777)}
+.c-play .art b{color:#bd633a}.c-play .art i{color:#fff}
+.c-tools{background:linear-gradient(135deg,#a7e6e4 0%,#a9d9f4 50%,#c4c7ff 100%)}
+.c-tools h3{background:linear-gradient(90deg,#247b83,#4269b6,#6955b5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-tools .art{background:linear-gradient(135deg,#69d4cb77,#8196ed77)}
+.c-tools .art b{color:#347d92}.c-tools .art i{color:#fff}
+.orbit-card:hover{box-shadow:0 22px 42px #34346b2b;filter:saturate(1.08)}
+@media(prefers-reduced-motion:reduce){.orbit-card h3{animation:none}}
+@media(max-width:650px){.orbit-card .art{min-height:88px}.orbit-card h3{font-size:24px}}
