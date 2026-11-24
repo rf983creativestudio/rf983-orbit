@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "rf983-orbit-shell-v1";
+const CACHE_NAME = "rf983-orbit-shell-v2";
 const CORE_FILES = [
   "./",
   "./index.html",
@@ -36,42 +36,21 @@ self.addEventListener("fetch", event => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
-  if (request.mode === "navigate") {
-    event.respondWith((async () => {
-      try {
-        const fresh = await fetch(request);
-        if (fresh.ok) {
-          const cache = await caches.open(CACHE_NAME);
-          cache.put(request, fresh.clone());
-        }
-        return fresh;
-      } catch (error) {
-        const cached = await caches.match(request, { ignoreSearch: true });
-        return cached || await caches.match(new URL("./index.html", self.registration.scope).href);
-      }
-    })());
-    return;
-  }
-
   event.respondWith((async () => {
-    const cached = await caches.match(request, { ignoreSearch: true });
-    if (cached) {
-      event.waitUntil(fetch(request).then(async response => {
-        if (response.ok) {
-          const cache = await caches.open(CACHE_NAME);
-          await cache.put(request, response.clone());
-        }
-      }).catch(() => {}));
-      return cached;
-    }
     try {
-      const response = await fetch(request);
-      if (response.ok) {
+      const fresh = await fetch(request);
+      if (fresh.ok) {
         const cache = await caches.open(CACHE_NAME);
-        await cache.put(request, response.clone());
+        await cache.put(request, fresh.clone());
       }
-      return response;
+      return fresh;
     } catch (error) {
+      const cached = await caches.match(request, { ignoreSearch: true });
+      if (cached) return cached;
+      if (request.mode === "navigate") {
+        const home = await caches.match(new URL("./index.html", self.registration.scope).href);
+        if (home) return home;
+      }
       return Response.error();
     }
   })());
