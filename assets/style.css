@@ -729,3 +729,12 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 .final-cta{background:radial-gradient(ellipse at 80% 20%,#7258a855,transparent 38%),linear-gradient(120deg,#101a34,#182c52 60%,#29234c)}
 footer{background:#060a15}
 @media(prefers-reduced-motion:reduce){body{background-attachment:scroll}}
+
+
+/* LIVING COSMOS — slow drifting star layers across the full page */
+body:before{animation:orbitStarDrift 115s linear infinite;will-change:background-position}
+body:after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;opacity:.22;background-image:radial-gradient(2px 2px at 12% 22%,#9cecff 98%,transparent),radial-gradient(1px 1px at 28% 74%,#fff 98%,transparent),radial-gradient(2px 2px at 53% 38%,#c8aaff 98%,transparent),radial-gradient(1px 1px at 72% 15%,#fff 98%,transparent),radial-gradient(2px 2px at 89% 68%,#8be9e4 98%,transparent),radial-gradient(1px 1px at 43% 91%,#fff 98%,transparent);background-size:520px 460px;animation:orbitParticleFloat 75s ease-in-out infinite alternate,orbitStarPulse 7s ease-in-out infinite}
+@keyframes orbitStarDrift{0%{background-position:0 0}100%{background-position:390px 330px}}
+@keyframes orbitParticleFloat{0%{transform:translate3d(-1.5%,0,0)}50%{transform:translate3d(1%,1.5%,0)}100%{transform:translate3d(-.5%,-1%,0)}}
+@keyframes orbitStarPulse{0%,100%{opacity:.14}50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){body:before,body:after{animation:none!important;will-change:auto}}
