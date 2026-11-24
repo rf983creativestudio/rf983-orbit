@@ -182,3 +182,98 @@ html,body{background:#e8eee4;color:#20392e}
  .main-nav{background:#e8f0e5}
  .site-footer{background:#d7e4d6}
 }
+
+
+/* RF983 RADIO — Colourwave edition: expressive, vibrant and balanced */
+:root{
+  --bg:#eee3d5;--panel:#e3d2c2;--panel2:#d5e3d8;
+  --cream:#292d3b;--muted:#5d5967;--line:rgba(48,42,65,.18);
+  --green:#087e70;--lime:#f2c14e;
+}
+html,body{background:#eee3d5;color:#292d3b}
+.site-header{background:rgba(238,227,213,.96);border-color:rgba(48,42,65,.16);box-shadow:0 8px 28px rgba(69,48,58,.08)}
+.main-nav{color:#51495d}
+.main-nav a:hover{color:#d45c49}
+.nav-listen{background:#d1e5dc;color:#075e55;border-color:#087e70}
+.nav-listen:hover{background:#f2c14e;color:#292d3b}
+.hero{
+ background:
+  radial-gradient(ellipse at 80% 27%,rgba(242,193,78,.72),transparent 27%),
+  radial-gradient(ellipse at 68% 78%,rgba(105,190,174,.55),transparent 33%),
+  radial-gradient(ellipse at 12% 85%,rgba(229,145,133,.34),transparent 30%),
+  linear-gradient(118deg,#f5d9c8 0%,#e9d9e8 48%,#cfe5db 100%);
+}
+.hero h1,.section-heading h2,.about-copy h2,.contact-section h2{color:#292d3b}
+.hero h1 em,.section-heading h2 em,.about-copy h2 em,.contact-section h2 em{color:#087e70}
+.eyebrow{color:#b64f43}
+.hero-intro{color:#575465}
+.hero-bottom{color:#5f5b69}
+.hero-art{right:8vw}
+.art-ring,.ring-b{border-color:rgba(8,126,112,.35)}
+.ring-c{border-color:rgba(212,92,73,.24)}
+.art-core{
+ background:radial-gradient(circle at 32% 25%,#fff1ad 0%,#f2c14e 38%,#e58d79 70%,#087e70 100%);
+ box-shadow:0 24px 75px rgba(139,79,68,.26)
+}
+.core-mark{color:#293d40}.core-number{color:#39565a}
+.art-caption{color:#625a67}
+.hero-orbit{border-color:rgba(41,45,59,.12)}
+.button-primary{background:#087e70;color:#fff;box-shadow:0 12px 28px rgba(8,126,112,.22)}
+.button-primary:hover{background:#d45c49;color:#fff}
+.text-link{color:#51495d}.text-link span{color:#d45c49}
+.ticker{background:#f2c14e;color:#393345}
+.listen-section{background:#eee3d5}
+.player-card{
+ background:radial-gradient(circle at 90% 0%,rgba(242,193,78,.27),transparent 32%),linear-gradient(135deg,#243b52,#155b60 58%,#087e70);
+ box-shadow:0 24px 60px rgba(39,54,72,.2)
+}
+.player-tag,.equalizer i{color:#f2c14e}
+.equalizer i{background:#f2c14e}
+.about-section{background:linear-gradient(120deg,#d3e6dc 0%,#d9e2ef 52%,#f0d8ce 100%)}
+.about-disc{
+ background:repeating-radial-gradient(circle,#f2c14e 0,#f2c14e 2px,#e7a18a 3px,#e7a18a 5px);
+ border-color:rgba(255,247,235,.8);box-shadow:0 25px 65px rgba(73,69,91,.18)
+}
+.about-disc span{color:#263e45}.about-disc strong{color:#34545a}
+.disc-center{background:#087e70;border-color:#f8eee1}
+.visual-note{color:#5d6b68}
+.about-copy p:not(.eyebrow){color:#4f5961}
+.heading-note{color:#5d5967}
+.show-grid{gap:18px}
+.show-card{border:1px solid rgba(48,42,65,.12);box-shadow:0 15px 35px rgba(62,48,65,.09)}
+.show-news{background:linear-gradient(145deg,#f2c9b8,#f5dfc7)}
+.show-music{background:linear-gradient(145deg,#d6d2ee,#e6dff0)}
+.show-voices{background:linear-gradient(145deg,#b9ded4,#d8e9dc)}
+.card-index{color:#62586a}
+.card-symbol{color:#087e70}
+.show-card h3{color:#292d3b}
+.show-card p{color:#575465}
+.card-foot{border-color:rgba(48,42,65,.17);color:#5d5967}
+.card-foot b{color:#d45c49}
+.news-panel{
+ background:linear-gradient(118deg,#f1c8b7 0%,#f2dfb4 48%,#c8e1d4 100%);
+ color:#292d3b;box-shadow:0 18px 45px rgba(73,58,61,.1)
+}
+.news-panel .eyebrow{color:#a6473d}
+.news-panel h2,.news-panel h2 em{color:#293d40}
+.news-panel p:not(.eyebrow){color:#555563}
+.news-side{border-color:rgba(48,42,65,.18);color:#53636a}
+.news-glyph{color:#087e70}
+.coming-label{border-color:rgba(48,42,65,.35)}
+.contact-section{
+ background:radial-gradient(ellipse at 18% 90%,rgba(229,145,133,.24),transparent 34%),radial-gradient(ellipse at 85% 90%,rgba(105,190,174,.27),transparent 38%),#eee3d5
+}
+.contact-section>p:not(.eyebrow){color:#5d5967}
+.button-outline{border-color:#087e70;color:#075e55}
+.button-outline:hover{background:#d45c49;border-color:#d45c49;color:#fff}
+.site-footer{background:#d8d9e7;border-color:rgba(48,42,65,.16)}
+.footer-tagline,.footer-copy{color:#56546a}
+@media(max-width:900px){
+ .hero{background:radial-gradient(ellipse at 85% 42%,rgba(242,193,78,.5),transparent 35%),linear-gradient(118deg,#f5d9c8,#e9d9e8 52%,#cfe5db)}
+}
+@media(max-width:650px){
+ .main-nav{background:#eee3d5;border-color:rgba(48,42,65,.16)}
+ .menu-toggle span{background:#292d3b}
+ .hero{background:linear-gradient(145deg,#f5d9c8,#e9d9e8 54%,#cfe5db)}
+ .site-footer{background:#d8d9e7}
+}
