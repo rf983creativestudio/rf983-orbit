@@ -47,3 +47,35 @@ if ("IntersectionObserver" in window && observedSections.length) {
   }, { rootMargin: "-35% 0px -55% 0px" });
   observedSections.forEach((section) => sectionObserver.observe(section));
 }
+
+
+// Share the station using the device's native share sheet, with a copy fallback.
+const shareButton = document.querySelector("#share-station");
+const shareStatus = document.querySelector("#share-status");
+if (shareButton && shareStatus) {
+  shareButton.addEventListener("click", async () => {
+    const shareData = {
+      title: "RF983 RADIO — Your World. Your Sound.",
+      text: "Discover RF983 RADIO: Malayalam news and multilingual music.",
+      url: window.location.origin + window.location.pathname
+    };
+    shareButton.disabled = true;
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        shareStatus.textContent = "Thanks for sharing RF983 RADIO.";
+      } else if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(shareData.url);
+        shareStatus.textContent = "Website link copied. Share it with someone!";
+      } else {
+        shareStatus.textContent = "Copy this link to share: " + shareData.url;
+      }
+    } catch (error) {
+      if (error && error.name !== "AbortError") {
+        shareStatus.textContent = "You can share RF983 RADIO using this link: " + shareData.url;
+      }
+    } finally {
+      shareButton.disabled = false;
+    }
+  });
+}
