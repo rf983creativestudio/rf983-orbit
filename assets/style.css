@@ -454,3 +454,78 @@ footer p{color:#c4c9e7}
 .fact-icon{box-shadow:0 7px 18px #5b57a52b}
 .random-result{border:1px solid #ffffff36;box-shadow:0 12px 26px #4d438c25}
 @media(prefers-reduced-motion:reduce){.featured:before{animation:none}}
+
+
+/* COSMIC EXPANSION — animated solar system and meteor shower */
+.hero{isolation:isolate}
+.hero:before{z-index:0;opacity:.72}
+.hero-copy,.hero-art,.hero-bottom{z-index:2}
+.meteor-layer{
+ position:absolute;z-index:1;inset:0;overflow:hidden;pointer-events:none;
+ background-image:
+  radial-gradient(1px 1px at 12% 18%,#ffffffd9 50%,transparent 100%),
+  radial-gradient(2px 2px at 28% 72%,#a9e8ffbb 50%,transparent 100%),
+  radial-gradient(1px 1px at 53% 21%,#ffffffc9 50%,transparent 100%),
+  radial-gradient(1px 1px at 78% 68%,#d8caff 50%,transparent 100%),
+  radial-gradient(2px 2px at 91% 34%,#ffffffb8 50%,transparent 100%),
+  radial-gradient(1px 1px at 64% 86%,#8fe9e0 50%,transparent 100%);
+ background-size:100% 100%;
+}
+.meteor{
+ position:absolute;top:-15%;left:var(--left);width:2px;height:var(--length);
+ border-radius:99px;opacity:0;
+ background:linear-gradient(to bottom,#ffffff00,#b9eaff 45%,#ffffff);
+ box-shadow:0 0 8px 2px #83d8ff88,0 0 20px 3px #7b8eff55;
+ transform:rotate(38deg);
+ animation:meteorFall var(--duration) linear var(--delay) infinite;
+}
+.meteor:after{
+ content:"";position:absolute;top:0;left:-3px;width:8px;height:8px;
+ border-radius:50%;background:#fff;box-shadow:0 0 12px 4px #a6eaff;
+}
+.m1{--left:17%;--length:105px;--duration:6.8s;--delay:.3s}
+.m2{--left:42%;--length:75px;--duration:8.5s;--delay:3.4s}
+.m3{--left:68%;--length:125px;--duration:7.6s;--delay:1.8s}
+.m4{--left:84%;--length:90px;--duration:9.2s;--delay:5.1s}
+.m5{--left:56%;--length:65px;--duration:7.9s;--delay:6.2s}
+@keyframes meteorFall{
+ 0%{transform:translate3d(0,-10vh,0) rotate(38deg);opacity:0}
+ 8%{opacity:.9}
+ 75%{opacity:.75}
+ 100%{transform:translate3d(-34vw,115vh,0) rotate(38deg);opacity:0}
+}
+/* Tiny orbiting worlds around the RF983 home planet */
+.hero-art .orbit{border-style:solid;filter:drop-shadow(0 0 5px #82dfff22)}
+.hero-art .orbit:after{
+ content:"";position:absolute;top:50%;left:0;width:13px;height:13px;
+ margin-top:-6px;border-radius:50%;
+ background:radial-gradient(circle at 30% 25%,#fff,#a7e8ff 35%,#4d82e9 78%);
+ box-shadow:0 0 15px #76dfffaa,0 0 28px #668eff66;
+}
+.hero-art .o1:after{width:9px;height:9px;margin-top:-4px;background:radial-gradient(circle at 30% 25%,#fff7d6,#e9a85f 55%,#b65b68);box-shadow:0 0 12px #ffc77c99}
+.hero-art .o2:after{width:16px;height:16px;margin-top:-8px;background:radial-gradient(circle at 30% 25%,#fff,#b8b7ff 35%,#7358d2 80%);box-shadow:0 0 18px #a48affaa}
+.hero-art .o3:after{width:11px;height:11px;margin-top:-5px;background:radial-gradient(circle at 30% 25%,#fff,#8de6cf 40%,#269eae 80%);box-shadow:0 0 16px #65e4d6aa}
+.hero-art .planet{
+ background:
+  radial-gradient(circle at 30% 24%,#fff0bd 0,#ffce78 10%,#f08b77 24%,#775fce 55%,#354f9d 82%);
+ box-shadow:inset -34px -35px 70px #10172b99,0 0 65px #8c7aff66,0 0 120px #56cfe533;
+}
+.hero-art .planet:before{
+ content:"";position:absolute;inset:-9%;border-radius:50%;
+ background:radial-gradient(circle,transparent 57%,#83dfff20 58%,transparent 70%);
+ animation:orbitGlow 5s ease-in-out infinite;
+}
+.hero-art .planet b{position:relative;z-index:2;color:#fff;font-size:58px;text-shadow:0 0 18px #fff8,0 5px 25px #1b245e88}
+.hero-art .o2:before{
+ content:"";position:absolute;top:50%;left:0;width:25px;height:5px;margin-top:-2px;
+ border:1px solid #f7d49caa;border-radius:50%;transform:rotate(-20deg);
+}
+@media(max-width:700px){
+ .meteor-layer{opacity:.72}
+ .meteor{animation-duration:11s}
+ .hero-art .orbit:after{width:9px;height:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .meteor{display:none;animation:none}
+ .hero-art .orbit:after,.hero-art .planet:before{animation:none}
+}
