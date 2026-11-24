@@ -52,3 +52,10 @@ Editorial facts and external references should be checked before publication. Se
 - Ten domain filters, searchable nodes and connected-record detail panels
 - Ten curated five-stop learning trails with browser-local progress
 - Trail progress is stored locally and is not synced across devices
+
+
+## Interactive Science Centre
+- Six browser-based experiment stations: constant-speed motion, wave frequency and amplitude, Ohm's law circuit, planetary weight, RGB light mixing and particle states
+- Ten-question science challenge with instant explanations and a restartable score
+- Simulations run locally in the browser; controls and quiz answers are not submitted or saved
+- Simplified educational models, not professional engineering tools
