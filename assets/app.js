@@ -238,7 +238,7 @@ const todayKey=localDateKey();
 const dayOrdinal=Math.floor(Date.UTC(...todayKey.split("-").map((part,index)=>index===1?Number(part)-1:Number(part)))/86400000);
 const dailyMission=dailyMissions[((dayOrdinal%dailyMissions.length)+dailyMissions.length)%dailyMissions.length];
 let dailyState={lastCompleted:"",streak:0,bestStreak:0,xp:0};
-try{const saved=JSON.parse(localStorage.getItem("rf983OrbitDaily")||"{}");if(saved&&typeof saved==="object")dailyState={lastCompleted:typeof saved.lastCompleted==="string"?saved.lastCompleted:"",streak:Number.isFinite(saved.streak)?Math.max(0,saved.streak):0,bestStreak:Number.isFinite(saved.bestStreak)?Math.max(0,saved.bestStreak):0,xp:Number.isFinite(saved.xp)?Math.max(0,saved.xp):0};}catch(error){}
+try{const saved=JSON.parse(localStorage.getItem("rf983OrbitDaily")||"{}");if(saved&&typeof saved==="object")dailyState={lastCompleted:typeof saved.lastCompleted==="string"?saved.lastCompleted:"",streak:Number.isFinite(saved.streak)?Math.max(0,saved.streak):0,bestStreak:Number.isFinite(saved.bestStreak)?Math.max(0,saved.bestStreak):(Number.isFinite(saved.streak)?Math.max(0,saved.streak):0),xp:Number.isFinite(saved.xp)?Math.max(0,saved.xp):0};}catch(error){}
 function renderDailyMission(){
  if(!dailyTitle)return;
  if(dailyDateNode)dailyDateNode.textContent=new Date().toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"}).toUpperCase();
