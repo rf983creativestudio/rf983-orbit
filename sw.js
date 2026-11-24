@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "rf983-orbit-shell-v8";
+const CACHE_NAME = "rf983-orbit-shell-v9";
 const CORE_FILES = [
   "./",
   "./index.html",
@@ -35,7 +35,12 @@ const CORE_FILES = [
   "./encyclopedia/index.html",
   "./encyclopedia/encyclopedia.css",
   "./encyclopedia/encyclopedia-data.js",
-  "./encyclopedia/encyclopedia.js"
+  "./encyclopedia/encyclopedia.js",
+  "./database/",
+  "./database/index.html",
+  "./database/database.css",
+  "./database/database-data.js",
+  "./database/database.js"
 ];
 
 self.addEventListener("install", event => {
