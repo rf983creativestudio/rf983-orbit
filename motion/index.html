@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10172b">
+<title>ORBIT Motion Studio | RF983 ORBIT</title>
+<meta name="description" content="Create animated scenes, motion graphics and short visual loops in ORBIT Motion Studio. Animate shapes and text, preview your timeline and export PNG or WebM creations in your browser.">
+<link rel="canonical" href="https://rf983creativestudio.github.io/rf983-orbit/motion/">
+<meta property="og:type" content="website"><meta property="og:title" content="ORBIT Motion Studio — RF983 ORBIT"><meta property="og:description" content="A free browser-based animation playground for shapes, text, motion and visual storytelling.">
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../assets/style.css"><link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script><script src="../assets/pwa.js" defer></script>
+</head>
+<body class="motion-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="mo-header"><a class="mo-brand" href="../"><img src="../assets/rf983-orbit-logo.svg" alt="RF983 ORBIT"><span>MOTION STUDIO</span></a><nav aria-label="Motion Studio navigation"><a href="../">Home</a><a href="../creative/">Creative Studio</a><a href="../sound/">Sound Lab</a><a href="../science/">Science Centre</a><a href="../knowledge/">Knowledge</a></nav></header>
+<main id="main">
+<section class="mo-hero"><div><p class="mo-kicker">RF983 ORBIT / VISUAL CREATION DIMENSION · EDITION 01</p><h1>Give your ideas<br><em>a little motion.</em></h1><p>Build a scene, bring shapes and words to life, and turn a simple idea into a moving visual story. No account, downloads or design software required.</p><div class="mo-pills"><span>✦ SCENE DESIGN</span><span>↗ KEYFRAME ANIMATION</span><span>▣ WEBM EXPORT</span><span>◉ PNG SNAPSHOT</span></div></div><div class="mo-hero-art" aria-hidden="true"><div class="mo-orbit-ring"></div><div class="mo-art-orb"></div><b>MOVE<br>YOUR<br>IDEAS</b><i></i></div></section>
+<section class="mo-workspace" id="workbench">
+<div class="mo-workspace-head"><div><p class="mo-kicker">THE CREATION BAY</p><h2>Your motion canvas</h2></div><div class="mo-status"><i></i><span id="save-status">Ready · saved on this device</span></div></div>
+<div class="mo-toolbar"><div class="mo-tool-group"><span>ADD TO SCENE</span><button type="button" data-add="circle">＋ Circle</button><button type="button" data-add="square">＋ Square</button><button type="button" data-add="star">＋ Star</button><button type="button" data-add="text">＋ Text</button></div><div class="mo-tool-group"><span>SCENE</span><select id="scene-preset" aria-label="Choose scene preset"><option value="blank">Blank canvas</option><option value="orbit">Orbiting planet</option><option value="title">Animated title</option><option value="sunset">Sunset shapes</option></select><button type="button" id="clear-scene" class="mo-muted">Clear</button></div></div>
+<div class="mo-editor-grid">
+<aside class="mo-side mo-layers"><div class="mo-panel-title"><h3>Layers</h3><small id="layer-count">0 objects</small></div><div id="layer-list" class="mo-layer-list" aria-live="polite"><p class="mo-empty">Your scene is waiting. Add a shape or text.</p></div><div class="mo-hint">Select a layer to edit it. Drag objects directly on the canvas to reposition them.</div></aside>
+<div class="mo-stage-wrap"><div class="mo-stage-top"><span>SCENE PREVIEW</span><span>16:9 · 960 × 540</span></div><div class="mo-stage"><canvas id="motion-canvas" width="960" height="540" aria-label="Animation scene canvas. Select an object from the layers list, then drag it to reposition."></canvas><div id="stage-empty" class="mo-stage-empty"><b>✦</b><span>Your next idea starts here</span><small>Add a shape or choose a scene preset</small></div></div><div class="mo-playback"><button id="play-motion" type="button" class="mo-play">▶ Play preview</button><button id="stop-motion" type="button">■ Stop</button><label>FRAME <strong id="frame-readout">0</strong><input id="frame-slider" type="range" min="0" max="100" value="0"></label><span id="duration-readout">5.0 sec</span></div></div>
+<aside class="mo-side mo-inspector"><div class="mo-panel-title"><h3>Inspector</h3><small>SELECTED LAYER</small></div><div id="inspector-empty" class="mo-empty">Choose a layer to edit its properties.</div><div id="inspector-controls" hidden>
+<label class="mo-field">Layer name<input id="object-name" type="text" maxlength="32"></label>
+<label class="mo-field">Text content<input id="object-text" type="text" maxlength="60"></label>
+<div class="mo-two-fields"><label class="mo-field">X position<input id="object-x" type="number" min="0" max="960"></label><label class="mo-field">Y position<input id="object-y" type="number" min="0" max="540"></label></div>
+<div class="mo-two-fields"><label class="mo-field">Size<input id="object-size" type="range" min="12" max="260"></label><label class="mo-field">Rotation<input id="object-rotation" type="range" min="-180" max="180"></label></div>
+<label class="mo-field">Colour <input id="object-color" type="color" value="#71e4ec"></label>
+<label class="mo-field">Opacity <input id="object-opacity" type="range" min="10" max="100" value="100"></label>
+<button id="delete-object" type="button" class="mo-delete">Remove selected layer</button>
+</div></aside>
+</div>
+<div class="mo-timeline"><div class="mo-timeline-head"><div><p class="mo-kicker">ANIMATION TIMELINE</p><h3>Keyframe your movement</h3></div><button id="add-keyframe" type="button" class="mo-keyframe">◆ Set keyframe</button></div><p class="mo-timeline-note">Move the playhead, adjust a selected layer, then set a keyframe. ORBIT smoothly interpolates position, size, rotation and opacity between keyframes.</p><div class="mo-ruler"><span>0s</span><span>1s</span><span>2s</span><span>3s</span><span>4s</span><span>5s</span></div><div class="mo-track"><span id="track-label">No layer selected</span><div id="keyframe-track" class="mo-keyframe-track"><i class="mo-playhead"></i></div></div><div class="mo-timeline-bottom"><label>PLAYHEAD <strong id="playhead-label">0%</strong></label><label>FRAME RATE <strong>24 FPS</strong></label><label>LOOP LENGTH <strong>5 SECONDS</strong></label></div></div>
+<div class="mo-export"><div><p class="mo-kicker">TAKE YOUR CREATION WITH YOU</p><h3>Ready to share your scene?</h3><p>Save a still image or record your animated canvas as a short WebM video. Recording captures the scene only, not system audio.</p></div><div class="mo-export-actions"><button id="export-png" type="button">↓ Export PNG</button><button id="export-video" type="button" class="mo-record">● Record WebM</button></div></div>
+</section>
+<section class="mo-tips"><div><p class="mo-kicker">A QUICK CREATOR'S GUIDE</p><h2>Small moves.<br><em>Big possibilities.</em></h2><p>Animation is simply change over time. Start with one object, set two keyframes and watch the space between them come alive.</p></div><div class="mo-tip-grid"><article><b>01 / COMPOSE</b><h3>Build a scene</h3><p>Add circles, squares, stars or text. Choose a preset to begin with a ready-made idea.</p></article><article><b>02 / ANIMATE</b><h3>Set keyframes</h3><p>Choose a moment, adjust your object and set a keyframe. Repeat at another moment.</p></article><article><b>03 / PREVIEW</b><h3>Watch it move</h3><p>Play the timeline to preview smooth transitions between your saved keyframes.</p></article><article><b>04 / EXPORT</b><h3>Keep your work</h3><p>Export a PNG snapshot or record a short WebM animation supported by your browser.</p></article></div></section>
+<section class="mo-footer-cta"><p>ONE ORBIT. MANY WAYS TO CREATE.</p><h2>Keep making<br><em>something wonderful.</em></h2><a href="../creative/">Explore ORBIT Creative Studio ↗</a></section>
+</main>
+<footer class="mo-footer"><a href="../">RF983 ORBIT</a><span>Your Gateway to a World of Possibilities.</span><a href="../privacy.html">Privacy</a></footer>
+</body></html>
