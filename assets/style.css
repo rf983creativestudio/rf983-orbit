@@ -783,3 +783,23 @@ body:after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;o
 @media(prefers-reduced-motion:reduce){
  .destinations:before,.featured:before,.tech-section:before,.learn-section:before,.tools-section:before,.about-section:before{background:none}
 }
+
+
+/* LEARN DESK — interactive mini-lesson presentation */
+.learn-card{display:flex;flex-direction:column;align-items:flex-start}
+.lesson-open{margin-top:auto;padding:11px 13px;border:1px solid #8d9be755;border-radius:99px;background:#1c2946;color:#c8d8ff;font:800 8px var(--display);letter-spacing:.1em;transition:transform .2s,border-color .2s,background .2s}
+.lesson-open:hover,.lesson-open.active{transform:translateY(-2px);border-color:#78dce7;background:linear-gradient(100deg,#24536a,#51417c);color:#fff}
+.lesson-panel{max-width:1160px;margin:20px auto 0;padding:clamp(20px,3vw,34px);border:1px solid #9ab5ff35;border-radius:22px;background:radial-gradient(ellipse at 100% 0,#7b63c52a,transparent 42%),linear-gradient(145deg,#172540,#101a30);box-shadow:0 20px 55px #02061255;color:#edf3ff}
+.lesson-panel-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#91e5ed;font:800 8px var(--display);letter-spacing:.14em}
+.lesson-panel-top span+span{color:#94a6c8}
+.lesson-panel h3{margin:18px 0 8px;color:#fff;font:700 clamp(23px,3vw,34px)/1.1 var(--display);letter-spacing:-.045em}
+.lesson-panel>p{max-width:720px;margin:0;color:#b9c7df;font-size:11px;line-height:1.8}
+.lesson-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.lesson-steps>div{padding:17px;border:1px solid #a9c4ff25;border-radius:15px;background:#ffffff08}
+.lesson-steps>div>b{display:block;margin-bottom:13px;color:#8fe5ec;font:800 11px var(--display)}
+.lesson-steps strong{display:block;color:#f2f5ff;font:700 14px var(--display)}
+.lesson-steps p{margin:7px 0 0;color:#afbdd7;font-size:10px;line-height:1.7}
+.lesson-takeaway{display:flex;align-items:flex-start;gap:14px;margin-top:17px;padding:14px 16px;border-radius:12px;background:#65d9d512;border:1px solid #65d9d52a}
+.lesson-takeaway b{flex:none;color:#83e4dc;font:800 8px var(--display);letter-spacing:.12em}
+.lesson-takeaway span{color:#dce9f7;font-size:10px;line-height:1.6}
+@media(max-width:650px){.lesson-steps{grid-template-columns:1fr}.lesson-steps>div{padding:14px}.lesson-panel-top{font-size:7px}.lesson-takeaway{flex-direction:column;gap:6px}}
