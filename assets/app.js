@@ -8,6 +8,25 @@ if(searchForm&&searchInput){searchForm.addEventListener("submit",e=>{e.preventDe
 const facts=["A day on Venus lasts longer than its year. Explore the science of our neighbouring planet.","Octopuses have three hearts, and their blood is blue. The ocean is full of surprises.","Antarctica is a desert because it receives very little precipitation.","Earth's atmosphere gradually thins into space; it has no sharp outer edge.","A group of flamingos is often called a flamboyance."];
 function surprise(){const result=document.querySelector("#random-result");if(result)result.textContent=facts[Math.floor(Math.random()*facts.length)];notify("A new discovery is waiting below.");document.querySelector("#discover")?.scrollIntoView({behavior:"smooth"})}
 document.querySelector("#surprise")?.addEventListener("click",surprise);document.querySelector("#random")?.addEventListener("click",surprise);
+const discoveryDeck=[
+{cat:"SPACE / 002",title:"The universe is still expanding.",text:"Galaxies, on the largest scales, are moving farther apart as space itself expands."},
+{cat:"OCEAN / 003",title:"Most of the ocean remains unexplored.",text:"The deep sea is difficult to study, and many underwater places and species are still waiting to be documented."},
+{cat:"ANIMAL LIFE / 004",title:"Some turtles can sense Earth's magnetic field.",text:"Several turtle species use Earth's magnetic field as a navigation aid during long migrations."},
+{cat:"NATURE / 005",title:"A single tree can host a whole ecosystem.",text:"Trees provide food, shelter and breeding places for countless organisms, from fungi to insects and birds."},
+{cat:"HISTORY / 006",title:"The oldest known writing systems are thousands of years old.",text:"Early writing emerged in ancient Mesopotamia and Egypt more than five millennia ago."},
+{cat:"PLANET EARTH / 007",title:"Earth is not a perfect sphere.",text:"Our planet bulges slightly around the equator because of its rotation."}
+];
+let discoveryIndex=0;
+const revealButton=document.querySelector("#next-discovery");
+revealButton?.addEventListener("click",()=>{
+ const item=discoveryDeck[discoveryIndex];
+ document.querySelector("#lab-category").textContent=item.cat;
+ document.querySelector("#lab-title").textContent=item.title;
+ document.querySelector("#lab-text").textContent=item.text;
+ document.querySelector("#lab-count").textContent="DISCOVERY "+String(discoveryIndex+1).padStart(2,"0")+" / "+String(discoveryDeck.length).padStart(2,"0");
+ discoveryIndex=(discoveryIndex+1)%discoveryDeck.length;
+ revealButton.innerHTML=discoveryIndex===0?'Explore again <span>↗</span>':'Reveal another <span>↗</span>';
+});
 const quiz=[{cat:"SCIENCE",q:"Which planet has the most prominent ring system?",a:["Jupiter","Saturn","Mars"],correct:1,why:"Saturn's bright, extensive rings are made mostly of ice particles, with rocky debris and dust."},{cat:"GEOGRAPHY",q:"Which is the largest ocean on Earth?",a:["Atlantic Ocean","Indian Ocean","Pacific Ocean"],correct:2,why:"The Pacific Ocean is the largest and deepest of Earth's ocean basins."},{cat:"NATURE",q:"What is the only mammal capable of true sustained flight?",a:["Flying squirrel","Bat","Sugar glider"],correct:1,why:"Bats are the only mammals capable of sustained powered flight. Flying squirrels glide."}];
 let qi=0,answered=false;const qNode=document.querySelector("#question"),answers=document.querySelector("#answers"),feedback=document.querySelector("#feedback"),next=document.querySelector("#next");
 function renderQuiz(){const q=quiz[qi];answered=false;document.querySelector("#quiz-category").textContent=q.cat;document.querySelector("#quiz-count").textContent="QUESTION "+String(qi+1).padStart(2,"0")+" / 03";document.querySelector("#progress").style.width=((qi+1)/3*100)+"%";qNode.textContent=q.q;feedback.textContent="Choose your answer to reveal the explanation.";next.disabled=true;next.textContent=qi===2?"Start again →":"Next question →";answers.replaceChildren();q.a.forEach((label,i)=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",()=>{if(answered)return;answered=true;[...answers.children].forEach((el,j)=>{el.disabled=true;if(j===q.correct)el.classList.add("correct");else if(j===i)el.classList.add("incorrect")});feedback.textContent=(i===q.correct?"Correct! ":"Not quite. ")+q.why;next.disabled=false});answers.append(b)})}
