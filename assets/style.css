@@ -376,3 +376,37 @@ html,body{background:#eee3d5;color:#292d3b}
  .show-art{height:105px;margin-top:20px}
 }
 @media(prefers-reduced-motion:reduce){.show-card:hover .show-art{transform:none}}
+
+
+/* RF983 RADIO — 24-hour programme schedule */
+.schedule-section{background:linear-gradient(135deg,#e5d9e8 0%,#e8e2d4 48%,#d4e6dc 100%)}
+.schedule-board{
+ max-width:1000px;margin:0 auto;padding:25px 30px 22px;border-radius:24px;
+ background:rgba(255,249,239,.72);border:1px solid rgba(48,42,65,.14);
+ box-shadow:0 22px 55px rgba(62,48,65,.1);backdrop-filter:blur(10px)
+}
+.schedule-topline{display:flex;justify-content:space-between;gap:16px;padding:0 0 18px;
+ border-bottom:1px solid rgba(48,42,65,.16);font-size:8px;font-weight:700;
+ letter-spacing:.16em;color:#62576a}
+.schedule-list{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+.schedule-item{
+ display:grid;grid-template-columns:112px 1fr auto;align-items:center;gap:12px;
+ min-height:84px;padding:13px 0;border-bottom:1px solid rgba(48,42,65,.12)
+}
+.schedule-item time{font-size:10px;font-weight:700;letter-spacing:.04em;color:#087e70;font-variant-numeric:tabular-nums}
+.schedule-item h3{margin:0 0 5px;font:600 15px/1.2 var(--display);color:#292d3b}
+.schedule-item p{margin:0;font-size:10px;line-height:1.5;color:#686170}
+.schedule-type{font-size:7px;letter-spacing:.12em;font-weight:700;color:#655b70;
+ border:1px solid rgba(48,42,65,.18);padding:6px 7px;border-radius:999px;white-space:nowrap}
+.schedule-news .schedule-type{background:#f2c9b7;border-color:transparent;color:#843f40}
+.schedule-news time{color:#b64f43}
+.schedule-note{margin:18px 0 0;font-size:10px;line-height:1.6;color:#696373}
+@media(max-width:800px){.schedule-list{grid-template-columns:1fr}}
+@media(max-width:650px){
+ .schedule-board{padding:20px 17px;border-radius:19px}
+ .schedule-topline{font-size:7px;letter-spacing:.1em}
+ .schedule-item{grid-template-columns:92px 1fr;gap:10px;min-height:78px}
+ .schedule-type{grid-column:2;justify-self:start;margin-top:-4px}
+ .schedule-item h3{font-size:14px}
+ .schedule-item p{font-size:9px}
+}
