@@ -49,7 +49,7 @@ function renderQuiz(){const q=quiz[qi];answered=false;document.querySelector("#q
 if(qNode&&answers&&next){renderQuiz();next.addEventListener("click",()=>{qi=(qi+1)%quiz.length;renderQuiz()})}
 const wordInput=document.querySelector("#word-input");wordInput?.addEventListener("input",()=>{const value=wordInput.value;document.querySelector("#words").textContent=value.trim()?value.trim().split(/\s+/).length:0;document.querySelector("#chars").textContent=value.length});
 const km=document.querySelector("#km");km?.addEventListener("input",()=>{const v=Number(km.value);document.querySelector("#miles").textContent=km.value.trim()&&Number.isFinite(v)&&v>=0?(v*.621371).toFixed(2):"0.00"});
-function clock(){const now=new Date();document.querySelector("#clock").textContent=new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(now);document.querySelector("#timezone").textContent=Intl.DateTimeFormat().resolvedOptions().timeZone||"YOUR LOCAL TIME"}clock();setInterval(clock,1000);
+function clock(){const now=new Date();document.querySelector("#clock").textContent=new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",hour12:false}).format(now);document.querySelector("#timezone").textContent=Intl.DateTimeFormat().resolvedOptions().timeZone||"YOUR LOCAL TIME"}clock();setInterval(clock,30000);
 
 
 /* RF983 ORBIT World Explorer */
