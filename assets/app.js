@@ -73,3 +73,26 @@ continentButtons.forEach(button=>button.addEventListener("click",()=>{
  document.querySelector("#world-culture").textContent=region.culture;
  document.querySelector("#world-count").textContent=region.label.split(" / ")[0]+" / 06 REGIONS";
 }));
+
+
+/* RF983 ORBIT — interactive solar-system planet files */
+const planetFiles={
+ mercury:{type:"THE SMALLEST PLANET / EXTREME WORLD",name:"Mercury",description:"Mercury is the smallest planet and the closest to the Sun. Its surface is covered with ancient craters, and temperatures swing dramatically between day and night.",value:"88",label:"EARTH DAYS / ONE ORBIT"},
+ venus:{type:"THE HOTTEST PLANET / CLOUD-WRAPPED WORLD",name:"Venus",description:"Venus has a thick atmosphere rich in carbon dioxide. Its powerful greenhouse effect makes it hotter than Mercury, even though it is farther from the Sun.",value:"225",label:"EARTH DAYS / ONE ORBIT"},
+ earth:{type:"THE BLUE PLANET / OUR HOME",name:"Earth",description:"The only world we currently know to support life, with vast oceans, a protective atmosphere and a remarkable diversity of ecosystems.",value:"365.25",label:"EARTH DAYS / ONE ORBIT"},
+ mars:{type:"THE RED PLANET / A WORLD OF EXPLORATION",name:"Mars",description:"Mars is a cold desert world with giant volcanoes, deep canyons and evidence that liquid water once flowed across its surface.",value:"687",label:"EARTH DAYS / ONE ORBIT"},
+ jupiter:{type:"THE GIANT / KING OF THE PLANETS",name:"Jupiter",description:"Jupiter is the largest planet in our solar system. Its Great Red Spot is a gigantic storm that has been observed for centuries.",value:"11.86",label:"EARTH YEARS / ONE ORBIT"},
+ saturn:{type:"THE RINGED PLANET / GAS GIANT",name:"Saturn",description:"Saturn's spectacular rings are made mostly of countless pieces of ice, along with rocky material and dust. The planet is so low in density that its average density is less than water.",value:"29.4",label:"EARTH YEARS / ONE ORBIT"},
+ uranus:{type:"THE SIDEWAYS PLANET / ICE GIANT",name:"Uranus",description:"Uranus rotates on its side, giving it extreme seasons. Its blue-green colour comes from methane in its atmosphere.",value:"84",label:"EARTH YEARS / ONE ORBIT"},
+ neptune:{type:"THE WINDY WORLD / DISTANT ICE GIANT",name:"Neptune",description:"Neptune is the most distant recognised planet from the Sun. It is dark, cold and swept by supersonic winds.",value:"165",label:"EARTH YEARS / ONE ORBIT"}
+};
+const planetButtons=[...document.querySelectorAll(".planet-choice")];
+planetButtons.forEach(button=>button.addEventListener("click",()=>{
+ const planet=planetFiles[button.dataset.planet];if(!planet)return;
+ planetButtons.forEach(item=>{const active=item===button;item.classList.toggle("active",active);item.setAttribute("aria-pressed",String(active));});
+ document.querySelector("#planet-type").textContent=planet.type;
+ document.querySelector("#planet-name").textContent=planet.name;
+ document.querySelector("#planet-description").textContent=planet.description;
+ document.querySelector("#planet-stat-value").textContent=planet.value;
+ document.querySelector("#planet-stat-label").textContent=planet.label;
+}));
