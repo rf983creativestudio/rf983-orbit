@@ -410,3 +410,47 @@ html,body{background:#eee3d5;color:#292d3b}
  .schedule-item h3{font-size:14px}
  .schedule-item p{font-size:9px}
 }
+
+
+/* RF983 RADIO — mission and vision feature */
+.vision-section{
+ background:linear-gradient(125deg,#f0d8ca 0%,#e9dff0 48%,#cce4dc 100%);
+}
+.vision-intro{
+ display:grid;grid-template-columns:minmax(190px,.72fr) 1.8fr;align-items:center;gap:clamp(28px,6vw,76px);
+ max-width:1000px;margin:0 auto;padding:42px clamp(24px,5vw,64px);
+ border-radius:26px;background:rgba(255,249,239,.76);
+ border:1px solid rgba(48,42,65,.13);box-shadow:0 20px 48px rgba(62,48,65,.09);
+}
+.vision-stamp{
+ width:190px;height:190px;justify-self:center;border-radius:50%;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;position:relative;isolation:isolate;
+ color:#fff8eb;background:radial-gradient(circle at 35% 25%,#e9a18a,#d45c49 43%,#087e70 100%);
+ box-shadow:0 15px 38px rgba(125,75,75,.2),inset 0 0 0 9px rgba(255,248,235,.55),inset 0 0 0 13px rgba(255,248,235,.2);
+}
+.vision-stamp:before,.vision-stamp:after{content:"";position:absolute;inset:-12px;border:1px solid rgba(8,126,112,.28);border-radius:50%;z-index:-1}
+.vision-stamp:after{inset:-23px;border-color:rgba(212,92,73,.2)}
+.vision-stamp span{font:700 32px/1 var(--display);letter-spacing:-.08em}
+.vision-stamp b{font:700 42px/.95 var(--display);letter-spacing:-.07em}
+.vision-stamp small{margin-top:8px;text-align:center;font-size:7px;line-height:1.5;letter-spacing:.18em}
+.vision-kicker{font-size:9px;font-weight:700;letter-spacing:.2em;color:#b64f43}
+.vision-statement h3{margin:13px 0 16px;font:600 clamp(27px,3.5vw,42px)/1.12 var(--display);letter-spacing:-.045em;color:#292d3b}
+.vision-statement p{max-width:610px;margin:0;color:#575465;font-size:14px;line-height:1.85}
+.vision-values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:20px auto 0}
+.vision-value{min-height:168px;padding:23px 25px;border-radius:19px;border:1px solid rgba(48,42,65,.12)}
+.vision-value>span{font-size:9px;font-weight:700;letter-spacing:.15em;color:#a64d45}
+.vision-value h3{margin:20px 0 8px;font:600 19px/1.2 var(--display);color:#292d3b}
+.vision-value p{margin:0;font-size:11px;line-height:1.7;color:#5d5967}
+.value-one{background:linear-gradient(145deg,#f3d1bd,#f5e1cf)}
+.value-two{background:linear-gradient(145deg,#d6d0eb,#e9e0ef)}
+.value-three{background:linear-gradient(145deg,#bfe0d5,#dcebdc)}
+.vision-footnote{max-width:1000px;margin:17px auto 0;padding-left:3px;font-size:10px;line-height:1.7;color:#625b69}
+@media(max-width:700px){
+ .vision-intro{grid-template-columns:1fr;padding:34px 24px;gap:35px;text-align:center}
+ .vision-stamp{width:160px;height:160px}
+ .vision-statement p{font-size:13px}
+ .vision-values{grid-template-columns:1fr;gap:11px}
+ .vision-value{min-height:0;padding:20px 22px}
+ .vision-value h3{margin-top:13px}
+ .vision-footnote{padding:0 4px}
+}
