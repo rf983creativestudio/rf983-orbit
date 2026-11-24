@@ -36,7 +36,24 @@
   <span class="solar-caption cap-one">INNER PLANETS</span><span class="solar-caption cap-two">OUTER PLANETS</span>
  </div>
  <div class="planet-key"><span><i class="key-dot sun-dot"></i>Sun</span><span><i class="key-dot mercury-dot"></i>Mercury</span><span><i class="key-dot venus-dot"></i>Venus</span><span><i class="key-dot earth-dot"></i>Earth</span><span><i class="key-dot mars-dot"></i>Mars</span><span><i class="key-dot jupiter-dot"></i>Jupiter</span><span><i class="key-dot saturn-dot"></i>Saturn</span><span><i class="key-dot uranus-dot"></i>Uranus</span><span><i class="key-dot neptune-dot"></i>Neptune</span></div>
- <p class="solar-note">A creative visualisation — planetary sizes, spacing and orbital speeds are not to scale.</p>
+
+ <div class="planet-explorer">
+  <div class="planet-explorer-heading"><span>PLANET FILES / INTERACTIVE EXPLORER</span><p>Choose a world to discover what makes it extraordinary.</p></div>
+  <div class="planet-selector" role="group" aria-label="Choose a planet">
+   <button type="button" class="planet-choice active" data-planet="earth" aria-pressed="true">🌍 <span>Earth</span></button>
+   <button type="button" class="planet-choice" data-planet="mercury" aria-pressed="false">☿ <span>Mercury</span></button>
+   <button type="button" class="planet-choice" data-planet="venus" aria-pressed="false">♀ <span>Venus</span></button>
+   <button type="button" class="planet-choice" data-planet="mars" aria-pressed="false">🔴 <span>Mars</span></button>
+   <button type="button" class="planet-choice" data-planet="jupiter" aria-pressed="false">🟠 <span>Jupiter</span></button>
+   <button type="button" class="planet-choice" data-planet="saturn" aria-pressed="false">🪐 <span>Saturn</span></button>
+   <button type="button" class="planet-choice" data-planet="uranus" aria-pressed="false">🔵 <span>Uranus</span></button>
+   <button type="button" class="planet-choice" data-planet="neptune" aria-pressed="false">🔷 <span>Neptune</span></button>
+  </div>
+  <article class="planet-fact-card" aria-live="polite">
+   <div><small id="planet-type">THE BLUE PLANET / OUR HOME</small><h3 id="planet-name">Earth</h3><p id="planet-description">The only world we currently know to support life, with vast oceans, a protective atmosphere and a remarkable diversity of ecosystems.</p></div>
+   <div class="planet-stat"><span id="planet-stat-value">365.25</span><small id="planet-stat-label">EARTH DAYS / ONE ORBIT</small></div>
+  </article>
+ </div> <p class="solar-note">A creative visualisation — planetary sizes, spacing and orbital speeds are not to scale.</p>
 </section>
 <section class="searchbar"><div><b>Where will curiosity take you?</b><small>Search across our digital universe</small></div><form id="search-form"><input id="search" type="search" placeholder="Try science, travel, quizzes, tools..." aria-label="Search RF983 ORBIT"><button>Search ↗</button></form><p id="search-status" aria-live="polite"></p></section>
 <section class="section destinations" id="destinations"><div class="heading"><div><p class="eyebrow dark">01 / CHOOSE YOUR DIRECTION</p><h2>Six orbits.<br><em>One universe.</em></h2></div><p>Every destination opens a different door. Follow what interests you, or let curiosity choose.</p></div>
