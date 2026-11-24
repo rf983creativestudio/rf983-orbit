@@ -89,3 +89,13 @@ Editorial facts and external references should be checked before publication. Se
 - Keyframe timeline with smooth interpolation for position, size, rotation and opacity
 - Preview, stop, scrub the timeline, export a PNG snapshot and record up to 8 seconds of WebM animation where supported
 - Scene projects are stored locally in browser storage; no account, server-side project storage, microphone or audio capture
+
+
+## ORBIT Video Studio — Edition 01
+- Local browser-based video sequence editor at `/video/`
+- Import multiple local video clips, arrange/reorder them and trim start/end points
+- Preview the sequence, scrub the timeline and apply original, cinema, warm, cool, monochrome, vivid or dreamy filters
+- Add a title overlay with adjustable text, colour, size and position
+- Generate a short animated sample scene in supported browsers
+- Export a still PNG or up to 60 seconds of WebM video where MediaRecorder and canvas capture are supported
+- First edition exports picture only, without audio; footage is not uploaded and is processed locally in the browser
