@@ -1,16 +1,16 @@
-# RF983 WORLD
+# RF983 ORBIT
 
-**Your Gateway to a World of Possibilities.**
+**Your Gateway to a Orbit of Possibilities.**
 
-RF983 WORLD is an independent digital universe by RF983 Creative Studios, bringing discovery, technology, exploration, learning, play and useful digital tools together.
+RF983 ORBIT is an independent digital universe by RF983 Creative Studios, bringing discovery, technology, exploration, learning, play and useful digital tools together.
 
 ## Website
 https://rf983creativestudio.github.io/rf983-radio/
 
 ## Identity
-- Brand: RF983 WORLD
+- Brand: RF983 ORBIT
 - Identity: A completely independent digital universe
-- Tagline: Your Gateway to a World of Possibilities.
+- Tagline: Your Gateway to a Orbit of Possibilities.
 - Starting budget: ₹0
 - Hosting: GitHub Pages
 
@@ -32,13 +32,13 @@ https://rf983creativestudio.github.io/rf983-radio/
 - Responsive navigation
 
 ## Repository structure
-- index.html — RF983 WORLD homepage
+- index.html — RF983 ORBIT homepage
 - privacy.html / terms.html — website notices
 - 404.html — custom not-found page
 - assets/style.css — responsive visual design
 - assets/app.js — search, quiz, utilities and interactions
-- assets/favicon.svg — RF983 WORLD favicon
-- assets/rf983-world-social.svg — social sharing artwork
+- assets/favicon.svg — RF983 ORBIT favicon
+- assets/rf983-orbit-social.svg — social sharing artwork
 
 ## Development
 Static HTML, CSS and JavaScript hosted on GitHub Pages. The initial experience is designed to work without paid databases, accounts or server-side services.
