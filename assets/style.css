@@ -954,3 +954,10 @@ body:before,body:after{animation:none!important;will-change:auto!important}
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* ORBIT COMMERCE — freemium business foundation */
+.orbit-revenue-intro{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;padding:clamp(54px,8vw,100px) clamp(22px,8vw,120px);background:radial-gradient(ellipse at 85% 20%,#51418c66,transparent 42%),linear-gradient(135deg,#111a34,#17264a 58%,#17203b);color:#f5f7ff}
+.orbit-revenue-intro:after{content:"";position:absolute;z-index:-1;width:360px;height:360px;right:-130px;bottom:-220px;border:1px solid #75ddeb55;border-radius:50%;box-shadow:0 0 0 35px #75ddeb0c,0 0 0 75px #a58bff0a}
+.orbit-revenue-copy{max-width:720px}.orbit-revenue-copy h2{margin:0;font:700 clamp(38px,5vw,66px)/1.02 var(--display);letter-spacing:-.06em}.orbit-revenue-copy h2 em{font-style:normal;color:var(--aqua)}.orbit-revenue-copy>p:not(.eyebrow){max-width:650px;color:#c4d0e4;line-height:1.85;font-size:14px}.orbit-revenue-points{display:grid;gap:12px}.orbit-revenue-points span{padding:17px 19px;border:1px solid #ffffff20;border-radius:15px;background:#ffffff0a;color:#e7edfa;font-size:13px}.orbit-revenue-points b{margin-right:13px;color:var(--aqua);font-size:10px;letter-spacing:.12em}
+@media(max-width:760px){.orbit-revenue-intro{grid-template-columns:1fr;gap:25px}.orbit-revenue-points{grid-template-columns:1fr}}
