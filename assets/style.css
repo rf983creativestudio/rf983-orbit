@@ -871,3 +871,38 @@ body:after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;o
 @keyframes dailyOrbPulse{0%,100%{transform:translateY(0);box-shadow:0 0 28px #9b8cff55,inset -12px -14px 25px #141a40}50%{transform:translateY(-5px);box-shadow:0 0 42px #9b8cff77,inset -12px -14px 25px #141a40}}
 @media(max-width:600px){.daily-main{align-items:flex-start;gap:15px}.daily-orb{width:66px;font-size:23px}.daily-action{align-items:flex-start}.daily-stats{width:100%;justify-content:flex-start}.daily-mission:after{right:-90px;top:35%}}
 @media(prefers-reduced-motion:reduce){.daily-orb{animation:none}}
+
+
+/* ORBIT PROFILE — XP progression and achievement collection */
+.orbit-achievements{max-width:1160px;margin:18px auto 30px;padding:clamp(20px,3.2vw,32px);border:1px solid #8ddde53b;border-radius:23px;background:radial-gradient(ellipse at 100% 0,#6c7cff22,transparent 38%),radial-gradient(ellipse at 0 100%,#e18db522,transparent 35%),linear-gradient(145deg,#151e39,#111a30 65%,#1e2140);box-shadow:0 22px 60px #02061255;color:#f2f5ff}
+.achievement-heading{display:flex;justify-content:space-between;align-items:center;gap:18px}
+.achievement-kicker{color:#8de3e9;font:800 8px var(--display);letter-spacing:.17em}
+.achievement-heading h3{margin:9px 0 6px;color:#fff;font:700 clamp(23px,3vw,34px) var(--display);letter-spacing:-.04em}
+.achievement-heading p{margin:0;color:#b5c3dc;font-size:10px;line-height:1.7}
+.rank-emblem{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:none;width:75px;height:75px;border:1px solid #d3b5ff66;border-radius:50%;background:radial-gradient(circle,#795fae,#29294e 72%);box-shadow:0 0 24px #9876e044}
+.rank-emblem span{color:#ffe1a0;font-size:25px}
+.rank-emblem small{color:#f3dcff;font:800 7px var(--display);letter-spacing:.12em}
+.orbit-level{margin-top:23px;padding:17px 18px;border:1px solid #a8b9ed2b;border-radius:14px;background:#ffffff08}
+.orbit-level>div:first-child{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#a8e4eb;font:800 8px var(--display);letter-spacing:.12em}
+.orbit-level>div:first-child b{color:#ffcf9a}
+.orbit-progress{height:8px;margin:13px 0 8px;overflow:hidden;border-radius:99px;background:#080f24}
+.orbit-progress i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#6be0db,#9a8cff,#f0a5c9);box-shadow:0 0 15px #9c8cff66;transition:width .35s ease}
+.orbit-level>small{color:#9baecc;font:800 7px var(--display);letter-spacing:.12em}
+.orbit-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:13px 0 24px}
+.orbit-stats>div{display:flex;flex-direction:column;gap:5px;padding:15px 13px;border:1px solid #a5b8e52a;border-radius:13px;background:#ffffff08}
+.orbit-stats b{color:#fff;font:700 23px var(--display)}
+.orbit-stats small{color:#9eafd0;font:800 7px var(--display);letter-spacing:.12em}
+.badge-shelf-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;color:#d9d8ff;font:800 8px var(--display);letter-spacing:.13em}
+.badge-shelf-head small{color:#9eafd0}
+.badge-shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.orbit-badge{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-height:115px;padding:14px;border:1px solid #a6b9e52b;border-radius:14px;background:linear-gradient(145deg,#ffffff0d,#ffffff04)}
+.orbit-badge>span{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#8a7de52a;color:#c9c1ff;font-size:17px}
+.orbit-badge b{color:#eaf0ff;font:700 11px var(--display)}
+.orbit-badge small{color:#9eafd0;font-size:9px;line-height:1.5}
+.orbit-badge.unlocked{border-color:#e8c47c66;background:linear-gradient(145deg,#e8c47c16,#8d83ff0d)}
+.orbit-badge.unlocked>span{background:linear-gradient(135deg,#8b78dc,#d89dbd);color:#fff;box-shadow:0 0 17px #a28de955}
+.orbit-badge.unlocked small{color:#f0d69e;font:800 7px var(--display);letter-spacing:.1em}
+.orbit-badge.locked{opacity:.68}
+.achievement-footnote{margin:14px 0 0;color:#899bbd;font-size:9px;line-height:1.6}
+@media(max-width:650px){.orbit-stats{grid-template-columns:repeat(2,1fr)}.badge-shelf{grid-template-columns:repeat(2,1fr)}.achievement-heading{align-items:flex-start}.rank-emblem{width:62px;height:62px}}
+@media(max-width:390px){.badge-shelf{grid-template-columns:1fr}.orbit-stats>div{padding:12px}}
