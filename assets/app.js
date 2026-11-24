@@ -217,3 +217,44 @@ memoryTiles.forEach(tile=>tile.addEventListener("click",()=>{
  if(memorySequence[position]!==value){memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);if(memoryFeedback)memoryFeedback.textContent="Not quite — you reached level "+memoryLevel+". Start again to retry.";memorySequence=[];memoryBusy=false;memoryStart.disabled=false;memoryStart.textContent="TRY AGAIN ↻";return;}
  if(memoryInput.length===memorySequence.length){memoryLevel++;markArcadeClear();if(memoryLevelNode)memoryLevelNode.textContent="LEVEL: "+memoryLevel;if(memoryFeedback)memoryFeedback.textContent="Perfect sequence! Get ready for the next level.";memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);setTimeout(()=>{memoryBusy=false;playMemorySequence();},900);}
 }));
+
+
+/* ORBIT DAILY MISSIONS — date-rotating challenges and local streak */
+const dailyMissions=[
+ {type:"OBSERVE / WORLD",title:"Find a tiny wonder nearby.",description:"Look closely at a plant, cloud, building or everyday object. Discover one detail you had never noticed before.",action:"Observe something closely and learn one new detail."},
+ {type:"CURIOSITY / LEARN",title:"Follow one question.",description:"Choose a question you've wondered about and spend five minutes finding an answer from a reliable source.",action:"Find an answer to one question and check where it came from."},
+ {type:"CREATIVITY / MAKE",title:"Create a tiny something.",description:"Make a quick sketch, write a four-line story, design a symbol or invent a playful idea. Small creations count.",action:"Make one small original thing today."},
+ {type:"DISCOVERY / EXPLORE",title:"Explore somewhere new.",description:"Discover a place you've never visited — it could be a city, a landmark, a natural wonder or a spot on a map.",action:"Learn three interesting facts about a new place."},
+ {type:"TECH / UNDERSTAND",title:"Decode a piece of technology.",description:"Pick a technology you use every day and learn, in simple terms, how one part of it works.",action:"Explain one everyday technology in your own words."},
+ {type:"MEMORY / CHALLENGE",title:"Give your memory a workout.",description:"Look at five objects around you, look away, then try to recall all five in order.",action:"Recall five objects in the correct order."},
+ {type:"KINDNESS / CONNECT",title:"Send a positive signal.",description:"Share a useful fact, encourage someone or help with a small task. Make someone's day a little brighter.",action:"Do one thoughtful thing for someone today."}
+];
+const dailyDateNode=document.querySelector("#daily-date"),dailyType=document.querySelector("#daily-type"),dailyTitle=document.querySelector("#daily-title"),dailyDescription=document.querySelector("#daily-description"),dailyProgress=document.querySelector("#daily-progress"),dailyComplete=document.querySelector("#daily-complete"),dailyStreakNode=document.querySelector("#daily-streak"),dailyXpNode=document.querySelector("#daily-xp"),dailyNote=document.querySelector("#daily-note");
+function localDateKey(date=new Date()){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");}
+function previousDateKey(key){const [year,month,day]=key.split("-").map(Number);const date=new Date(year,month-1,day);date.setDate(date.getDate()-1);return localDateKey(date);}
+const todayKey=localDateKey();
+const dayOrdinal=Math.floor(Date.UTC(...todayKey.split("-").map((part,index)=>index===1?Number(part)-1:Number(part)))/86400000);
+const dailyMission=dailyMissions[((dayOrdinal%dailyMissions.length)+dailyMissions.length)%dailyMissions.length];
+let dailyState={lastCompleted:"",streak:0,xp:0};
+try{const saved=JSON.parse(localStorage.getItem("rf983OrbitDaily")||"{}");if(saved&&typeof saved==="object")dailyState={lastCompleted:typeof saved.lastCompleted==="string"?saved.lastCompleted:"",streak:Number.isFinite(saved.streak)?Math.max(0,saved.streak):0,xp:Number.isFinite(saved.xp)?Math.max(0,saved.xp):0};}catch(error){}
+function renderDailyMission(){
+ if(!dailyTitle)return;
+ if(dailyDateNode)dailyDateNode.textContent=new Date().toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"}).toUpperCase();
+ dailyType.textContent="MISSION / "+dailyMission.type;
+ dailyTitle.textContent=dailyMission.title;
+ dailyDescription.textContent=dailyMission.description;
+ if(dailyStreakNode)dailyStreakNode.textContent=String(dailyState.streak);
+ if(dailyXpNode)dailyXpNode.textContent=String(dailyState.xp);
+ const done=dailyState.lastCompleted===todayKey;
+ if(dailyProgress)dailyProgress.textContent=done?"MISSION COMPLETE ✓":"MISSION NOT COMPLETED";
+ if(dailyComplete){dailyComplete.disabled=done;dailyComplete.textContent=done?"MISSION COMPLETE ✓":"MARK MISSION COMPLETE ↗";}
+ if(dailyNote)dailyNote.textContent=done?"Mission logged! "+dailyMission.action+" Come back tomorrow for a new transmission.":"Your mission: "+dailyMission.action+" Progress is saved on this device.";
+}
+dailyComplete?.addEventListener("click",()=>{
+ if(dailyState.lastCompleted===todayKey)return;
+ dailyState.streak=dailyState.lastCompleted===previousDateKey(todayKey)?dailyState.streak+1:1;
+ dailyState.lastCompleted=todayKey;dailyState.xp+=50;
+ try{localStorage.setItem("rf983OrbitDaily",JSON.stringify(dailyState));}catch(error){if(dailyNote)dailyNote.textContent="Mission completed for this visit. Your browser may not allow progress to be saved.";}
+ renderDailyMission();
+});
+renderDailyMission();
