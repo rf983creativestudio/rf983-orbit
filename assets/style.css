@@ -290,3 +290,46 @@ footer p{color:#c4c9e7}
   .section h2,.world-heading h2,.about-section h2{-webkit-text-fill-color:transparent}
   .learn-card h3{font-size:19px}
 }
+
+/* ORBIT motion experience: gentle glow, floating elements and lively interactions */
+@keyframes orbitFloat{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(0,-12px,0) rotate(1.2deg)}}
+@keyframes orbitDrift{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes orbitPulse{0%,100%{transform:scale(1);opacity:.8;box-shadow:0 0 0 0 #65dcd966}50%{transform:scale(1.12);opacity:1;box-shadow:0 0 0 10px #65dcd900}}
+@keyframes orbitGlow{0%,100%{filter:drop-shadow(0 0 0 #8f83ff00)}50%{filter:drop-shadow(0 0 12px #8f83ff88)}}
+@keyframes orbitShimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes orbitRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes orbitSheen{0%{transform:translateX(-140%) skewX(-18deg)}55%,100%{transform:translateX(240%) skewX(-18deg)}}
+.hero-copy{animation:orbitRise .85s both}.hero-art{animation:orbitRise 1s .15s both}
+.hero-art .planet{animation:orbitFloat 6s ease-in-out infinite,orbitGlow 4.5s ease-in-out infinite}
+.hero-art .orbit{transform-origin:center;animation:orbitDrift 34s linear infinite}
+.hero-art .o2{animation-duration:46s;animation-direction:reverse}.hero-art .o3{animation-duration:58s}
+.hero-art .float{animation:orbitFloat 4.8s ease-in-out infinite}.hero-art .f2{animation-delay:-1.4s}.hero-art .f3{animation-delay:-2.6s}
+.hero h1 em,.section h2 em,.world-heading h2 em,.final-cta h2 em{background-size:200% auto;animation:orbitShimmer 7s linear infinite}
+.orbit-card,.learn-card,.tool-card,.fact,.feature,.quiz,.tech-radar,.world-console{animation:orbitRise .7s both}
+.orbit-card:nth-child(2),.learn-card:nth-child(2){animation-delay:.08s}.orbit-card:nth-child(3),.learn-card:nth-child(3){animation-delay:.16s}.orbit-card:nth-child(4){animation-delay:.12s}.orbit-card:nth-child(5){animation-delay:.2s}.orbit-card:nth-child(6){animation-delay:.24s}
+.orbit-card .art{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s}
+.orbit-card:hover .art{transform:translateY(-5px) rotate(-3deg) scale(1.045);filter:drop-shadow(0 8px 12px #5551a333)}
+.orbit-card:hover h3,.learn-card:hover h3{filter:drop-shadow(0 3px 9px #8e72dc44)}
+.feature-art{overflow:hidden}.feature-art:after{animation:orbitFloat 7s ease-in-out infinite}
+.fact-icon,.tool-icon{animation:orbitFloat 5s ease-in-out infinite}.fact:nth-child(2) .fact-icon{animation-delay:-2s}
+.lab-orb{animation:orbitFloat 4.5s ease-in-out infinite,orbitGlow 4s ease-in-out infinite}
+.radar-pulse,.world-pulse{animation:orbitPulse 2.4s ease-in-out infinite}.radar-orbit,.world-symbol{animation:orbitFloat 5s ease-in-out infinite}
+.continent-btn>span{display:inline-block;transition:transform .3s}.continent-btn:hover>span{transform:translateY(-4px) rotate(-8deg) scale(1.15)}.continent-btn.active>span{animation:orbitFloat 3.5s ease-in-out infinite}
+.btn,.lab-button,.searchbar form button,.quiz>button,.nav-cta{position:relative;isolation:isolate;overflow:hidden;transition:transform .25s ease,filter .25s ease,box-shadow .25s ease}
+.btn:hover,.lab-button:hover,.searchbar form button:hover,.quiz>button:hover,.nav-cta:hover{transform:translateY(-3px);filter:saturate(1.18);box-shadow:0 12px 28px #6e68d044}
+.btn.primary:after,.lab-button:after,.searchbar form button:after,.quiz>button:after{content:"";position:absolute;z-index:-1;top:-30%;left:0;width:35%;height:160%;background:linear-gradient(90deg,transparent,#ffffff66,transparent);animation:orbitSheen 5.5s ease-in-out infinite}
+.radar-tab,.continent-btn,.answers button{transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.radar-tab:hover,.continent-btn:hover,.answers button:hover{transform:translateY(-3px)}
+.learn-card,.tool-card{transition:transform .25s ease,box-shadow .25s ease}
+.learn-card:hover,.tool-card:hover,.fact:hover{transform:translateY(-5px);box-shadow:0 18px 36px #5550a322}
+.searchbar form:focus-within{box-shadow:0 0 0 4px #8f7de52a,0 12px 28px #49418d14}
+.tool-card textarea:focus,.tool-card input:focus{border-color:#8c78e8;box-shadow:0 0 0 4px #8c78e822}
+.final-cta .btn{animation:orbitFloat 5s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+ .hero-copy,.hero-art,.orbit-card,.learn-card,.tool-card,.fact,.feature,.quiz,.tech-radar,.world-console,
+ .hero-art .planet,.hero-art .orbit,.hero-art .float,.hero h1 em,.section h2 em,.world-heading h2 em,
+ .final-cta h2 em,.fact-icon,.tool-icon,.lab-orb,.radar-pulse,.world-pulse,.radar-orbit,.world-symbol,
+ .continent-btn.active>span,.final-cta .btn,.btn.primary:after,.lab-button:after,.searchbar form button:after,.quiz>button:after{
+  animation:none!important;transition:none!important;
+ }
+}
