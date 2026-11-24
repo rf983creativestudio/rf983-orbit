@@ -214,6 +214,6 @@ memoryTiles.forEach(tile=>tile.addEventListener("click",()=>{
  if(memoryBusy||!memorySequence.length)return;
  const value=Number(tile.dataset.tile);flashMemory(value,220);memoryInput.push(value);
  const position=memoryInput.length-1;
- if(memorySequence[position]!==value){memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);if(memoryFeedback)memoryFeedback.textContent="Not quite — you reached level "+memoryLevel+". Start again to retry.";memorySequence=[];memoryStart.disabled=false;memoryStart.textContent="TRY AGAIN ↻";return;}
- if(memoryInput.length===memorySequence.length){memoryLevel++;markArcadeClear();if(memoryLevelNode)memoryLevelNode.textContent="LEVEL: "+memoryLevel;if(memoryFeedback)memoryFeedback.textContent="Perfect sequence! Get ready for the next level.";memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);setTimeout(()=>playMemorySequence(),900);}
+ if(memorySequence[position]!==value){memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);if(memoryFeedback)memoryFeedback.textContent="Not quite — you reached level "+memoryLevel+". Start again to retry.";memorySequence=[];memoryBusy=false;memoryStart.disabled=false;memoryStart.textContent="TRY AGAIN ↻";return;}
+ if(memoryInput.length===memorySequence.length){memoryLevel++;markArcadeClear();if(memoryLevelNode)memoryLevelNode.textContent="LEVEL: "+memoryLevel;if(memoryFeedback)memoryFeedback.textContent="Perfect sequence! Get ready for the next level.";memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);setTimeout(()=>{memoryBusy=false;playMemorySequence();},900);}
 }));
