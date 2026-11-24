@@ -50,3 +50,26 @@ if(qNode&&answers&&next){renderQuiz();next.addEventListener("click",()=>{qi=(qi+
 const wordInput=document.querySelector("#word-input");wordInput?.addEventListener("input",()=>{const value=wordInput.value;document.querySelector("#words").textContent=value.trim()?value.trim().split(/\s+/).length:0;document.querySelector("#chars").textContent=value.length});
 const km=document.querySelector("#km");km?.addEventListener("input",()=>{const v=Number(km.value);document.querySelector("#miles").textContent=km.value.trim()&&Number.isFinite(v)&&v>=0?(v*.621371).toFixed(2):"0.00"});
 function clock(){const now=new Date();document.querySelector("#clock").textContent=new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(now);document.querySelector("#timezone").textContent=Intl.DateTimeFormat().resolvedOptions().timeZone||"YOUR LOCAL TIME"}clock();setInterval(clock,1000);
+
+
+/* RF983 ORBIT World Explorer */
+const worldRegions={
+ asia:{label:"CONTINENT 01 / ASIA",symbol:"🌏",title:"A world of ancient stories and bold new ideas.",description:"Asia is the largest continent, home to extraordinary landscapes, languages, cuisines and cultural traditions.",landmark:"The Great Wall of China",culture:"Temples, festivals and food traditions"},
+ africa:{label:"CONTINENT 02 / AFRICA",symbol:"🌍",title:"A continent rich in life, rhythm and heritage.",description:"Africa's landscapes range from vast deserts and savannas to tropical forests, alongside an extraordinary diversity of communities and creative traditions.",landmark:"The Pyramids of Giza",culture:"Music, textiles and living heritage"},
+ europe:{label:"CONTINENT 03 / EUROPE",symbol:"🏛️",title:"Centuries of art, ideas and architecture.",description:"Europe brings together varied languages, landscapes and histories, from Mediterranean coastlines to northern forests and alpine peaks.",landmark:"The Colosseum in Rome",culture:"Art, architecture and regional cuisines"},
+ northamerica:{label:"CONTINENT 04 / NORTH AMERICA",symbol:"🗽",title:"Big landscapes and many cultural stories.",description:"From Arctic regions to tropical coastlines, North America includes immense natural variety and communities shaped by many histories.",landmark:"The Grand Canyon",culture:"Indigenous knowledge, music and festivals"},
+ southamerica:{label:"CONTINENT 05 / SOUTH AMERICA",symbol:"🌿",title:"Where rainforest, mountains and creativity meet.",description:"South America is known for the Andes, the Amazon basin and vibrant cultural expressions across its many countries.",landmark:"Machu Picchu in Peru",culture:"Dance, craft and diverse food traditions"},
+ oceania:{label:"CONTINENT 06 / OCEANIA",symbol:"🐚",title:"Island worlds connected by the ocean.",description:"Oceania spans Australia, Aotearoa New Zealand and thousands of Pacific islands, with unique ecosystems and deep maritime traditions.",landmark:"The Great Barrier Reef",culture:"Pacific navigation and island cultures"}
+};
+const continentButtons=[...document.querySelectorAll(".continent-btn")];
+continentButtons.forEach(button=>button.addEventListener("click",()=>{
+ const region=worldRegions[button.dataset.continent];if(!region)return;
+ continentButtons.forEach(item=>{const active=item===button;item.classList.toggle("active",active);item.setAttribute("aria-pressed",String(active));});
+ document.querySelector("#world-region").textContent=region.label;
+ document.querySelector("#world-symbol").textContent=region.symbol;
+ document.querySelector("#world-title").textContent=region.title;
+ document.querySelector("#world-description").textContent=region.description;
+ document.querySelector("#world-landmark").textContent=region.landmark;
+ document.querySelector("#world-culture").textContent=region.culture;
+ document.querySelector("#world-count").textContent=region.label.split(" / ")[0]+" / 06 REGIONS";
+}));
