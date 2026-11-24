@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 150" role="img" aria-labelledby="title desc">
+<title id="title">RF983 ORBIT by RF983 Creative Studios</title>
+<desc id="desc">A luminous orbital emblem beside the RF983 ORBIT wordmark.</desc>
+<defs>
+ <linearGradient id="orb" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#68e5e3"/><stop offset=".55" stop-color="#668ef1"/><stop offset="1" stop-color="#9a78ed"/></linearGradient>
+ <linearGradient id="type" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#dce8ff"/></linearGradient>
+ <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g transform="translate(74 72)" fill="none" stroke-linecap="round">
+ <circle r="30" stroke="url(#orb)" stroke-width="7"/>
+ <ellipse rx="58" ry="20" stroke="#8dbdff" stroke-width="3.5" transform="rotate(-28)" filter="url(#glow)"/>
+ <ellipse rx="51" ry="35" stroke="#8974e8" stroke-width="2" opacity=".8" transform="rotate(54)"/>
+ <circle cx="48" cy="-26" r="5.5" fill="#55d4df" stroke="none"/>
+ <circle r="7" fill="#e7ffff" stroke="none"/>
+</g>
+<text x="158" y="82" fill="url(#type)" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="700" letter-spacing="-3">RF983</text>
+<text x="354" y="82" fill="#65dce3" font-family="Arial,Helvetica,sans-serif" font-size="55" font-weight="700" letter-spacing="-1">ORBIT</text>
+<text x="161" y="116" fill="#aab9d4" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="600" letter-spacing="3">BY RF983 CREATIVE STUDIOS</text>
+</svg>
