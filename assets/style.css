@@ -803,3 +803,42 @@ body:after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;o
 .lesson-takeaway b{flex:none;color:#83e4dc;font:800 8px var(--display);letter-spacing:.12em}
 .lesson-takeaway span{color:#dce9f7;font-size:10px;line-height:1.6}
 @media(max-width:650px){.lesson-steps{grid-template-columns:1fr}.lesson-steps>div{padding:14px}.lesson-panel-top{font-size:7px}.lesson-takeaway{flex-direction:column;gap:6px}}
+
+
+/* ARCADE DECK — three interactive games */
+.arcade-hub{max-width:1160px;margin:30px auto 0;padding:clamp(18px,3vw,30px);border:1px solid #9b8bff38;border-radius:24px;background:radial-gradient(ellipse at 4% 0,#ed8aab18,transparent 38%),radial-gradient(ellipse at 100% 100%,#7e70ff24,transparent 40%),linear-gradient(145deg,#151d3b,#10172d 65%,#1c1b3b);box-shadow:0 24px 65px #03061166;color:#f1f4ff}
+.arcade-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.arcade-kicker{color:#ffb6c8;font:800 8px var(--display);letter-spacing:.17em}
+.arcade-heading h3{margin:10px 0 6px;color:#fff;font:700 clamp(24px,3vw,35px)/1.1 var(--display);letter-spacing:-.045em}
+.arcade-heading p{margin:0;color:#b8c4df;font-size:11px;line-height:1.7}
+.arcade-live{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid #75dfc344;border-radius:99px;color:#9cebd6;font:800 8px var(--display);letter-spacing:.12em}
+.arcade-live i{width:7px;height:7px;border-radius:50%;background:#70e6ba;box-shadow:0 0 12px #70e6ba}
+.arcade-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:23px 0 14px}
+.arcade-tab{padding:11px 14px;border:1px solid #9db2e52b;border-radius:99px;background:#ffffff08;color:#b8c5df;font:800 8px var(--display);letter-spacing:.1em;transition:background .2s,border-color .2s,color .2s}
+.arcade-tab.active,.arcade-tab:hover{background:linear-gradient(100deg,#714caa,#315e8d);border-color:#a7baff80;color:#fff}
+.arcade-game{min-height:320px;padding:clamp(18px,3vw,28px);border:1px solid #a4b7f22c;border-radius:18px;background:linear-gradient(145deg,#202c4b,#171f39 70%,#242144)}
+.arcade-game[hidden]{display:none}
+.arcade-game-meta{display:flex;justify-content:space-between;gap:10px;color:#8de3ed;font:800 8px var(--display);letter-spacing:.13em}
+.arcade-game-meta span+span{color:#aab6d5}
+.arcade-game h4{margin:17px 0 7px;color:#fff;font:700 clamp(21px,2.5vw,29px) var(--display);letter-spacing:-.035em}
+.arcade-game>p{color:#b9c6df;font-size:11px;line-height:1.7}
+.number-form{display:flex;gap:9px;max-width:440px;margin-top:20px}
+.number-form input{min-width:0;flex:1;padding:13px 15px;border:1px solid #9bb7e955;border-radius:10px;background:#0e1830;color:#fff;font:600 14px var(--display);outline:none}
+.number-form input:focus{border-color:#7fe1eb;box-shadow:0 0 0 3px #7fe1eb20}
+.number-form button{padding:0 18px;border:0;border-radius:10px;background:linear-gradient(110deg,#e48aa9,#896de0);color:#fff;font:800 9px var(--display);letter-spacing:.12em}
+.arcade-feedback{min-height:20px;margin:14px 0;color:#d9e4fb!important;font-size:11px!important}
+.arcade-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:13px;border-top:1px solid #a9b8e522;color:#91a4c9;font:800 8px var(--display);letter-spacing:.1em}
+.arcade-reset{padding:9px 12px;border:1px solid #8ddce455;border-radius:99px;background:#66cddd13;color:#a6eaf0;font:800 8px var(--display);letter-spacing:.1em}
+.reaction-pad{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;min-height:150px;margin-top:18px;border:1px solid #9db7ef55;border-radius:16px;background:linear-gradient(135deg,#39466a,#252b51);color:#fff;transition:background .15s,border-color .15s}
+.reaction-pad[data-state="waiting"]{background:linear-gradient(135deg,#7a5834,#48314c);border-color:#ffc078}
+.reaction-pad[data-state="ready"]{background:linear-gradient(135deg,#147d70,#176b84);border-color:#8fffe0;box-shadow:0 0 35px #56e8bd3a}
+.reaction-pad[data-state="result"]{background:linear-gradient(135deg,#4d458d,#285e85);border-color:#b8b2ff}
+.reaction-pad span{font:800 clamp(16px,2vw,22px) var(--display);letter-spacing:.08em}
+.reaction-pad small{color:#d0d9f0;font:800 8px var(--display);letter-spacing:.15em}
+.memory-grid{display:grid;grid-template-columns:repeat(2,76px);gap:9px;margin:20px 0}
+.memory-grid button{width:76px;height:64px;border:1px solid #9bb6f055;border-radius:13px;background:linear-gradient(145deg,#35456b,#252c50);box-shadow:inset 0 1px #ffffff12;transition:background .15s,transform .15s,box-shadow .15s}
+.memory-grid button.lit{transform:scale(.96);background:linear-gradient(145deg,#7ee8ed,#9b8cff);box-shadow:0 0 25px #83dffb88}
+.memory-grid button:disabled{cursor:default;opacity:.8}
+.arcade-scoreline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:15px;color:#a9b9d9;font:800 8px var(--display);letter-spacing:.13em}
+.arcade-scoreline strong{color:#f3b6d0}
+@media(max-width:560px){.arcade-tabs{display:grid;grid-template-columns:1fr}.arcade-tab{text-align:left}.number-form{flex-direction:column}.number-form button{min-height:42px}.arcade-game{min-height:350px}.arcade-heading{flex-direction:column}}
