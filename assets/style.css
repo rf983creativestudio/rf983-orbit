@@ -334,3 +334,45 @@ html,body{background:#eee3d5;color:#292d3b}
 @media(prefers-reduced-motion:reduce){
  .art-ring,.art-core,.hero-waveform i{animation:none!important}
 }
+
+
+/* RF983 RADIO — editorial programme showcases */
+.show-card{padding:27px 28px 24px;min-height:410px;isolation:isolate}
+.show-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:2}
+.show-pill{
+ display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;
+ border:1px solid rgba(41,45,59,.2);font-size:7px;font-weight:700;
+ letter-spacing:.13em;color:#51495d;background:rgba(255,255,255,.27)
+}
+.show-art{
+ height:112px;margin:24px 0 8px;border-radius:15px;position:relative;
+ overflow:hidden;display:flex;align-items:center;justify-content:center
+}
+.show-art>span{position:relative;z-index:2;font:600 66px/1 var(--display);color:#293d40}
+.show-art i{position:absolute;display:block;border:1px solid rgba(41,45,59,.22);border-radius:50%}
+.news-art{background:linear-gradient(115deg,#e8a28e,#f4d4ac)}
+.news-art i:nth-of-type(1){width:75px;height:75px;right:24%;top:17px}
+.news-art i:nth-of-type(2){width:115px;height:115px;right:18%;top:-3px}
+.news-art i:nth-of-type(3){width:155px;height:155px;right:12%;top:-23px}
+.news-art>span{font-family:serif;color:#843f40}
+.music-art{background:linear-gradient(115deg,#c4bde8,#e6d8ef)}
+.music-art>span{font-size:72px;color:#554b87}
+.music-art i{width:4px;height:25px;border:0;border-radius:8px;background:#655a9a;left:calc(50% + (var(--bar,0) * 1px));}
+.music-art i:nth-of-type(1){height:22px;transform:translateX(-42px)}
+.music-art i:nth-of-type(2){height:44px;transform:translateX(-26px)}
+.music-art i:nth-of-type(3){height:62px;transform:translateX(-10px)}
+.music-art i:nth-of-type(4){height:38px;transform:translateX(7px)}
+.music-art i:nth-of-type(5){height:26px;transform:translateX(23px)}
+.voices-art{background:linear-gradient(115deg,#a9d9cb,#d9e8d4)}
+.voices-art>span{font-size:68px;color:#176c62}
+.voices-art i{width:64px;height:64px;right:20%;top:23px;border-color:rgba(8,126,112,.32)}
+.voices-art i:nth-of-type(2){width:92px;height:92px;right:15%;top:9px}
+.voices-art i:nth-of-type(3){width:120px;height:120px;right:10%;top:-5px}
+.show-card h3{margin-top:15px}
+.show-card:after{opacity:.65}
+.show-card:hover .show-art{filter:saturate(1.12);transform:scale(1.015);transition:transform .35s ease,filter .35s ease}
+@media(max-width:650px){
+ .show-card{min-height:390px;padding:23px}
+ .show-art{height:105px;margin-top:20px}
+}
+@media(prefers-reduced-motion:reduce){.show-card:hover .show-art{transform:none}}
