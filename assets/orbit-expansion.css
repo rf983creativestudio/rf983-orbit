@@ -1,0 +1,41 @@
+/* RF983 ORBIT — consolidated expansion layer */
+.orbit-expansion{position:relative;isolation:isolate;padding:clamp(48px,7vw,90px) max(5%,calc((100% - 1160px)/2));color:#eef3ff}
+.orbit-expansion .eyebrow{color:#8de5f1;font:800 9px var(--display);letter-spacing:.16em}
+.orbit-expansion h2{font:800 clamp(30px,5vw,52px)/1.05 var(--display);color:#f4f6ff;margin:10px 0}
+.orbit-expansion h2 em{font-style:normal;background:linear-gradient(90deg,#7de4f1,#b8a0ff,#f3a9d0);background-clip:text;color:transparent}
+.orbit-intro{max-width:680px;color:#b8c7e2;line-height:1.7}
+.orbit-exp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.orbit-exp-card{min-width:0;padding:clamp(18px,3vw,26px);border:1px solid #a8b9e533;border-radius:20px;background:radial-gradient(circle at 95% 0,#8878df24,transparent 38%),linear-gradient(145deg,#1d2a49,#151d36);box-shadow:0 18px 48px #02061140}
+.orbit-exp-card>small,.orbit-exp-kicker{color:#8edce9;font:800 8px var(--display);letter-spacing:.14em}
+.orbit-exp-card h3{margin:10px 0;color:#f4f6ff;font:800 21px var(--display)}
+.orbit-exp-card p{color:#b6c5e0;font-size:12px;line-height:1.7}
+.orbit-exp-card button,.orbit-exp-card select,.orbit-exp-card input,.orbit-exp-card textarea{font:600 12px var(--body)}
+.orbit-exp-card input,.orbit-exp-card select,.orbit-exp-card textarea{width:100%;padding:11px 12px;margin:6px 0 12px;border:1px solid #9fb5e044;border-radius:10px;background:#101a30;color:#f4f6ff}
+.orbit-exp-button{padding:11px 14px;border:1px solid #75d9e588;border-radius:10px;background:linear-gradient(110deg,#287b91,#6150a0);color:#fff;font:800 9px var(--display)!important;letter-spacing:.1em;cursor:pointer}
+.orbit-exp-button.secondary{background:#ffffff0a;border-color:#a9b9e344}
+.orbit-passport-visual{padding:20px;border:1px solid #8ce9ff55;border-radius:17px;background:radial-gradient(circle at 85% 10%,#8a70ff38,transparent 35%),linear-gradient(135deg,#162b50,#202044 65%,#30315d);color:#f5f7ff}
+.orbit-passport-top,.orbit-passport-bottom{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#a8dff0;font:800 8px var(--display);letter-spacing:.13em}
+.orbit-passport-main{display:flex;align-items:center;gap:14px;margin:24px 0}
+.orbit-passport-avatar{display:grid;place-items:center;width:65px;height:65px;border-radius:19px;background:linear-gradient(135deg,#72dff0,#9a83ff);font-size:34px}
+.orbit-passport-main h3{margin:4px 0;color:white}.orbit-passport-main p{margin:0;color:#b9c9e8;font:700 10px var(--display)}
+.orbit-avatar-picker,.orbit-era-picker,.orbit-country-picker,.orbit-mood-picker,.orbit-case-picker{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.orbit-avatar-picker button,.orbit-era-picker button,.orbit-country-picker button,.orbit-mood-picker button,.orbit-case-picker button{padding:9px 11px;border:1px solid #9db4e044;border-radius:9px;background:#ffffff0b;color:#d9e5ff;cursor:pointer;font:800 9px var(--display)}
+.orbit-avatar-picker button.active,.orbit-era-picker button.active,.orbit-country-picker button.active{border-color:#7de4ef;background:#28516a}
+.orbit-stamp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:12px}
+.orbit-stamp{display:grid;justify-items:center;gap:5px;padding:10px 3px;border:1px solid #a7b9e52b;border-radius:11px;background:#ffffff08}
+.orbit-stamp b{font-size:22px}.orbit-stamp small{color:#aebcda;font:800 7px var(--display)}
+.orbit-stamp.earned{border-color:#e7ca8c88;background:#c7a65a14}.orbit-stamp.earned small{color:#f0d69e}
+.orbit-exp-output{display:block;min-height:34px;margin-top:10px;padding:10px;border-radius:9px;background:#ffffff0a;color:#aee9f0;font:700 12px var(--display);overflow-wrap:anywhere}
+.orbit-era-panel,.orbit-country-panel{padding:17px;border:1px solid #9db5e533;border-radius:14px;background:#111a30}
+.orbit-era-panel h4,.orbit-country-panel h4{margin:8px 0;color:#fff;font:800 19px var(--display)}
+.orbit-era-panel p,.orbit-country-panel p{color:#bac9e2}
+.orbit-utility-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.orbit-utility-grid .orbit-exp-card{padding:17px}
+.orbit-note-status{color:#a5e8ee;font-size:10px}
+.orbit-game-word{font:800 clamp(24px,4vw,34px) var(--display);letter-spacing:.15em;color:#e6c7ff}
+.orbit-countdown{font:800 clamp(18px,3vw,25px) var(--display);color:#d9c6ff}
+.orbit-reveal-ready .orbit-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.orbit-reveal-ready .orbit-reveal.shown{opacity:1;transform:none}
+@media(max-width:760px){.orbit-exp-grid{grid-template-columns:1fr}.orbit-utility-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.orbit-stamp-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:480px){.orbit-utility-grid{grid-template-columns:1fr}.orbit-expansion{padding-left:5%;padding-right:5%}}
+@media(prefers-reduced-motion:reduce){.orbit-reveal-ready .orbit-reveal{opacity:1;transform:none;transition:none}}
