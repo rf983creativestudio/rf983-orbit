@@ -1,25 +1,47 @@
-# RF983 RADIO
+# RF983 WORLD
 
-**Your World. Your Sound.**
+**Your Gateway to a World of Possibilities.**
 
-Official website of RF983 RADIO, an independent radio project featuring Malayalam-language news and multilingual music.
+RF983 WORLD is an independent digital universe by RF983 Creative Studios, bringing discovery, technology, exploration, learning, play and useful digital tools together.
 
 ## Website
 https://rf983creativestudio.github.io/rf983-radio/
 
-## Project status
-The website is published on GitHub Pages. The live radio stream and 24/7 automated broadcast are still in preparation. Programme timings shown on the website are proposed and may change before broadcast launch.
+## Identity
+- Brand: RF983 WORLD
+- Identity: A completely independent digital universe
+- Tagline: Your Gateway to a World of Possibilities.
+- Starting budget: ₹0
+- Hosting: GitHub Pages
+
+## Destinations
+- Discover — facts, science, nature, history and interesting ideas
+- Technology — AI, digital tools and innovation
+- Explore — places, cultures and travel inspiration
+- Learn — explainers, educational resources and practical guides
+- Play — quizzes and interactive challenges
+- Tools — browser-based utilities
+
+## Interactive features
+- Search across destination and editorial cards
+- Random discovery prompts
+- Three-question knowledge quiz
+- Word and character counter
+- Kilometres-to-miles converter
+- Local device clock
+- Responsive navigation
 
 ## Repository structure
-- `index.html` — station homepage
-- `privacy.html` / `terms.html` — preliminary website notices
-- `404.html` — custom not-found page
-- `assets/style.css` — responsive visual design
-- `assets/app.js` — navigation, accessibility and visitor interactions
-- `assets/` — station logo and favicon
-
-## Before broadcasting
-A separate radio streaming and AutoDJ service, final programme schedule, appropriate music/broadcast permissions, and verified station contact channels are required. GitHub Pages hosts the website; it does not provide the radio stream.
+- index.html — RF983 WORLD homepage
+- privacy.html / terms.html — website notices
+- 404.html — custom not-found page
+- assets/style.css — responsive visual design
+- assets/app.js — search, quiz, utilities and interactions
+- assets/favicon.svg — RF983 WORLD favicon
+- assets/rf983-world-social.svg — social sharing artwork
 
 ## Development
-The site is a static HTML, CSS and JavaScript project. Changes to the default branch are published through GitHub Pages.
+Static HTML, CSS and JavaScript hosted on GitHub Pages. The initial experience is designed to work without paid databases, accounts or server-side services.
+
+## Content note
+Editorial facts and external references should be checked before publication. Sections marked coming soon are concept placeholders, not claims that a complete content library is available.
