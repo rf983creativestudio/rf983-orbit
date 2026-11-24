@@ -98,14 +98,15 @@ planetButtons.forEach(button=>button.addEventListener("click",()=>{
 }));
 
 
-/* Clickable galaxy map: each world opens a different discovery path */
+/* Interactive RF983 galaxy: select a world and navigate the atlas */
 const galaxyWorlds = {
- nature:{label:"WORLD 01 / NATURE",name:"The living world",description:"Explore wildlife, oceans, forests, ecosystems and the remarkable ways life adapts to our planet.",href:"#discover",link:"Start discovering"},
- culture:{label:"WORLD 02 / CULTURE",name:"Human stories and expression",description:"Discover languages, food, music, festivals, architecture and the many ways communities share ideas.",href:"#explore",link:"Explore cultures"},
- history:{label:"WORLD 03 / HISTORY",name:"A journey through time",description:"Uncover ancient civilisations, inventions, historic turning points and the stories that shaped our present.",href:"#learn",link:"Begin learning"},
- travel:{label:"WORLD 04 / PLACES",name:"A planet of places",description:"Explore remarkable landscapes, cities, landmarks and destinations across continents.",href:"#explore",link:"Explore places"},
- ideas:{label:"WORLD 05 / IDEAS",name:"Questions that move us forward",description:"Follow science, technology, useful inventions and big questions about how our world works.",href:"#technology",link:"Explore ideas"},
- create:{label:"WORLD 06 / CREATIVITY",name:"Imagine it. Make it.",description:"Find inspiration in art, design, storytelling, digital creation and playful experiments.",href:"#play",link:"Get creative"}
+ terra:{label:"DESTINATION 01 / TERRA",name:"Terra — the living world",description:"A vivid world of forests, oceans, wildlife and extraordinary ecosystems. Begin your journey by discovering the wonders of the planet we call home.",href:"#discover",link:"ENTER WORLD"},
+ chronos:{label:"DESTINATION 02 / CHRONOS",name:"Chronos — the world of time",description:"Travel through ancient civilisations, lost cities, remarkable people, inventions and turning points that shaped human history.",href:"#learn",link:"ENTER WORLD"},
+ nova:{label:"DESTINATION 03 / NOVA",name:"Nova — the science frontier",description:"Explore the universe of science: curious experiments, physics, space discoveries, engineering and ideas that change how we understand reality.",href:"#technology",link:"ENTER WORLD"},
+ odyssey:{label:"DESTINATION 04 / ODYSSEY",name:"Odyssey — worlds and cultures",description:"Set out across continents. Discover extraordinary places, languages, architecture, traditions, food and the stories of people around the world.",href:"#explore",link:"ENTER WORLD"},
+ lumina:{label:"DESTINATION 05 / LUMINA",name:"Lumina — the creative dimension",description:"A world for imagination: art, design, photography, storytelling, music, digital making and unexpected creative experiments.",href:"#play",link:"ENTER WORLD"},
+ nexus:{label:"DESTINATION 06 / NEXUS",name:"Nexus — the future systems",description:"Look ahead at artificial intelligence, robotics, cybersecurity, digital culture, emerging technology and the choices shaping tomorrow.",href:"#technology",link:"ENTER WORLD"},
+ arcade:{label:"DESTINATION 07 / ARCADE",name:"Arcade — the play dimension",description:"Take a break from exploring and challenge yourself with quick games, puzzles, quizzes, brain teasers and playful missions.",href:"#play",link:"ENTER WORLD"}
 };
 const galaxyButtons = [...document.querySelectorAll(".galaxy-world")];
 galaxyButtons.forEach(button=>button.addEventListener("click",()=>{
@@ -116,3 +117,9 @@ galaxyButtons.forEach(button=>button.addEventListener("click",()=>{
  document.querySelector("#galaxy-description").textContent=item.description;
  const link=document.querySelector("#galaxy-link");link.href=item.href;link.textContent=item.link+" ↗";
 }));
+const galaxyUniverse=document.querySelector("#galaxy-universe");
+let galaxyZoom=1;
+const setGalaxyZoom=()=>{if(galaxyUniverse)galaxyUniverse.style.setProperty("--galaxy-zoom",galaxyZoom);};
+document.querySelector("#galaxy-zoom-in")?.addEventListener("click",()=>{galaxyZoom=Math.min(1.35,+(galaxyZoom+.1).toFixed(2));setGalaxyZoom();});
+document.querySelector("#galaxy-zoom-out")?.addEventListener("click",()=>{galaxyZoom=Math.max(.8,+(galaxyZoom-.1).toFixed(2));setGalaxyZoom();});
+document.querySelector("#galaxy-reset")?.addEventListener("click",()=>{galaxyZoom=1;setGalaxyZoom();});
