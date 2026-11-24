@@ -27,6 +27,22 @@ revealButton?.addEventListener("click",()=>{
  discoveryIndex=(discoveryIndex+1)%discoveryDeck.length;
  revealButton.innerHTML=discoveryIndex===0?'Explore again <span>↗</span>':'Reveal another <span>↗</span>';
 });
+const techTopics={
+ai:{label:"SIGNAL 01 / THE BIG IDEA",title:"Artificial intelligence, made approachable.",description:"Artificial intelligence (AI) describes computer systems designed to perform tasks that usually require human-like abilities, such as recognising patterns, understanding language or making predictions.",takeaway:"AI is a broad field of technology. It can be useful, but its output still needs human judgement and checking."},
+safety:{label:"SIGNAL 02 / STAY SECURE",title:"Cybersecurity is digital self-defence.",description:"Cybersecurity is the practice of protecting devices, accounts, networks and information from unauthorised access, damage or disruption.",takeaway:"Use unique passwords, turn on multi-factor authentication where possible, keep software updated and pause before opening unexpected links."},
+future:{label:"SIGNAL 03 / LOOK AHEAD",title:"Tomorrow's technology starts with questions.",description:"Fields such as robotics, clean energy, space science and advanced materials are exploring new ways to solve difficult problems. Progress often comes through many small discoveries.",takeaway:"A promising technology should be judged not only by what it can do, but also by its safety, accessibility and real-world impact."},
+create:{label:"SIGNAL 04 / MAKE SOMETHING",title:"Digital creativity turns ideas into experiences.",description:"Design, coding, animation, audio and digital storytelling let people communicate ideas and build useful things with accessible creative tools.",takeaway:"Start with a small project, experiment, get feedback and improve it. You do not need to master every tool before you begin."}
+};
+const techTabs=[...document.querySelectorAll(".radar-tab")];
+techTabs.forEach(tab=>tab.addEventListener("click",()=>{
+ const item=techTopics[tab.dataset.tech];
+ if(!item)return;
+ techTabs.forEach(button=>{const active=button===tab;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active));});
+ document.querySelector("#tech-label").textContent=item.label;
+ document.querySelector("#tech-title").textContent=item.title;
+ document.querySelector("#tech-description").textContent=item.description;
+ document.querySelector("#tech-takeaway").textContent=item.takeaway;
+}));
 const quiz=[{cat:"SCIENCE",q:"Which planet has the most prominent ring system?",a:["Jupiter","Saturn","Mars"],correct:1,why:"Saturn's bright, extensive rings are made mostly of ice particles, with rocky debris and dust."},{cat:"GEOGRAPHY",q:"Which is the largest ocean on Earth?",a:["Atlantic Ocean","Indian Ocean","Pacific Ocean"],correct:2,why:"The Pacific Ocean is the largest and deepest of Earth's ocean basins."},{cat:"NATURE",q:"What is the only mammal capable of true sustained flight?",a:["Flying squirrel","Bat","Sugar glider"],correct:1,why:"Bats are the only mammals capable of sustained powered flight. Flying squirrels glide."}];
 let qi=0,answered=false;const qNode=document.querySelector("#question"),answers=document.querySelector("#answers"),feedback=document.querySelector("#feedback"),next=document.querySelector("#next");
 function renderQuiz(){const q=quiz[qi];answered=false;document.querySelector("#quiz-category").textContent=q.cat;document.querySelector("#quiz-count").textContent="QUESTION "+String(qi+1).padStart(2,"0")+" / 03";document.querySelector("#progress").style.width=((qi+1)/3*100)+"%";qNode.textContent=q.q;feedback.textContent="Choose your answer to reveal the explanation.";next.disabled=true;next.textContent=qi===2?"Start again →":"Next question →";answers.replaceChildren();q.a.forEach((label,i)=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",()=>{if(answered)return;answered=true;[...answers.children].forEach((el,j)=>{el.disabled=true;if(j===q.correct)el.classList.add("correct");else if(j===i)el.classList.add("incorrect")});feedback.textContent=(i===q.correct?"Correct! ":"Not quite. ")+q.why;next.disabled=false});answers.append(b)})}
