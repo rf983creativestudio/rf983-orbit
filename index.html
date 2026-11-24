@@ -173,7 +173,31 @@
 <div class="lesson-steps" id="lesson-steps"><div><b>01</b><strong>Choose one clear goal</strong><p>Decide exactly what you want to understand today.</p></div><div><b>02</b><strong>Work in a short session</strong><p>Try 20 focused minutes, then take a short break.</p></div><div><b>03</b><strong>Recall, don't just reread</strong><p>Close your notes and explain the idea in your own words.</p></div></div>
 <div class="lesson-takeaway"><b>TRY THIS TODAY</b><span id="lesson-task">Pick one topic and write down one question you want answered.</span></div>
 </article></section>
-<section class="section play-section" id="play"><div><p class="eyebrow">06 / GIVE YOUR BRAIN A BREAK</p><h2>A little play.<br><em>A lot of fun.</em></h2><p>Test what you know, follow a clue and see where curiosity leads.</p><div class="play-symbol">? ◎ +</div></div><div class="quiz"><div class="quiz-head"><span>THE DAILY BRAIN BREAK</span><span id="quiz-count">QUESTION 01 / 03</span></div><div class="progress"><i id="progress"></i></div><small id="quiz-category">SCIENCE</small><h3 id="question">Which planet has the most prominent ring system?</h3><div id="answers" class="answers"></div><p id="feedback" aria-live="polite">Choose your answer to reveal the explanation.</p><button id="next" disabled>Next question →</button></div></section>
+<section class="section play-section" id="play"><div><p class="eyebrow">06 / GIVE YOUR BRAIN A BREAK</p><h2>A little play.<br><em>A lot of fun.</em></h2><p>Test what you know, follow a clue and see where curiosity leads.</p><div class="play-symbol">? ◎ +</div></div><div class="quiz"><div class="quiz-head"><span>THE DAILY BRAIN BREAK</span><span id="quiz-count">QUESTION 01 / 03</span></div><div class="progress"><i id="progress"></i></div><small id="quiz-category">SCIENCE</small><h3 id="question">Which planet has the most prominent ring system?</h3><div id="answers" class="answers"></div><p id="feedback" aria-live="polite">Choose your answer to reveal the explanation.</p><button id="next" disabled>Next question →</button></div>
+<div class="arcade-hub" id="arcade-hub">
+ <div class="arcade-heading"><div><span class="arcade-kicker">ARCADE DECK / 03 MINI GAMES</span><h3>Choose your challenge.</h3><p>Quick games, instant feedback and a little friendly competition.</p></div><div class="arcade-live"><i></i> READY TO PLAY</div></div>
+ <div class="arcade-tabs" role="group" aria-label="Choose an arcade game">
+  <button type="button" class="arcade-tab active" data-game="number" aria-pressed="true">01 / NUMBER HUNT</button>
+  <button type="button" class="arcade-tab" data-game="reaction" aria-pressed="false">02 / REACTION TEST</button>
+  <button type="button" class="arcade-tab" data-game="memory" aria-pressed="false">03 / MEMORY GRID</button>
+ </div>
+ <div class="arcade-game" id="arcade-number">
+  <div class="arcade-game-meta"><span>LOGIC CHALLENGE</span><span>01 — 20</span></div><h4>Find the hidden number.</h4><p>I'm thinking of a number between 1 and 20. Can you find it?</p>
+  <form class="number-form" id="number-form"><label class="sr-only" for="number-guess">Your guess</label><input id="number-guess" type="number" min="1" max="20" placeholder="Your guess" required><button type="submit">GUESS ↗</button></form>
+  <p class="arcade-feedback" id="number-feedback" aria-live="polite">Enter a number to begin. You have 5 attempts.</p><div class="arcade-bottom"><span id="number-attempts">ATTEMPTS: 0 / 5</span><button type="button" class="arcade-reset" id="number-reset">NEW NUMBER ↻</button></div>
+ </div>
+ <div class="arcade-game" id="arcade-reaction" hidden>
+  <div class="arcade-game-meta"><span>SPEED CHALLENGE</span><span>REFLEX / MS</span></div><h4>How fast are your reflexes?</h4><p>Press start, wait for the signal to turn green, then click as quickly as you can.</p>
+  <button type="button" class="reaction-pad" id="reaction-pad" data-state="idle"> <span id="reaction-message">START REACTION TEST</span><small id="reaction-sub">DON'T CLICK TOO EARLY</small></button>
+  <p class="arcade-feedback" id="reaction-feedback" aria-live="polite">Your best result this visit: —</p>
+ </div>
+ <div class="arcade-game" id="arcade-memory" hidden>
+  <div class="arcade-game-meta"><span>MEMORY CHALLENGE</span><span>4 SIGNALS</span></div><h4>Remember the sequence.</h4><p>Watch the glowing tiles, then repeat their order.</p>
+  <div class="memory-grid" id="memory-grid" role="group" aria-label="Memory sequence tiles"><button type="button" data-tile="0" aria-label="Tile 1"></button><button type="button" data-tile="1" aria-label="Tile 2"></button><button type="button" data-tile="2" aria-label="Tile 3"></button><button type="button" data-tile="3" aria-label="Tile 4"></button></div>
+  <p class="arcade-feedback" id="memory-feedback" aria-live="polite">Press start to watch your first sequence.</p><div class="arcade-bottom"><span id="memory-level">LEVEL: 1</span><button type="button" class="arcade-reset" id="memory-start">START SEQUENCE ↗</button></div>
+ </div>
+ <div class="arcade-scoreline"><span>SESSION SCOREBOARD</span><strong id="arcade-score">GAMES PLAYED: 0</strong></div>
+</div></section>
 <section class="section tools-section" id="tools"><div class="heading"><div><p class="eyebrow dark">07 / SMALL TOOLS, BIG HELP</p><h2>Useful things,<br><em>right here.</em></h2></div><p>Simple browser-based utilities. No account needed for these starter tools.</p></div><div class="tools-grid">
 <article class="tool-card"><span class="tool-icon">Aa</span><small>TEXT UTILITY</small><h3>Word counter</h3><p>Count words and characters in your text.</p><textarea id="word-input" rows="3" placeholder="Type or paste your text..."></textarea><div class="stats"><span><b id="words">0</b> words</span><span><b id="chars">0</b> characters</span></div></article>
 <article class="tool-card"><span class="tool-icon">⇄</span><small>QUICK CONVERTER</small><h3>Kilometres to miles</h3><p>Convert a distance in seconds.</p><label for="km">Distance in kilometres</label><input id="km" type="number" min="0" step="any" placeholder="e.g. 10"><div class="convert"><b id="miles">0.00</b> miles</div></article>
