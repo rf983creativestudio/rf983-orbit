@@ -49,3 +49,7 @@
 /* World Database gateway card */
 .frontier-database{background:radial-gradient(circle at 100% 0,#7c66d833,transparent 42%),linear-gradient(145deg,#29284f,#18213d)}
 .frontier-database span,.frontier-database strong{color:#c2b5ff}
+
+
+/* Knowledge Constellation gateway */
+.frontier-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.frontier-constellation{background:radial-gradient(circle at 100% 0,#5ce0e833,transparent 43%),linear-gradient(145deg,#17465a,#24204a)}.frontier-constellation span,.frontier-constellation strong{color:#a4f2f0}@media(max-width:1100px){.frontier-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.frontier-grid{grid-template-columns:1fr}}
