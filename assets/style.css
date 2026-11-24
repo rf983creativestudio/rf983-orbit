@@ -50,3 +50,12 @@ footer .brand-lockup>small{display:none}
  .hero:after{width:300px;height:300px;right:-35%;top:33%}
  .hero-art{min-height:285px}
 }
+
+/* Reusable vector wordmark */
+.brand{gap:0;letter-spacing:normal}
+.brand img{display:block;width:clamp(185px,21vw,235px);height:auto}
+.footer-brand img{width:clamp(190px,24vw,250px)}
+@media(max-width:650px){
+ .brand img{width:190px}
+ .footer-brand img{width:210px}
+}
