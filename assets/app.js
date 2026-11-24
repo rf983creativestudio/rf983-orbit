@@ -159,3 +159,61 @@ function showLesson(key){
  lesson.steps.forEach(([number,heading,description])=>{const item=document.createElement("div"),numberNode=document.createElement("b"),headingNode=document.createElement("strong"),descriptionNode=document.createElement("p");numberNode.textContent=number;headingNode.textContent=heading;descriptionNode.textContent=description;item.append(numberNode,headingNode,descriptionNode);steps.append(item)});
 }
 lessonButtons.forEach(button=>button.addEventListener("click",()=>showLesson(button.dataset.lesson)));
+
+
+/* RF983 ORBIT ARCADE — Number Hunt, Reaction Test and Memory Grid */
+const arcadeTabs=[...document.querySelectorAll(".arcade-tab")];
+const arcadeGames={number:document.querySelector("#arcade-number"),reaction:document.querySelector("#arcade-reaction"),memory:document.querySelector("#arcade-memory")};
+arcadeTabs.forEach(tab=>tab.addEventListener("click",()=>{
+ const key=tab.dataset.game;
+ arcadeTabs.forEach(item=>{const active=item===tab;item.classList.toggle("active",active);item.setAttribute("aria-pressed",String(active));});
+ Object.entries(arcadeGames).forEach(([name,panel])=>{if(panel)panel.hidden=name!==key;});
+}));
+let arcadeCleared=0;
+const arcadeScore=document.querySelector("#arcade-score");
+function markArcadeClear(){arcadeCleared++;if(arcadeScore)arcadeScore.textContent="CHALLENGES CLEARED: "+arcadeCleared;}
+let hiddenNumber=1+Math.floor(Math.random()*20),numberTries=0,numberFinished=false;
+const numberForm=document.querySelector("#number-form"),numberGuess=document.querySelector("#number-guess"),numberFeedback=document.querySelector("#number-feedback"),numberAttempts=document.querySelector("#number-attempts");
+function resetNumber(){hiddenNumber=1+Math.floor(Math.random()*20);numberTries=0;numberFinished=false;if(numberGuess){numberGuess.value="";numberGuess.disabled=false;}if(numberFeedback)numberFeedback.textContent="Enter a number to begin. You have 5 attempts.";if(numberAttempts)numberAttempts.textContent="ATTEMPTS: 0 / 5";}
+numberForm?.addEventListener("submit",event=>{
+ event.preventDefault();if(numberFinished||!numberGuess)return;
+ const guess=Number(numberGuess.value);
+ if(!Number.isInteger(guess)||guess<1||guess>20){numberFeedback.textContent="Choose a whole number from 1 to 20.";return;}
+ numberTries++;if(numberAttempts)numberAttempts.textContent="ATTEMPTS: "+numberTries+" / 5";
+ if(guess===hiddenNumber){numberFeedback.textContent="Brilliant! You found "+hiddenNumber+" in "+numberTries+" attempt"+(numberTries===1?"":"s")+". New number?";numberFinished=true;numberGuess.disabled=true;markArcadeClear();}
+ else if(numberTries>=5){numberFeedback.textContent="Challenge over — the number was "+hiddenNumber+". Try a fresh round!";numberFinished=true;numberGuess.disabled=true;}
+ else numberFeedback.textContent=guess<hiddenNumber?"Too low — try a higher number.":"Too high — try a lower number.";
+});
+document.querySelector("#number-reset")?.addEventListener("click",resetNumber);
+let reactionState="idle",reactionTimer=null,reactionStarted=0,reactionBest=null;
+const reactionPad=document.querySelector("#reaction-pad"),reactionMessage=document.querySelector("#reaction-message"),reactionSub=document.querySelector("#reaction-sub"),reactionFeedback=document.querySelector("#reaction-feedback");
+function reactionIdle(message){reactionState="idle";if(reactionTimer)clearTimeout(reactionTimer);reactionTimer=null;if(reactionPad)reactionPad.dataset.state="idle";if(reactionMessage)reactionMessage.textContent="START REACTION TEST";if(reactionSub)reactionSub.textContent="DON'T CLICK TOO EARLY";if(message&&reactionFeedback)reactionFeedback.textContent=message;}
+reactionPad?.addEventListener("click",()=>{
+ if(reactionState==="idle"){
+  reactionState="waiting";reactionPad.dataset.state="waiting";reactionMessage.textContent="WAIT FOR GREEN…";reactionSub.textContent="HOLD YOUR NERVE";
+  reactionTimer=setTimeout(()=>{reactionState="ready";reactionStarted=performance.now();reactionPad.dataset.state="ready";reactionMessage.textContent="CLICK NOW!";reactionSub.textContent="GO GO GO";},1200+Math.random()*2600);
+ }else if(reactionState==="waiting"){reactionIdle("Too soon! You clicked before the signal. Try again.");}
+ else if(reactionState==="ready"){
+  const elapsed=Math.round(performance.now()-reactionStarted);reactionState="result";reactionPad.dataset.state="result";reactionMessage.textContent=elapsed+" ms";reactionSub.textContent="REACTION TIME";
+  if(reactionBest===null||elapsed<reactionBest)reactionBest=elapsed;
+  reactionFeedback.textContent="Your time: "+elapsed+" ms · Best this visit: "+reactionBest+" ms";markArcadeClear();
+  setTimeout(()=>{if(reactionState==="result")reactionIdle("Ready for another round?");},1700);
+ }
+});
+let memorySequence=[],memoryInput=[],memoryLevel=1,memoryBusy=false;
+const memoryTiles=[...document.querySelectorAll("#memory-grid [data-tile]")],memoryFeedback=document.querySelector("#memory-feedback"),memoryLevelNode=document.querySelector("#memory-level"),memoryStart=document.querySelector("#memory-start");
+function flashMemory(index,duration=340){const tile=memoryTiles[index];if(!tile)return;tile.classList.add("lit");setTimeout(()=>tile.classList.remove("lit"),duration);}
+function playMemorySequence(){
+ if(memoryBusy)return;memoryBusy=true;memoryInput=[];memorySequence=Array.from({length:Math.min(2+memoryLevel,7)},()=>Math.floor(Math.random()*4));
+ if(memoryFeedback)memoryFeedback.textContent="Watch closely…";
+ memoryStart.disabled=true;memoryTiles.forEach(tile=>tile.disabled=true);
+ memorySequence.forEach((value,index)=>setTimeout(()=>{flashMemory(value,420);if(index===memorySequence.length-1)setTimeout(()=>{memoryBusy=false;memoryTiles.forEach(tile=>tile.disabled=false);if(memoryFeedback)memoryFeedback.textContent="Your turn — repeat the "+memorySequence.length+" signals.";memoryStart.disabled=false;},520);},650+index*760));
+}
+memoryStart?.addEventListener("click",()=>{memoryLevel=1;if(memoryLevelNode)memoryLevelNode.textContent="LEVEL: "+memoryLevel;playMemorySequence();});
+memoryTiles.forEach(tile=>tile.addEventListener("click",()=>{
+ if(memoryBusy||!memorySequence.length)return;
+ const value=Number(tile.dataset.tile);flashMemory(value,220);memoryInput.push(value);
+ const position=memoryInput.length-1;
+ if(memorySequence[position]!==value){memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);if(memoryFeedback)memoryFeedback.textContent="Not quite — you reached level "+memoryLevel+". Start again to retry.";memorySequence=[];memoryStart.disabled=false;memoryStart.textContent="TRY AGAIN ↻";return;}
+ if(memoryInput.length===memorySequence.length){memoryLevel++;markArcadeClear();if(memoryLevelNode)memoryLevelNode.textContent="LEVEL: "+memoryLevel;if(memoryFeedback)memoryFeedback.textContent="Perfect sequence! Get ready for the next level.";memoryBusy=true;memoryTiles.forEach(item=>item.disabled=true);setTimeout(()=>playMemorySequence(),900);}
+}));
