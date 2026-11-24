@@ -96,3 +96,23 @@ planetButtons.forEach(button=>button.addEventListener("click",()=>{
  document.querySelector("#planet-stat-value").textContent=planet.value;
  document.querySelector("#planet-stat-label").textContent=planet.label;
 }));
+
+
+/* Clickable galaxy map: each world opens a different discovery path */
+const galaxyWorlds = {
+ nature:{label:"WORLD 01 / NATURE",name:"The living world",description:"Explore wildlife, oceans, forests, ecosystems and the remarkable ways life adapts to our planet.",href:"#discover",link:"Start discovering"},
+ culture:{label:"WORLD 02 / CULTURE",name:"Human stories and expression",description:"Discover languages, food, music, festivals, architecture and the many ways communities share ideas.",href:"#explore",link:"Explore cultures"},
+ history:{label:"WORLD 03 / HISTORY",name:"A journey through time",description:"Uncover ancient civilisations, inventions, historic turning points and the stories that shaped our present.",href:"#learn",link:"Begin learning"},
+ travel:{label:"WORLD 04 / PLACES",name:"A planet of places",description:"Explore remarkable landscapes, cities, landmarks and destinations across continents.",href:"#explore",link:"Explore places"},
+ ideas:{label:"WORLD 05 / IDEAS",name:"Questions that move us forward",description:"Follow science, technology, useful inventions and big questions about how our world works.",href:"#technology",link:"Explore ideas"},
+ create:{label:"WORLD 06 / CREATIVITY",name:"Imagine it. Make it.",description:"Find inspiration in art, design, storytelling, digital creation and playful experiments.",href:"#play",link:"Get creative"}
+};
+const galaxyButtons = [...document.querySelectorAll(".galaxy-world")];
+galaxyButtons.forEach(button=>button.addEventListener("click",()=>{
+ const item=galaxyWorlds[button.dataset.world];if(!item)return;
+ galaxyButtons.forEach(node=>{const active=node===button;node.classList.toggle("active",active);node.setAttribute("aria-pressed",String(active));});
+ document.querySelector("#galaxy-label").textContent=item.label;
+ document.querySelector("#galaxy-name").textContent=item.name;
+ document.querySelector("#galaxy-description").textContent=item.description;
+ const link=document.querySelector("#galaxy-link");link.href=item.href;link.textContent=item.link+" ↗";
+}));
