@@ -277,3 +277,60 @@ html,body{background:#eee3d5;color:#292d3b}
  .hero{background:linear-gradient(145deg,#f5d9c8,#e9d9e8 54%,#cfe5db)}
  .site-footer{background:#d8d9e7}
 }
+
+
+/* RF983 RADIO — immersive frequency artwork */
+.hero{isolation:isolate;overflow:hidden}
+.hero-copy{position:relative;z-index:3}
+.hero-art{z-index:2;transform:translateY(8px)}
+.art-ring{animation:frequency-breathe 7s ease-in-out infinite}
+.ring-b{animation-delay:1.2s}
+.ring-c{animation-delay:2.4s}
+.art-core{animation:core-float 6s ease-in-out infinite}
+.frequency-chip{
+ position:absolute;z-index:4;padding:11px 15px;border:1px solid rgba(41,45,59,.2);
+ border-radius:13px;background:rgba(255,248,237,.76);backdrop-filter:blur(12px);
+ color:#62576a;font-size:8px;line-height:1.65;letter-spacing:.15em;
+ box-shadow:0 12px 30px rgba(61,49,68,.1)
+}
+.frequency-chip b{color:#087e70;font-size:9px}
+.chip-left{left:-34px;top:23%}
+.chip-right{right:-30px;bottom:19%}
+.hero-waveform{
+ position:absolute;z-index:3;left:50%;bottom:2px;transform:translateX(-50%);
+ width:210px;height:40px;display:flex;align-items:center;justify-content:center;gap:4px;
+ opacity:.78
+}
+.hero-waveform i{
+ display:block;width:4px;height:12px;border-radius:8px;
+ background:linear-gradient(180deg,#d45c49,#087e70);
+ animation:wave-pulse 1.15s ease-in-out infinite alternate
+}
+.hero-waveform i:nth-child(3n){animation-delay:.25s}
+.hero-waveform i:nth-child(3n + 1){animation-delay:.5s}
+.hero-waveform i:nth-child(4n){height:25px}
+.hero-waveform i:nth-child(5n){height:33px}
+@keyframes wave-pulse{from{transform:scaleY(.35);opacity:.55}to{transform:scaleY(1);opacity:1}}
+@keyframes frequency-breathe{0%,100%{transform:scale(1);opacity:.72}50%{transform:scale(1.045);opacity:1}}
+@keyframes core-float{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-9px)}}
+.ticker{position:relative;z-index:4;box-shadow:0 10px 28px rgba(67,54,61,.08)}
+.show-card{position:relative}
+.show-card:after{
+ content:"";position:absolute;width:155px;height:155px;right:-68px;top:-68px;
+ border:1px solid rgba(41,45,59,.15);border-radius:50%;
+ box-shadow:0 0 0 18px rgba(255,255,255,.12),0 0 0 36px rgba(255,255,255,.08);
+ pointer-events:none
+}
+@media(max-width:900px){
+ .chip-left{left:-8px}.chip-right{right:-8px}
+}
+@media(max-width:650px){
+ .hero-art{transform:none}
+ .frequency-chip{font-size:7px;padding:8px 10px}
+ .chip-left{left:4px;top:12%}
+ .chip-right{right:0;bottom:12%}
+ .hero-waveform{width:160px;bottom:-2px}
+}
+@media(prefers-reduced-motion:reduce){
+ .art-ring,.art-core,.hero-waveform i{animation:none!important}
+}
