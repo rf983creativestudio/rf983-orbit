@@ -297,3 +297,49 @@ function renderOrbitAchievements(){
  });
 }
 renderOrbitAchievements();
+
+
+/* ORBIT DAILY — deterministic daily content, generated locally */
+(()=>{
+ const dateNode=document.querySelector("#orbit-daily-date");
+ const factTitle=document.querySelector("#orbit-daily-fact-title");
+ if(!dateNode||!factTitle)return;
+ const dailyPicks=[
+  {symbol:"🌿",topic:"NATURE & WILDLIFE",title:"Forests are living networks",fact:"A forest is more than a collection of trees. Plants, fungi, animals, soil and water interact to form a complex ecosystem.",learn:"Ecosystems: how living things connect",category:"LIFE ON EARTH",href:"knowledge/article.html?topic=ecosystems",question:"What do ecologists call a community of organisms interacting with their environment?",answer:"An ecosystem. It includes living organisms and the non-living parts of their surroundings."},
+  {symbol:"🌍",topic:"EARTH & GEOGRAPHY",title:"Earth is always in motion",fact:"Earth rotates on its axis and travels around the Sun. These motions shape day, night and the pattern of seasons.",learn:"Earth's structure and changing surface",category:"OUR PLANET",href:"knowledge/article.html?topic=earth-structure",question:"What causes the cycle of day and night?",answer:"Earth's rotation on its axis. The side facing the Sun experiences day while the opposite side experiences night."},
+  {symbol:"🔭",topic:"UNIVERSE & SPACE",title:"Stars have life stories",fact:"Stars form from clouds of gas and dust. Their mass helps determine how they evolve and what remains when they reach the end of their lives.",learn:"Life cycle of a star",category:"SPACE SCIENCE",href:"knowledge/article.html?topic=life-cycle-star",question:"What is the cloud of gas and dust from which stars can form called?",answer:"A nebula. Gravity can cause parts of a nebula to collapse and begin star formation."},
+  {symbol:"⚙️",topic:"SCIENCE & MATHEMATICS",title:"Forces can change motion",fact:"A force is a push or pull. The combined effect of forces can change an object's speed, direction or shape.",learn:"Forces and motion",category:"PHYSICS",href:"knowledge/article.html?topic=forces-motion",question:"What happens when the net force on an object is zero?",answer:"Its acceleration is zero. It stays at rest or continues moving at constant velocity."},
+  {symbol:"📜",topic:"HISTORY & CIVILISATIONS",title:"History is built from evidence",fact:"Historians investigate the past using sources such as documents, objects, buildings, images and oral histories.",learn:"How historians investigate evidence",category:"THE HUMAN PAST",href:"knowledge/article.html?topic=history-evidence",question:"Why do historians compare different sources?",answer:"To test claims, identify gaps or bias, and build a more reliable interpretation of the past."},
+  {symbol:"💻",topic:"TECHNOLOGY & COMPUTING",title:"The web is a system of connections",fact:"The web uses linked resources and shared standards so browsers can retrieve and display information from servers around the world.",learn:"How search engines work",category:"DIGITAL WORLD",href:"knowledge/article.html?topic=search-engines",question:"What is the purpose of a search engine's index?",answer:"It is an organised store of information about discovered pages, helping the search engine find relevant results efficiently."},
+  {symbol:"🎨",topic:"ARTS & CREATIVITY",title:"Creative work grows through iteration",fact:"Making, reviewing and improving a first version is a practical way to develop an idea into a stronger creative result.",learn:"Sound and music: from vibrations to listening",category:"CREATIVE THINKING",href:"knowledge/article.html?topic=sound-music",question:"What is one useful reason to make a rough first draft?",answer:"It gives you something concrete to test, review and improve instead of waiting for a perfect idea."}
+ ];
+ const questions=dailyPicks;
+ const now=new Date();
+ const dateText=new Intl.DateTimeFormat(undefined,{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(now);
+ dateNode.textContent=dateText.toUpperCase();
+ const start=Date.UTC(now.getFullYear(),0,0);
+ const day=Math.floor((Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())-start)/86400000);
+ const index=(day-1)%dailyPicks.length;
+ const pick=dailyPicks[index];
+ const put=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
+ put("orbit-daily-index",String(index+1).padStart(2,"0")+" / 07");
+ put("orbit-daily-symbol",pick.symbol);
+ put("orbit-daily-topic",pick.topic);
+ put("orbit-daily-fact-title",pick.title);
+ put("orbit-daily-fact",pick.fact);
+ put("orbit-daily-learn-category",pick.category);
+ put("orbit-daily-learn-title",pick.learn);
+ const learnLink=document.getElementById("orbit-daily-learn-link");
+ if(learnLink)learnLink.href=pick.href;
+ put("orbit-daily-learn-copy","A short guide selected for today's theme. Explore the key ideas, then follow the references to learn more.");
+ put("orbit-daily-challenge-topic","TODAY'S QUICK QUESTION · "+pick.topic);
+ put("orbit-daily-question",pick.question);
+ const reveal=document.getElementById("orbit-daily-reveal"),answer=document.getElementById("orbit-daily-answer");
+ if(reveal&&answer)reveal.addEventListener("click",()=>{
+  const expanded=reveal.getAttribute("aria-expanded")==="true";
+  answer.textContent=expanded?"":pick.answer;
+  answer.hidden=expanded;
+  reveal.setAttribute("aria-expanded",String(!expanded));
+  reveal.textContent=expanded?"Reveal the answer ↗":"Hide the answer ↑";
+ });
+})();
