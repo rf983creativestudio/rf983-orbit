@@ -973,3 +973,43 @@ body:before,body:after{animation:none!important;will-change:auto!important}
 .orbit-daily-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.orbit-daily-feature{position:relative;min-height:315px;display:flex;flex-direction:column;align-items:flex-start;padding:23px;border:1px solid #ffffff22;border-radius:20px;background:linear-gradient(145deg,#ffffff13,#ffffff06);box-shadow:0 12px 30px #050b1d30;overflow:hidden}.orbit-daily-feature:after{content:"";position:absolute;width:155px;height:155px;right:-70px;top:65px;border:1px solid #ffffff18;border-radius:50%;box-shadow:0 0 0 22px #ffffff06,0 0 0 45px #ffffff04;pointer-events:none}.orbit-daily-label{color:#9de8eb;font-size:9px;font-weight:800;letter-spacing:.14em}.orbit-daily-index{position:absolute;right:22px;top:22px;color:#aabbd5;font-size:10px}.orbit-daily-symbol,.orbit-daily-mini-art{display:grid;place-items:center;width:54px;height:54px;margin:24px 0 18px;border:1px solid #ffffff36;border-radius:17px;background:linear-gradient(135deg,#48cbd544,#8b79e644);color:#fff;font-size:27px}.orbit-daily-topic{margin:0 0 8px;color:#a9b9d6;font-size:9px;font-weight:800;letter-spacing:.13em}.orbit-daily-feature h3{position:relative;z-index:1;margin:0 0 10px;color:#fff;font:700 21px/1.15 var(--display);letter-spacing:-.025em}.orbit-daily-feature>p:not(.orbit-daily-topic):not(.orbit-daily-answer){position:relative;z-index:1;margin:0 0 20px;color:#c1cce0;font-size:12px;line-height:1.75}.orbit-daily-link{position:relative;z-index:1;margin-top:auto;color:#83e6e9;font-size:11px;font-weight:800;text-decoration:none}.orbit-daily-link:hover{text-decoration:underline}.orbit-daily-learn .orbit-daily-mini-art{background:linear-gradient(135deg,#806de966,#c66ec966)}.orbit-daily-explore .orbit-daily-mini-art{background:linear-gradient(135deg,#2dba9c66,#4b9ce866)}.orbit-daily-challenge .orbit-daily-mini-art{background:linear-gradient(135deg,#f0a65a66,#df6d9166)}.orbit-daily-button{position:relative;z-index:1;margin-top:auto;padding:11px 14px;border:1px solid #8ce3e8aa;border-radius:12px;background:#5dd5df18;color:#dffcff;font-size:11px;font-weight:800}.orbit-daily-button:hover{background:#5dd5df30}.orbit-daily-answer{position:relative;z-index:1;margin:0 0 16px;color:#d6e4fa;font-size:12px;line-height:1.65}.orbit-daily-shortcuts{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:10px;align-items:stretch;margin-top:18px}.orbit-daily-shortcuts>div,.orbit-daily-shortcuts>a{display:flex;align-items:center;gap:10px;padding:15px;border:1px solid #ffffff20;border-radius:14px;background:#ffffff09;color:#e8efff;text-decoration:none;font-size:11px}.orbit-daily-shortcuts>div{display:grid;gap:5px}.orbit-daily-shortcuts>div strong{font-size:13px}.orbit-daily-shortcuts>a span{color:#83e6e9;font-size:18px}.orbit-daily-shortcuts>a b{margin-left:auto;color:#83e6e9}.orbit-daily-shortcuts>a:hover{background:#ffffff15;border-color:#83e6e966}.orbit-daily-note{margin:18px 0 0;color:#8498b9;font-size:10px;line-height:1.6}
 @media(max-width:1000px){.orbit-daily-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.orbit-daily-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}.orbit-daily-shortcuts>div{grid-column:1/-1}}
 @media(max-width:620px){.orbit-daily{padding:54px 16px}.orbit-daily-heading{align-items:flex-start;flex-direction:column}.orbit-daily-date{text-align:left}.orbit-daily-grid{grid-template-columns:1fr}.orbit-daily-feature{min-height:270px}.orbit-daily-shortcuts{grid-template-columns:1fr}.orbit-daily-shortcuts>div{grid-column:auto}}
+
+
+/* ORBIT LIGHTWEIGHT EDITION — reduce idle CPU, GPU and off-screen rendering */
+html{background:#080d1b}
+body{background-attachment:scroll!important}
+.header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(16,23,43,.98)!important;box-shadow:none!important}
+/* Keep the cosmic atmosphere, but stop decorative elements consuming frames. */
+body:before,body:after{animation:none!important;transform:none!important;will-change:auto!important}
+.hero-art .planet,.hero-art .orbit,.hero-art .float,.hero-art .planet:before,
+.hero h1 em,.section h2 em,.world-heading h2 em,.final-cta h2 em,
+.feature-art:after,.fact-icon,.tool-icon,.lab-orb,.orbit-card h3,
+.radar-pulse,.world-pulse,.radar-orbit,.world-symbol,.continent-btn.active>span,
+.final-cta .btn,.featured:before,.creative-preview-art,
+.meteor,.space-meteor,.solar-orbit,.galaxy-star,.galaxy-core,.expedition-planet,
+.daily-orb,.btn.primary:after,.lab-button:after,.searchbar form button:after,.quiz>button:after{
+ animation:none!important;
+}
+.hero-art .planet,.hero-art .orbit,.hero-art .float{will-change:auto!important}
+.galaxy-nebula,.galaxy-cloud,.galaxy-spiral,.expedition-halo{filter:none!important}
+.galaxy-world,.galaxy-map-tools button,.planet-explorer,.sl-header,.science-page .header,
+.header,.orbit-daily-feature,.orbit-daily-shortcuts>a{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.orbit-card,.learn-card,.tool-card,.fact,.feature,.quiz,.tech-radar,.world-console,
+.earthside-card,.world-card,.orbit-daily-feature,.orbit-frontier .frontier-card,
+.mo-home-feature,.vd-home-feature,.orbit-knowledge-preview,.orbit-creative-preview,
+.orbit-sound-preview{box-shadow:0 5px 16px #02061222!important}
+/* Let the browser skip layout and paint work for sections far below the viewport. */
+body>main>section:not(.hero){content-visibility:auto;contain-intrinsic-size:auto 680px}
+body>main>section.orbit-daily{contain-intrinsic-size:auto 850px}
+body>main>section.solar-system-section,body>main>section.galaxy-section,
+body>main>section.galaxy-expedition,body>main>section.earthside-section{contain-intrinsic-size:auto 620px}
+@media(prefers-reduced-motion:no-preference){
+ html{scroll-behavior:auto}
+}
+@media(max-width:900px){
+ body>main>section:not(.hero){contain-intrinsic-size:auto 620px}
+}
+@media(max-width:600px){
+ .orbit-card,.learn-card,.tool-card,.fact,.feature,.quiz,.tech-radar,.world-console,
+ .earthside-card,.world-card,.orbit-daily-feature{box-shadow:none!important}
+}
