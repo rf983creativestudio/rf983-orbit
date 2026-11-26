@@ -1013,3 +1013,7 @@ body>main>section.galaxy-expedition,body>main>section.earthside-section{contain-
  .orbit-card,.learn-card,.tool-card,.fact,.feature,.quiz,.tech-radar,.world-console,
  .earthside-card,.world-card,.orbit-daily-feature{box-shadow:none!important}
 }
+
+/* ORBIT 2.0 — Command Centre gateway card */
+.frontier-card.frontier-hub{background:linear-gradient(135deg,#15546b,#26396e 58%,#54316e)!important;border-color:#7de2ed77!important;box-shadow:0 16px 38px #02071355!important}
+.frontier-card.frontier-hub span{color:#9df0f1!important}.frontier-card.frontier-hub b{color:#fff!important}.frontier-card.frontier-hub p{color:#e0eaff!important}.frontier-card.frontier-hub strong{color:#9df0f1!important}
