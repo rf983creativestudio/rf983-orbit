@@ -11,9 +11,9 @@ A.forEach(c=>add("countries","country:"+c.name,c.name,(c.capital?"Capital: "+c.c
 T.forEach(t=>add("territories","territory:"+t.name,t.name,t.note,t.status+" · "+t.region,"../atlas/#atlas-territory-grid",[t.status,t.region],t.name));
 W.forEach(x=>add("earth","earth:"+x.id,x.name,x.description+" "+x.importance,x.type+" · "+x.region,"../earth/?q="+encodeURIComponent(x.name),[x.type,x.region,x.source],x.id));
 (D.records||[]).forEach(r=>{const c=(D.categories||[]).find(x=>x.id===r.category);add("database","db:"+r.id,r.title,r.summary+" Key idea: "+r.keyIdea,c?c.name:r.category,"../database/?q="+encodeURIComponent(r.title),[r.kind,r.scope,r.source].concat(r.tags||[]),r.id)});
-const ownSaved=new Set(safeRead("rf983OrbitHubSaved",[]));
+const ownSaved=new Set((()=>{const value=safeRead("rf983OrbitHubSaved",[]);return Array.isArray(value)?value:[]})());
 const externalKeys={encyclopedia:"rf983EncyclopediaSaved",earth:"rf983EarthSaved",database:"rf983WorldDatabaseSaved"};
-const recent=safeRead("rf983OrbitHubRecent",[]);
+const recentValue=safeRead("rf983OrbitHubRecent",[]);const recent=Array.isArray(recentValue)?recentValue:[];
 const progress=safeRead("rf983KnowledgeProgress",{});
 const typeLabels={guides:"LEARNING GUIDE",encyclopedia:"ENCYCLOPEDIA",countries:"COUNTRY PROFILE",territories:"TERRITORY / REGION",earth:"EARTH FIELD NOTE",database:"DATABASE RECORD"};
 const filterNames=["all","guides","encyclopedia","countries","territories","earth","database"];
