@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "rf983-orbit-shell-v20";
+const CACHE_NAME = "rf983-orbit-shell-v21";
 const CORE_FILES = [
   "./",
   "./index.html",
