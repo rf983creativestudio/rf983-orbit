@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090f22">
+<meta name="description" content="Take on ORBIT Quests: guided discovery missions across knowledge, geography, science, creativity, games and everyday tools. Earn XP and build your private progress record.">
+<link rel="canonical" href="https://rf983creativestudio.github.io/rf983-orbit/quests/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta property="og:type" content="website"><meta property="og:title" content="ORBIT Quests — RF983 ORBIT"><meta property="og:description" content="Thirty missions. Five discovery paths. One expanding universe."><meta property="og:image" content="https://rf983creativestudio.github.io/rf983-orbit/assets/rf983-orbit-social.svg"><meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"ORBIT Quests","description":"A browser-local discovery challenge system across RF983 ORBIT destinations.","url":"https://rf983creativestudio.github.io/rf983-orbit/quests/","isPartOf":{"@type":"WebSite","name":"RF983 ORBIT","url":"https://rf983creativestudio.github.io/rf983-orbit/"}}</script>
+<link rel="stylesheet" href="quests.css">
+<script src="quests.js" defer></script><script src="../assets/pwa.js" defer></script>
+<title>ORBIT Quests — RF983 ORBIT</title>
+</head>
+<body>
+<a class="skip" href="#quest-main">Skip to content</a>
+<header class="q-header"><a class="q-brand" href="../"><img src="../assets/rf983-orbit-logo.svg" alt="RF983 ORBIT"><span>QUEST NETWORK</span></a><nav aria-label="Quest navigation"><a href="../">Home</a><a href="../hub/">Command Centre</a><a href="#mission-board">Mission board</a><a href="#quest-record">Your record</a></nav><a class="q-back" href="../hub/">Command Centre ↗</a></header>
+<main id="quest-main">
+<section class="q-hero">
+ <div class="q-hero-copy"><p class="eyebrow">RF983 ORBIT / THE DISCOVERY PROGRESSION SYSTEM</p><h1>Curiosity is your<br><em>greatest superpower.</em></h1><p>Take small missions across the ORBIT universe. Read, explore, experiment, create and play. Complete a challenge, earn experience and build a record of what you've discovered.</p><div class="q-hero-actions"><a href="#mission-board" class="primary-link">Explore the missions ↓</a><span>30 MISSIONS · 5 PATHS · 9 BADGES</span></div></div>
+ <div class="q-orb" aria-hidden="true"><div class="q-orb-core">XP</div><i class="q-orbit o1"></i><i class="q-orbit o2"></i><i class="q-orbit o3"></i><b class="q-spark s1">✦</b><b class="q-spark s2">✧</b></div>
+ <div class="q-hero-foot"><span>YOUR JOURNEY / YOUR PACE</span><span>PROGRESS SAVED ON THIS DEVICE</span></div>
+</section>
+<section class="q-dashboard" id="quest-record">
+ <div class="section-head"><div><p class="eyebrow">01 / YOUR EXPLORER RECORD</p><h2>Every step <em>moves you forward.</em></h2><p>Your ORBIT Quests progress is private to this browser. It is separate from your existing daily mission and arcade records, while its XP is combined into the homepage profile total.</p></div><div class="local-pill"><i></i> LOCAL PROFILE</div></div>
+ <div class="q-stats">
+  <article class="q-stat q-stat-xp"><span>TOTAL QUEST XP</span><strong id="q-xp">0</strong><small>Experience earned in this quest network</small></article>
+  <article class="q-stat"><span>MISSIONS COMPLETED</span><strong id="q-completed">0 / 30</strong><small id="q-remaining">30 missions waiting</small></article>
+  <article class="q-stat"><span>CURRENT STREAK</span><strong id="q-streak">0 days</strong><small id="q-best-streak">Best: 0 days</small></article>
+  <article class="q-stat"><span>EXPLORER RANK</span><strong id="q-rank">ROOKIE</strong><small id="q-next-rank">20 XP to next rank</small></article>
+ </div>
+ <div class="q-overall"><div><b>YOUR DISCOVERY PROGRESS</b><span id="q-progress-label">0% complete</span></div><div class="q-progress"><i id="q-progress-fill"></i></div></div>
+ <div class="q-record-actions"><button type="button" id="q-export">Export my progress ↓</button><label class="q-import">Import progress ↑<input type="file" id="q-import-file" accept="application/json,.json"></label><button type="button" class="danger" id="q-reset">Reset quest progress</button><span id="q-data-status" role="status" aria-live="polite">No account required. Your record stays on this device.</span></div>
+</section>
+<section class="q-featured">
+ <div class="featured-label"><span>✦</span> TODAY'S ORBIT QUEST <b id="q-today-date">TODAY</b></div>
+ <div class="featured-body"><div class="featured-symbol" id="q-today-symbol">✦</div><div class="featured-copy"><p id="q-today-path">DISCOVERY PATH</p><h2 id="q-today-title">Your next discovery awaits.</h2><p id="q-today-description">Choose a mission to begin your journey.</p><div class="featured-meta"><span id="q-today-time">5–10 MIN</span><span id="q-today-reward">+20 XP</span><span id="q-today-status">READY TO EXPLORE</span></div></div><a id="q-today-open" href="#mission-board">View today's mission ↗</a></div>
+ <p class="featured-note">Today's featured mission rotates using your device date. Complete it once to claim its mission XP; the daily activity bonus is awarded only once per date.</p>
+</section>
+<section class="q-board" id="mission-board">
+ <div class="section-head"><div><p class="eyebrow">02 / THE MISSION BOARD</p><h2>Five paths. <em>Thirty ways forward.</em></h2><p>Choose any challenge in any order. Open its destination, complete the activity, then return here and mark it complete.</p></div></div>
+ <div class="q-filter-row"><div class="q-filters" role="group" aria-label="Filter mission paths"><button type="button" class="active" data-path="all" aria-pressed="true">All paths <b id="q-count-all">30</b></button><button type="button" data-path="discover" aria-pressed="false">Discover <b>6</b></button><button type="button" data-path="explore" aria-pressed="false">Explore <b>6</b></button><button type="button" data-path="science" aria-pressed="false">Science <b>6</b></button><button type="button" data-path="create" aria-pressed="false">Create <b>6</b></button><button type="button" data-path="play" aria-pressed="false">Play & tools <b>6</b></button></div><label class="q-search"><span class="sr-only">Search missions</span><input id="q-search" type="search" placeholder="Find a mission…"></label></div>
+ <div class="q-path-summary" id="q-path-summary"></div>
+ <div class="q-mission-grid" id="q-mission-grid" aria-live="polite"></div>
+ <div class="q-empty" id="q-empty" hidden><h3>No missions found</h3><p>Try another keyword or select a different path.</p></div>
+</section>
+<section class="q-badges">
+ <div class="section-head"><div><p class="eyebrow">03 / MILESTONES</p><h2>Earn your <em>discovery badges.</em></h2><p>Badges recognise milestones reached through your own exploration.</p></div><span class="badge-total" id="q-badge-total">0 / 9 UNLOCKED</span></div>
+ <div class="q-badge-grid" id="q-badge-grid"></div>
+</section>
+<section class="q-how">
+ <div><p class="eyebrow">04 / HOW THE NETWORK WORKS</p><h2>Progress without <em>pressure.</em></h2></div>
+ <div class="q-how-grid"><article><b>01 / Choose</b><h3>Pick a mission</h3><p>Follow today's feature or choose any challenge from the five paths.</p></article><article><b>02 / Explore</b><h3>Visit a destination</h3><p>Open a guide, compare a place, try a lab or create something in a studio.</p></article><article><b>03 / Record</b><h3>Claim your progress</h3><p>Return to the mission board and confirm completion. The record stays in this browser.</p></article><article><b>04 / Grow</b><h3>Build your orbit</h3><p>Earn XP, keep a streak, collect badges and discover more of the platform.</p></article></div>
+ <p class="q-honesty">Quest completion is self-reported. ORBIT does not automatically inspect activity in other destinations. Progress is stored locally, is not verified by a server and does not sync between devices.</p>
+</section>
+</main>
+<footer class="q-footer"><a href="../">RF983 ORBIT</a><a href="../hub/">Command Centre</a><a href="../privacy.html">Privacy</a><span>Discover More. Experience Everything.</span><small>© 2026 RF983 ORBIT by RF983 Creative Studios</small></footer>
+</body></html>
