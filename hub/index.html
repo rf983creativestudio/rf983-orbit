@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1022">
+<meta name="description" content="Search the RF983 ORBIT Command Centre: learning guides, encyclopedia entries, country profiles, Earth field notes and connected reference records in one place.">
+<link rel="canonical" href="https://rf983creativestudio.github.io/rf983-orbit/hub/">
+<meta property="og:type" content="website"><meta property="og:title" content="ORBIT Command Centre — RF983 ORBIT"><meta property="og:description" content="One search. Hundreds of discoveries.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="hub.css">
+<script src="../knowledge/knowledge-data.js" defer></script>
+<script src="../encyclopedia/encyclopedia-data.js" defer></script>
+<script src="../atlas/atlas-data.js" defer></script>
+<script src="../earth/earth-data.js" defer></script>
+<script src="../database/database-data.js" defer></script>
+<script src="hub.js" defer></script>
+<script src="../assets/pwa.js" defer></script>
+<title>ORBIT Command Centre — RF983 ORBIT</title>
+</head>
+<body>
+<a class="skip" href="#hub-main">Skip to content</a>
+<header class="hub-header">
+ <a class="hub-brand" href="../" aria-label="RF983 ORBIT home"><img src="../assets/rf983-orbit-logo.svg" alt="RF983 ORBIT"><span>COMMAND CENTRE</span></a>
+ <nav aria-label="Main navigation"><a href="../">Home</a><a href="#hub-search-area">Search</a><a href="#hub-pathways">Discovery routes</a><a href="#hub-launch">Destinations</a></nav>
+ <a class="hub-home" href="../">Return to ORBIT ↗</a>
+</header>
+<main id="hub-main">
+<section class="hub-hero">
+ <div class="hub-orbit-art" aria-hidden="true"><span class="hub-core">983</span><i class="ring ring-a"></i><i class="ring ring-b"></i><i class="ring ring-c"></i><b class="spark spark-a">✦</b><b class="spark spark-b">✧</b></div>
+ <div class="hub-hero-copy">
+  <p class="eyebrow">RF983 ORBIT / THE UNIFIED DISCOVERY ENGINE</p>
+  <h1>One search.<br><em>Hundreds of discoveries.</em></h1>
+  <p>Find a country, follow a question, explore a field note or open a reference record. The Command Centre brings ORBIT's growing knowledge collections into one searchable place.</p>
+  <a class="hub-hero-link" href="#hub-search-area">Start exploring ↓</a>
+ </div>
+ <div class="hub-hero-foot"><span>DISCOVER · CONNECT · LEARN · RETURN</span><span>YOUR PERSONAL ORBIT / STORED ON THIS DEVICE</span></div>
+</section>
+<section class="hub-search-section" id="hub-search-area">
+ <div class="section-heading"><div><p class="eyebrow">01 / UNIVERSAL SEARCH</p><h2>What are you <em>curious about?</em></h2><p>Search titles, subjects, places, summaries and key ideas across the ORBIT collections.</p></div><div class="hub-search-tip">SHORTCUT <kbd>Ctrl</kbd> + <kbd>K</kbd></div></div>
+ <div class="search-panel">
+  <label class="sr-only" for="hub-search">Search all ORBIT collections</label>
+  <span class="search-symbol" aria-hidden="true">⌕</span>
+  <input id="hub-search" type="search" autocomplete="off" placeholder="Try “black holes”, “India”, “biodiversity” or “technology”…">
+  <button id="hub-clear" type="button" aria-label="Clear search">×</button>
+ </div>
+ <div class="hub-filter-row">
+  <div class="hub-filters" id="hub-filters" aria-label="Filter collections">
+   <button type="button" class="active" data-filter="all" aria-pressed="true">Everything <b data-count="all">—</b></button>
+   <button type="button" data-filter="guides" aria-pressed="false">Learning guides <b data-count="guides">—</b></button>
+   <button type="button" data-filter="encyclopedia" aria-pressed="false">Encyclopedia <b data-count="encyclopedia">—</b></button>
+   <button type="button" data-filter="countries" aria-pressed="false">Countries <b data-count="countries">—</b></button>
+   <button type="button" data-filter="territories" aria-pressed="false">Territories <b data-count="territories">—</b></button>
+   <button type="button" data-filter="earth" aria-pressed="false">Earth field notes <b data-count="earth">—</b></button>
+   <button type="button" data-filter="database" aria-pressed="false">Database <b data-count="database">—</b></button>
+  </div>
+  <button class="saved-toggle" id="hub-saved-toggle" type="button" aria-pressed="false">♡ Saved <span id="hub-saved-count">0</span></button>
+ </div>
+ <div class="hub-result-head"><p id="hub-result-count" aria-live="polite">Preparing your discovery index…</p><span id="hub-result-note">Your saved items stay in this browser.</span></div>
+ <div class="hub-results" id="hub-results" aria-live="polite"></div>
+ <div class="hub-empty" id="hub-empty" hidden><span>◎</span><h3>No matching discoveries</h3><p>Try a broader phrase or choose another collection.</p></div>
+ <div class="hub-load-row"><button id="hub-load-more" type="button" hidden>Load more discoveries ↓</button></div>
+</section>
+<section class="hub-personal">
+ <div class="section-heading"><div><p class="eyebrow">02 / YOUR ORBIT</p><h2>Your discoveries, <em>in one place.</em></h2><p>Bookmarks and recently opened items are saved locally on this device, not sent to an account or server.</p></div></div>
+ <div class="hub-personal-grid">
+  <article class="personal-card"><span class="personal-icon">♡</span><small>YOUR SAVED COLLECTION</small><strong id="hub-personal-saved">0</strong><p>Items bookmarked across the Command Centre, Encyclopedia, Earth Explorer and World Database.</p><button type="button" data-show-saved>View saved discoveries ↗</button></article>
+  <article class="personal-card"><span class="personal-icon">↺</span><small>RECENTLY OPENED</small><strong id="hub-personal-recent">0</strong><p>Your latest visits from the Command Centre, ready to revisit.</p><div id="hub-recent-list" class="recent-list"><span>Open a discovery to start your recent list.</span></div></article>
+  <article class="personal-card"><span class="personal-icon">▤</span><small>THE DISCOVERY INDEX</small><strong id="hub-personal-total">—</strong><p>Searchable records across learning, places, science, culture, history and connected ideas.</p><a href="#hub-search-area">Explore the index ↑</a></article>
+ </div>
+</section>
+<section class="hub-pathways" id="hub-pathways">
+ <div class="section-heading"><div><p class="eyebrow">03 / GUIDED DISCOVERY</p><h2>Choose a <em>trail to follow.</em></h2><p>Start with a theme. The Command Centre will find related guides, places and reference ideas.</p></div></div>
+ <div class="path-grid">
+  <button type="button" data-query="stars"><span>✦ COSMIC BEGINNINGS</span><b>From stardust to stars</b><small>Explore star formation, galaxies and the life cycle of stars.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="ocean"><span>🌊 OUR BLUE PLANET</span><b>Understand the oceans</b><small>Connect ocean systems, coasts, currents and marine life.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="biodiversity"><span>🌿 LIVING SYSTEMS</span><b>The web of life</b><small>Discover ecosystems, biodiversity, adaptation and conservation.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="history"><span>⌛ HUMAN STORIES</span><b>Follow the human past</b><small>Explore civilisations, exchange, heritage and historical evidence.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="technology"><span>⌘ DIGITAL FRONTIERS</span><b>Inside the connected world</b><small>Find the ideas behind the web, computing and emerging technology.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="energy"><span>⚡ SCIENCE IN ACTION</span><b>Energy all around us</b><small>Explore electricity, motion, waves and the systems that power daily life.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="culture"><span>🎭 PEOPLE & PLACES</span><b>Explore cultures and places</b><small>Discover countries, languages, landmarks and shared traditions.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+  <button type="button" data-query="creativity"><span>✧ IDEAS INTO CREATION</span><b>Make something new</b><small>Connect visual storytelling, sound, design and creative practice.</small><strong>FOLLOW THIS TRAIL ↗</strong></button>
+ </div>
+</section>
+<section class="hub-launch" id="hub-launch">
+ <div class="section-heading"><div><p class="eyebrow">04 / ORBIT DESTINATIONS</p><h2>Every destination has <em>a new direction.</em></h2><p>Move from reference and exploration into practical tools, interactive labs and creative workspaces.</p></div></div>
+ <div class="launch-grid">
+  <a href="../knowledge/"><span>LEARN</span><b>Knowledge Universe</b><small>Guides across twelve subject areas</small></a>
+  <a href="../encyclopedia/"><span>REFERENCE</span><b>World Encyclopedia</b><small>Concise explainers and source links</small></a>
+  <a href="../atlas/"><span>PLACES</span><b>World Atlas</b><small>Country profiles and comparisons</small></a>
+  <a href="../earth/"><span>PLANET</span><b>Earth Explorer</b><small>Landscapes, oceans and field notes</small></a>
+  <a href="../database/"><span>CONNECTED IDEAS</span><b>World Database</b><small>Structured records across ten domains</small></a>
+  <a href="../constellation/"><span>CONNECTIONS</span><b>Knowledge Constellation</b><small>Explore how ideas relate</small></a>
+  <a href="../science/"><span>EXPERIMENT</span><b>Science Centre</b><small>Six interactive learning labs</small></a>
+  <a href="../creative/"><span>CREATE</span><b>Creative Studio</b><small>Patterns, posters and visual ideas</small></a>
+  <a href="../sound/"><span>MAKE SOUND</span><b>Sound Lab</b><small>Melodies, beats and sound experiments</small></a>
+  <a href="../motion/"><span>ANIMATE</span><b>Motion Studio</b><small>Build scenes and animate objects</small></a>
+  <a href="../video/"><span>EDIT</span><b>Video Studio</b><small>Arrange clips and create visual stories</small></a>
+  <a href="../#orbit-toolkit"><span>EVERYDAY</span><b>ORBIT Toolkit</b><small>Useful tools, converters and quick utilities</small></a>
+  <a href="../#play"><span>PLAY</span><b>Games & Challenges</b><small>Quizzes, puzzles and arcade activities</small></a>
+  <a href="../commerce/"><span>GROW</span><b>ORBIT Commerce</b><small>How the free platform can grow sustainably</small></a>
+ </div>
+</section>
+</main>
+<footer class="hub-footer"><a href="../">RF983 ORBIT</a><span>Your Gateway to a World of Possibilities.</span><a href="../privacy.html">Privacy</a><small>© 2026 RF983 ORBIT by RF983 Creative Studios</small></footer>
+</body></html>
