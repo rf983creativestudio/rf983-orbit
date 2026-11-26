@@ -264,23 +264,28 @@ renderDailyMission();
 
 
 /* ORBIT PROFILE — local XP levels, personal records and collectible badges */
+function readOrbitQuestProfile(){try{const value=JSON.parse(localStorage.getItem("rf983OrbitQuestProgress")||"null");if(!value||typeof value!=="object")return {xp:0,completed:{},bestStreak:0};return {xp:Number.isFinite(value.xp)?Math.max(0,value.xp):0,completed:value.completed&&typeof value.completed==="object"?value.completed:{},bestStreak:Number.isFinite(value.bestStreak)?Math.max(0,value.bestStreak):0};}catch(error){return {xp:0,completed:{},bestStreak:0};}}
+const orbitQuestProfile=readOrbitQuestProfile();const orbitQuestXp=orbitQuestProfile.xp;const orbitQuestCompleted=Object.keys(orbitQuestProfile.completed).length;const orbitQuestBestStreak=orbitQuestProfile.bestStreak;
 const orbitBadgeDefinitions=[
  {id:"first-mission",icon:"✦",name:"First Signal",detail:"Complete your first daily mission",unlock:()=>dailyState.xp>=50},
  {id:"arcade-ace",icon:"⚡",name:"Arcade Ace",detail:"Clear your first arcade challenge",unlock:()=>arcadeCleared>=1},
  {id:"curious-mind",icon:"🔭",name:"Curious Mind",detail:"Earn 150 mission XP",unlock:()=>dailyState.xp>=150},
  {id:"streak-three",icon:"🔥",name:"On a Roll",detail:"Reach a 3-day mission streak",unlock:()=>dailyState.bestStreak>=3},
  {id:"game-explorer",icon:"🎮",name:"Game Explorer",detail:"Clear 5 arcade challenges",unlock:()=>arcadeCleared>=5},
- {id:"orbit-regular",icon:"🌟",name:"Orbit Regular",detail:"Reach a 7-day mission streak",unlock:()=>dailyState.bestStreak>=7}
+ {id:"orbit-regular",icon:"🌟",name:"Orbit Regular",detail:"Reach a 7-day mission streak",unlock:()=>dailyState.bestStreak>=7},
+ {id:"quest-pathfinder",icon:"🧭",name:"Quest Pathfinder",detail:"Complete five ORBIT Quests",unlock:()=>orbitQuestCompleted>=5},
+ {id:"quest-master",icon:"🏅",name:"Quest Master",detail:"Complete all thirty ORBIT Quests",unlock:()=>orbitQuestCompleted>=30},
+ {id:"quest-streak",icon:"🚀",name:"Quest Voyager",detail:"Reach a 7-day quest streak",unlock:()=>orbitQuestBestStreak>=7}
 ];
 const orbitLevelNames=["ROOKIE EXPLORER","CURIOUS TRAVELLER","STAR SEEKER","GALAXY GUIDE","ORBIT LEGEND"];
 function renderOrbitAchievements(){
- const totalXp=dailyState.xp+arcadeCleared*10;
+ const totalXp=dailyState.xp+arcadeCleared*10+orbitQuestXp;
  const level=Math.min(orbitLevelNames.length-1,Math.floor(totalXp/100));
  const within=totalXp>=500?100:totalXp%100;
  const totalXpNode=document.querySelector("#orbit-total-xp"),missionsNode=document.querySelector("#orbit-missions"),arcadeWinsNode=document.querySelector("#orbit-arcade-wins"),streakNode=document.querySelector("#orbit-best-streak"),levelName=document.querySelector("#orbit-level-name"),levelXp=document.querySelector("#orbit-level-xp"),rank=document.querySelector("#orbit-rank"),progress=document.querySelector("#orbit-progress-fill"),next=document.querySelector("#orbit-next-level"),shelf=document.querySelector("#orbit-badge-shelf"),badgeCount=document.querySelector("#orbit-badge-count");
  if(!shelf)return;
  if(totalXpNode)totalXpNode.textContent=String(totalXp);
- if(missionsNode)missionsNode.textContent=String(Math.floor(dailyState.xp/50));
+ if(missionsNode)missionsNode.textContent=String(Math.floor(dailyState.xp/50)+orbitQuestCompleted);
  if(arcadeWinsNode)arcadeWinsNode.textContent=String(arcadeCleared);
  if(streakNode)streakNode.textContent=String(dailyState.bestStreak);
  if(levelName)levelName.textContent="LEVEL "+String(level+1).padStart(2,"0")+" / "+orbitLevelNames[level];
