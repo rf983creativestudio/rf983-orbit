@@ -118,3 +118,12 @@ Editorial facts and external references should be checked before publication. Se
 - Local bookmarks integrate with existing Encyclopedia, Earth Explorer and World Database saved lists; recent Command Centre visits are stored on the current device.
 - Search runs locally in the browser. Collection data is loaded only on the Command Centre page, not on the homepage.
 - Service worker v21 pre-caches a small site shell and the Command Centre; destination assets are cached when visitors open those destinations, reducing first-install work.
+
+
+## ORBIT Quests — Discovery Progression Network
+- 30 guided missions across five paths: Discover, Explore, Science, Create, and Play & Tools.
+- Daily featured mission, one-time mission rewards, first-activity-of-day bonus, seven-day streak milestones, six explorer ranks and nine achievement badges.
+- Search and path filters, mission progress, export/import JSON backup, and local reset controls.
+- Quest progress is stored in the browser under `rf983OrbitQuestProgress`; it is self-reported, private to the current browser and not synced across devices.
+- Quest XP and mission milestones are reflected in the homepage ORBIT profile when that page is loaded.
+- The quest page is linked from the homepage, Command Centre and destination navigation; service worker v22 pre-caches the quest experience.
