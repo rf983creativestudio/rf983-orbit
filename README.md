@@ -117,4 +117,4 @@ Editorial facts and external references should be checked before publication. Se
 - Eight themed discovery routes help visitors explore related subjects across collections.
 - Local bookmarks integrate with existing Encyclopedia, Earth Explorer and World Database saved lists; recent Command Centre visits are stored on the current device.
 - Search runs locally in the browser. Collection data is loaded only on the Command Centre page, not on the homepage.
-- Service worker v20 pre-caches a small site shell and the Command Centre; destination assets are cached when visitors open those destinations, reducing first-install work.
+- Service worker v21 pre-caches a small site shell and the Command Centre; destination assets are cached when visitors open those destinations, reducing first-install work.
