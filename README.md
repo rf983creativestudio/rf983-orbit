@@ -109,3 +109,12 @@ Editorial facts and external references should be checked before publication. Se
 - No live advertisements, affiliate links, checkout, subscriptions or payment collection are active in this edition.
 - Privacy and terms pages explain planned monetisation and disclosure practices.
 - The site remains static on GitHub Pages; secure checkout, recurring billing and customer accounts require an external provider and/or backend before launch.
+
+
+## ORBIT Command Centre — Unified Discovery Index
+- Search and filter the published Knowledge Universe, World Encyclopedia, World Atlas, Earth Explorer and World Database from one page.
+- Current index: 278 records — 24 learning guides, 48 encyclopedia entries, 49 country profiles, 10 separately classified territories / regions, 47 Earth field notes and 100 World Database records.
+- Eight themed discovery routes help visitors explore related subjects across collections.
+- Local bookmarks integrate with existing Encyclopedia, Earth Explorer and World Database saved lists; recent Command Centre visits are stored on the current device.
+- Search runs locally in the browser. Collection data is loaded only on the Command Centre page, not on the homepage.
+- Service worker v20 pre-caches a small site shell and the Command Centre; destination assets are cached when visitors open those destinations, reducing first-install work.
