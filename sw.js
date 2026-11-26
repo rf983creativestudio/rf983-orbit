@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "rf983-orbit-shell-v21";
+const CACHE_NAME = "rf983-orbit-shell-v22";
 const CORE_FILES = [
   "./",
   "./index.html",
@@ -17,7 +17,11 @@ const CORE_FILES = [
   "./hub/",
   "./hub/index.html",
   "./hub/hub.css",
-  "./hub/hub.js"
+  "./hub/hub.js",
+  "./quests/",
+  "./quests/index.html",
+  "./quests/quests.css",
+  "./quests/quests.js"
 ];
 
 // Keep installation light: destination data and studio assets are cached lazily when visited.
