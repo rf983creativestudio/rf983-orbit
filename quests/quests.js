@@ -75,8 +75,6 @@ $("#q-export").addEventListener("click",exportData);
 $("#q-import-file").addEventListener("change",async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;try{const raw=JSON.parse(await file.text());if(raw.product!=="RF983 ORBIT QUESTS"||raw.version!==1||!raw.progress)throw new Error("This is not a supported ORBIT Quests backup.");if(!confirm("Import this backup and replace the current ORBIT Quests progress on this device?"))return;state=cleanState(raw.progress);save();render();$("#q-data-status").textContent="Progress backup imported successfully."}catch(err){$("#q-data-status").textContent="Import failed: "+err.message}finally{e.target.value=""}});
 $("#q-reset").addEventListener("click",()=>{if(!confirm("Reset all ORBIT Quests progress on this device? This cannot be undone unless you exported a backup."))return;state=cleanState(null);save();render();$("#q-data-status").textContent="Quest progress reset on this device."});
 $("#q-search").addEventListener("input",e=>{term=e.target.value.trim().toLowerCase();renderMissions()});
-$("#q-mission-grid").addEventListener("click",e=>{const b=e.target.closest("[data-path]");if(b){activePath=b.dataset.path;renderMissions()}});
-$("#q-mission-board");
 $$("[data-path]").forEach(b=>b.addEventListener("click",()=>{activePath=b.dataset.path;renderMissions()}));
 if(!state.completed[featured.id])$("#q-today-open").addEventListener("click",()=>{activePath="all";renderMissions()});
 render();
